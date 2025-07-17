@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Whenever a new feature is to be added, check the current codebase to find any previously created reusable functions that could help in creating this feature. If the reusable component is not there, create a new one. FOCUS ON MODULARITY

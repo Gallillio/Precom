@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+The main folder will be "modules". inside it of it will contain multiple modules depending on the app. each module will contain components, screens, and utils folders. 
