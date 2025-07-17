@@ -11,7 +11,7 @@ To create a modern, professional, and high-performance frontend for an engineeri
 
 ## 3. Project Setup
 *   Initialize a new Next.js project using `create-next-app`.
-*   The project will be set up with TypeScript, Tailwind CSS, and ESLint from the start.
+*   The project will be set up with TypeScript, Tailwind CSS, and ESLint from the start.-=;;
 
 ## 4. Project Structure
 *   The project will adhere to the guidelines specified in `@filestructure.mdc` and `@modularity.mdc`.
