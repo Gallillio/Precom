@@ -58,7 +58,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
 
   const emergencyContact = {
     title: 'Emergency Support',
-    phone: '+1 (555) 123-9999',
+    phone: '+20 1234567890',
     description: 'For urgent engineering matters outside business hours'
   }
 

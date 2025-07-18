@@ -28,11 +28,6 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className = '' }) => {
                 alt={post.title}
                 className="w-full h-48 object-cover transition-transform duration-200 hover:scale-105"
               />
-              <div className="absolute top-3 left-3">
-                <span className="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                  {post.category}
-                </span>
-              </div>
             </div>
           )}
           
@@ -85,6 +80,12 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post, className = '' }) => {
                   </span>
                 )}
               </div>
+            </div>
+
+            <div className="mt-3 flex items-center justify-between">
+              <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+                {post.category}
+              </span>
             </div>
 
             <div className="mt-4 pt-4 border-t border-gray-100">

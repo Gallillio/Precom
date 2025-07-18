@@ -1,12 +1,22 @@
 'use client'
-import React from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { ContactInfo as ContactInfoType } from '@/modules/shared/utils/types'
 import { ContactHero } from '../components/ContactHero'
 import { ContactForm } from '../components/ContactForm'
 import { ContactInfo } from '../components/ContactInfo'
 import { LocationMap } from '../components/LocationMap'
+import { ContentLoader, CardLoader } from '@/modules/shared/components/common'
 
 export const ContactScreen: React.FC = () => {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 800)
+    return () => clearTimeout(timer)
+  }, [])
+
   const handleFormSubmit = (data: ContactInfoType) => {
     // In a real application, this would send the data to your backend
     console.log('Form submitted:', data)
@@ -17,6 +27,20 @@ export const ContactScreen: React.FC = () => {
     // - Save to database
     // - Send to CRM like Salesforce, HubSpot
     // - Send notifications to team via Slack, Teams, etc.
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        <ContactHero 
+          title="Contact Our Engineering Experts"
+          subtitle="Ready to Start Your Project?"
+          description="Get in touch with our professional engineering team for consultation, project planning, or technical support. We're here to help turn your vision into reality."
+          showQuickContact={true}
+        />
+        <ContentLoader text="Loading contact information..." />
+      </div>
+    )
   }
 
   return (
@@ -36,21 +60,25 @@ export const ContactScreen: React.FC = () => {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div id="contact-form">
-                <ContactForm 
-                  onSubmit={handleFormSubmit}
-                  title="Send Us a Message"
-                  description="Fill out the form below and we'll get back to you within 24 hours. For urgent matters, please call our emergency line."
-                />
+                <Suspense fallback={<CardLoader />}>
+                  <ContactForm 
+                    onSubmit={handleFormSubmit}
+                    title="Send Us a Message"
+                    description="Fill out the form below and we'll get back to you within 24 hours. For urgent matters, please call our emergency line."
+                  />
+                </Suspense>
               </div>
             </div>
 
             {/* Contact Information */}
             <div className="lg:col-span-1">
               <div id="contact-info">
-                <ContactInfo 
-                  showSocialLinks={true}
-                  showBusinessHours={true}
-                />
+                <Suspense fallback={<CardLoader />}>
+                  <ContactInfo 
+                    showSocialLinks={true}
+                    showBusinessHours={true}
+                  />
+                </Suspense>
               </div>
             </div>
           </div>
@@ -71,10 +99,12 @@ export const ContactScreen: React.FC = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <LocationMap 
-              height="500px"
-              showDirections={true}
-            />
+            <Suspense fallback={<CardLoader className="h-96" />}>
+              <LocationMap 
+                height="500px"
+                showDirections={true}
+              />
+            </Suspense>
           </div>
         </div>
       </section>
@@ -184,10 +214,10 @@ export const ContactScreen: React.FC = () => {
               Send Us a Message
             </button>
             <a 
-              href="tel:+1 (555) 123-4567"
+              href="tel:+20 1234567890"
               className="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
             >
-              Call Now: (555) 123-4567
+              Call Now: +20 1234567890
             </a>
           </div>
         </div>

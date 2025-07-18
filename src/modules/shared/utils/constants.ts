@@ -4,7 +4,7 @@ export const COMPANY_INFO = {
   tagline: 'Professional Engineering Consultancy',
   description: 'Professional engineering consultancy providing innovative solutions for construction and infrastructure projects.',
   email: 'info@precom.com',
-  phone: '+1 (555) 123-4567',
+  phone: '+20 1234567890',
   address: {
     street: '123 Engineering Street',
     city: 'Tech City',

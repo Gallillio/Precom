@@ -1,8 +1,9 @@
 'use client'
-import React from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import { BlogPost, BlogCategory } from '@/modules/shared/utils/types'
 import { BlogList } from '../components/BlogList'
 import { BlogCategories } from '../components/BlogCategories'
+import { ContentLoader, CardLoader } from '@/modules/shared/components/common'
 
 // Sample blog data for development
 const samplePosts: BlogPost[] = [
@@ -270,6 +271,52 @@ const sampleCategories: BlogCategory[] = [
 ]
 
 export const BlogScreen: React.FC = () => {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen">
+        {/* Hero Section */}
+        <div className="pt-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+          <div className="container mx-auto px-4 py-16">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Engineering Insights & Innovation
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                Stay updated with the latest trends, technologies, and best practices 
+                in engineering. Our experts share insights on structural design, 
+                project management, sustainability, and emerging technologies.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="#latest-articles"
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  Browse Articles
+                </a>
+                <a 
+                  href="/contact"
+                  className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
+                >
+                  Subscribe to Updates
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ContentLoader text="Loading blog content..." />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -314,22 +361,26 @@ export const BlogScreen: React.FC = () => {
               </p>
             </div>
             
-            <BlogList 
-              posts={samplePosts}
-              categories={sampleCategories}
-              showFilters={true}
-              postsPerPage={6}
-            />
+            <Suspense fallback={<ContentLoader text="Loading articles..." />}>
+              <BlogList 
+                posts={samplePosts}
+                categories={sampleCategories}
+                showFilters={true}
+                postsPerPage={6}
+              />
+            </Suspense>
           </div>
 
           {/* Sidebar */}
           <div className="lg:w-1/3">
             <div className="sticky top-24 space-y-8">
               {/* Categories */}
-              <BlogCategories 
-                categories={sampleCategories}
-                showPostCounts={true}
-              />
+              <Suspense fallback={<CardLoader />}>
+                <BlogCategories 
+                  categories={sampleCategories}
+                  showPostCounts={true}
+                />
+              </Suspense>
 
               {/* Featured Content */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import { Header, Footer } from '@/modules/shared/components/layout'
+import { ErrorBoundary } from '@/modules/shared/components/common'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,9 +27,11 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
+          <ErrorBoundary>
+            <main className="flex-grow">
+              {children}
+            </main>
+          </ErrorBoundary>
           <Footer />
         </div>
       </body>

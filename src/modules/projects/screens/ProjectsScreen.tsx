@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { Project } from '@/modules/shared/utils/types'
 import { 
   ProjectHero, 
@@ -7,7 +7,7 @@ import {
   ProjectFilter, 
   type FilterState 
 } from '../components'
-import { Container, Section } from '@/modules/shared/components/common'
+import { Container, Section, Loading, ContentLoader } from '@/modules/shared/components/common'
 
 interface ProjectsScreenProps {
   projects?: Project[]
@@ -150,17 +150,34 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
     sortBy: 'date',
     sortOrder: 'desc',
   })
+  const [loading, setLoading] = useState(true)
+  const [filterLoading, setFilterLoading] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    setFilterLoading(true)
+    const timer = setTimeout(() => {
+      setFilterLoading(false)
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [filters])
 
   const categories = useMemo(() => {
-    return [...new Set(projects.map(project => project.category))]
+    return Array.from(new Set(projects.map(project => project.category)))
   }, [projects])
 
   const tags = useMemo(() => {
-    return [...new Set(projects.flatMap(project => project.tags))]
+    return Array.from(new Set(projects.flatMap(project => project.tags)))
   }, [projects])
 
   const statuses = useMemo(() => {
-    return [...new Set(projects.map(project => project.status))] as Array<'completed' | 'in-progress' | 'planned'>
+    return Array.from(new Set(projects.map(project => project.status))) as Array<'completed' | 'in-progress' | 'planned'>
   }, [projects])
 
   const filteredProjects = useMemo(() => {
@@ -202,6 +219,21 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
     window.location.href = `/projects/${project.id}`
   }
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <ProjectHero
+          onCTAClick={() => {
+            document.getElementById('projects-section')?.scrollIntoView({ 
+              behavior: 'smooth' 
+            })
+          }}
+        />
+        <ContentLoader text="Loading projects..." />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <ProjectHero
@@ -224,15 +256,23 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onClick={() => handleProjectClick(project)}
-                />
-              ))}
-            </div>
+            {filterLoading ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <Loading className="min-h-64" text="Loading..." />
+                <Loading className="min-h-64" text="Loading..." />
+                <Loading className="min-h-64" text="Loading..." />
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {featuredProjects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    onClick={() => handleProjectClick(project)}
+                  />
+                ))}
+              </div>
+            )}
           </Container>
         </Section>
       )}
@@ -289,15 +329,23 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                 Showing {filteredProjects.length} of {projects.length} projects
               </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProjects.map((project) => (
-                  <ProjectCard
-                    key={project.id}
-                    project={project}
-                    onClick={() => handleProjectClick(project)}
-                  />
-                ))}
-              </div>
+              {filterLoading ? (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <Loading className="min-h-64" text="Loading..." />
+                  <Loading className="min-h-64" text="Loading..." />
+                  <Loading className="min-h-64" text="Loading..." />
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredProjects.map((project) => (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      onClick={() => handleProjectClick(project)}
+                    />
+                  ))}
+                </div>
+              )}
             </>
           )}
         </Container>

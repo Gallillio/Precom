@@ -65,7 +65,7 @@ export const ContactHero: React.FC<ContactHeroProps> = ({
 
   const emergencyInfo = {
     available: true,
-    phone: '+1 (555) 123-9999',
+    phone: '+20 1234567890',
     description: 'Emergency engineering support available 24/7'
   }
 

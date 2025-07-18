@@ -1,15 +1,16 @@
 import React from 'react'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import { Project } from '@/modules/shared/utils/types'
 import { CaseStudy, ProjectGallery } from '@/modules/projects/components'
 import { Container, Section } from '@/modules/shared/components/common'
 import { Button } from '@/modules/shared/components/ui'
 
 interface ProjectDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 const sampleProjects: Project[] = [
@@ -126,7 +127,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
-  const project = await getProject(params.id)
+  const { id } = await params
+  const project = await getProject(id)
   
   if (!project) {
     return {
@@ -151,7 +153,8 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
 }
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const project = await getProject(params.id)
+  const { id } = await params
+  const project = await getProject(id)
 
   if (!project) {
     notFound()
@@ -162,13 +165,14 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       <Section className="bg-white" padding="xl">
         <Container>
           <div className="mb-8">
-            <Button
-              variant="outline"
-              onClick={() => window.history.back()}
-              className="mb-6"
-            >
-              ← Back to Projects
-            </Button>
+            <Link href="/projects">
+              <Button
+                variant="outline"
+                className="mb-6"
+              >
+                ← Back to Projects
+              </Button>
+            </Link>
           </div>
 
           <CaseStudy project={project} />
@@ -203,17 +207,16 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               Contact us to discuss how we can help with your engineering project needs
             </p>
             <div className="space-x-4">
-              <Button
-                onClick={() => window.location.href = '/contact'}
-              >
-                Get in Touch
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => window.location.href = '/projects'}
-              >
-                View More Projects
-              </Button>
+              <Link href="/contact">
+                <Button>
+                  Get in Touch
+                </Button>
+              </Link>
+              <Link href="/projects">
+                <Button variant="outline">
+                  View More Projects
+                </Button>
+              </Link>
             </div>
           </div>
         </Container>

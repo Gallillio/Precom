@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { Project } from '@/modules/shared/utils/types'
 import { Card } from '@/modules/shared/components/ui'
 
@@ -29,10 +30,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     >
       {primaryImage && (
         <div className="relative mb-4 overflow-hidden rounded-lg">
-          <img
+          <Image
             src={primaryImage.url}
             alt={primaryImage.alt}
+            width={400}
+            height={192}
             className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={false}
           />
           {project.featured && (
             <div className="absolute top-3 left-3 bg-blue-600 text-white px-2 py-1 rounded-md text-sm font-medium">

@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { ProjectImage } from '@/modules/shared/utils/types'
 import { Modal } from '@/modules/shared/components/ui'
 
@@ -46,10 +47,14 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             className="relative group cursor-pointer overflow-hidden rounded-lg"
             onClick={() => openImageModal(primaryImage)}
           >
-            <img
+            <Image
               src={primaryImage.url}
               alt={primaryImage.alt}
+              width={800}
+              height={320}
               className="w-full h-64 md:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 80vw"
+              priority={true}
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -74,10 +79,14 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                 className="relative group cursor-pointer overflow-hidden rounded-lg"
                 onClick={() => openImageModal(image)}
               >
-                <img
+                <Image
                   src={image.url}
                   alt={image.alt}
+                  width={200}
+                  height={128}
                   className="w-full h-24 md:h-32 object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 25vw, 20vw"
+                  priority={false}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -100,10 +109,14 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
       >
         {selectedImage && (
           <div className="space-y-4">
-            <img
+            <Image
               src={selectedImage.url}
               alt={selectedImage.alt}
+              width={800}
+              height={600}
               className="w-full h-auto max-h-[70vh] object-contain rounded-lg"
+              sizes="80vw"
+              priority={true}
             />
             {selectedImage.caption && (
               <p className="text-gray-600 text-center">{selectedImage.caption}</p>

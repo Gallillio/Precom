@@ -99,6 +99,116 @@ body {
   .text-large {
     @apply text-lg sm:text-xl;
   }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden;
+  }
+  
+  .card-hover {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden;
+  }
+  
+  /* Form styles */
+  .form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+  }
+  
+  .form-textarea {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-vertical transition-colors duration-200;
+  }
+  
+  .form-select {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .form-error {
+    @apply text-sm text-red-600 mt-1;
+  }
+  
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .badge-secondary {
+    @apply bg-gray-100 text-gray-800;
+  }
+  
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-error {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  /* Link styles */
+  .link {
+    @apply text-blue-600 hover:text-blue-700 underline transition-colors duration-200;
+  }
+  
+  .link-subtle {
+    @apply text-gray-600 hover:text-gray-900 transition-colors duration-200;
+  }
+  
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700;
+  }
+  
+  .gradient-secondary {
+    @apply bg-gradient-to-r from-gray-600 to-gray-700;
+  }
+  
+  .gradient-hero {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-100;
+  }
+  
+  /* Engineering-specific styles */
+  .engineering-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .stat-card {
+    @apply bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center;
+  }
+  
+  .stat-number {
+    @apply text-3xl font-bold text-blue-600 mb-2;
+  }
+  
+  .stat-label {
+    @apply text-sm text-gray-600 uppercase tracking-wide;
+  }
+  
+  .project-status-completed {
+    @apply bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .project-status-progress {
+    @apply bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .project-status-planned {
+    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs font-medium;
+  }
 }
 
 /* Responsive utilities */
