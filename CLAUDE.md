@@ -79,6 +79,16 @@ From `rules/filestructure.mdc`: The main folder structure is based on modules. E
 - Each component exports with proper TypeScript interfaces
 - Consistent prop patterns (variant, size, className, etc.)
 
+## Styling Redesign Instructions
+
+When working on the website styling revamp:
+- Follow the comprehensive design guide in `design-guide.md` which details inspiration from Buro Happold, Cundall, Royal HaskoningDHV, and BCG
+- Continue implementing tasks from `styling-revamp-plan.md` which tracks the complete redesign progress
+- Focus on transforming the entire theme and design of the website to a modern, professional engineering consultancy aesthetic
+- Implement features like sticky navigation, mega menus, video backgrounds, parallax effects, animated cards, and advanced filtering systems
+- If additional assets are needed (videos, images, etc.), compile a list and present it after code generation
+- Always reference the design guide for specific implementation details, color schemes, typography, and animation guidelines
+
 ## Important Notes
 
 - Always check existing shared components before creating new ones

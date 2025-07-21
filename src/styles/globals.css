@@ -2,15 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables */
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Custom CSS Variables - New Design System */
 :root {
+  /* Primary Colors */
+  --primary-blue: #003366;
+  --accent-teal: #00B4A6;
+  --secondary-gray: #F5F5F5;
+  
+  /* Supporting Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --white: #FFFFFF;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  
+  /* Background Colors */
   --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f6f6f6;
-  --muted-foreground: #737373;
-  --border: #e5e5e5;
-  --primary: #2563eb;
-  --primary-foreground: #ffffff;
+  --background-secondary: #F5F5F5;
+  --background-tertiary: #FAFAFA;
+  
+  /* Border Colors */
+  --border: #E5E5E5;
+  --border-secondary: #D1D5DB;
+  
+  /* Shadow Colors */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Typography */
+  --font-heading: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-body: 'Inter', 'Arial', sans-serif;
+  
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
 }
 
 /* Global Styles */
@@ -20,11 +74,83 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  color: var(--foreground);
+  font-family: var(--font-body);
+  color: var(--text-primary);
   background: var(--background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Base Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: var(--weight-bold);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: var(--weight-bold);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--weight-semibold);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: var(--weight-semibold);
+}
+
+h5 {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: var(--weight-medium);
+}
+
+h6 {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: var(--weight-medium);
+}
+
+p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-teal);
+}
+
+/* Focus states for accessibility */
+*:focus {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
 }
 
 /* Container utilities */
@@ -68,70 +194,275 @@ body {
 
 /* Custom component classes */
 @layer components {
+  /* New Button System */
   .btn-primary {
-    @apply bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-medium);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .btn-primary:hover {
+    background: var(--accent-teal);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
   
   .btn-secondary {
-    @apply bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors duration-200;
+    background: var(--text-secondary);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-medium);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
   
   .btn-outline {
-    @apply border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200;
+    background: transparent;
+    color: var(--primary-blue);
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-medium);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
   }
   
-  .section-padding {
-    @apply py-16 sm:py-24;
+  .btn-outline:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .btn-teal {
+    background: var(--accent-teal);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-medium);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .btn-teal:hover {
+    background: var(--primary-blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Typography System */
+  .heading-hero {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-family: var(--font-heading);
   }
   
   .heading-1 {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    font-family: var(--font-heading);
   }
   
   .heading-2 {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: var(--weight-bold);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    font-family: var(--font-heading);
   }
   
   .heading-3 {
-    @apply text-2xl sm:text-3xl font-bold tracking-tight;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: var(--weight-semibold);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    font-family: var(--font-heading);
   }
   
   .text-large {
-    @apply text-lg sm:text-xl;
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    font-weight: var(--weight-regular);
+  }
+  
+  .text-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+  }
+  
+  .text-body-secondary {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  
+  /* Layout Utilities */
+  .section-padding {
+    padding: 4rem 0;
+  }
+  
+  .section-padding-lg {
+    padding: 6rem 0;
+  }
+  
+  .section-padding-xl {
+    padding: 8rem 0;
+  }
+  
+  /* Section backgrounds */
+  .section-primary {
+    background: var(--primary-blue);
+    color: var(--white);
+  }
+  
+  .section-secondary {
+    background: var(--secondary-gray);
+    color: var(--text-primary);
+  }
+  
+  .section-tertiary {
+    background: var(--background-tertiary);
+    color: var(--text-primary);
   }
   
   /* Card styles */
   .card {
-    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition-normal);
   }
   
   .card-hover {
-    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition-normal);
+    cursor: pointer;
+  }
+  
+  .card-hover:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
   }
   
   .card-elevated {
-    @apply bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
   }
   
   /* Form styles */
   .form-input {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition-normal);
+  }
+  
+  .form-input:focus {
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 3px rgba(0, 180, 166, 0.1);
   }
   
   .form-textarea {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-vertical transition-colors duration-200;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 120px;
+    transition: var(--transition-normal);
+  }
+  
+  .form-textarea:focus {
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 3px rgba(0, 180, 166, 0.1);
   }
   
   .form-select {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition-normal);
+  }
+  
+  .form-select:focus {
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 3px rgba(0, 180, 166, 0.1);
   }
   
   .form-label {
-    @apply block text-sm font-medium text-gray-700 mb-1;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
   }
   
   .form-error {
-    @apply text-sm text-red-600 mt-1;
+    font-size: 0.875rem;
+    color: var(--error);
+    margin-top: 0.25rem;
   }
   
   /* Badge styles */

@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
-import { Header, Footer } from '@/modules/shared/components/layout'
+import { Footer } from '@/modules/shared/components/layout'
+import { HeaderWrapper } from '@/modules/shared/components/layout/HeaderWrapper'
 import { ErrorBoundary } from '@/modules/shared/components/common'
+import { ScrollProgress } from '@/modules/shared/components/ui'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,8 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
+        <ScrollProgress />
         <div className="min-h-screen flex flex-col">
-          <Header />
+          <HeaderWrapper />
           <ErrorBoundary>
             <main className="flex-grow">
               {children}

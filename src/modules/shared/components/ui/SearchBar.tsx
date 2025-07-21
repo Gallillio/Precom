@@ -113,9 +113,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           block w-full pl-10 
           ${showSearchButton || (showClearButton && internalValue) ? 'pr-20' : 'pr-4'}
           ${sizeClasses[size]}
-          border border-gray-300 rounded-lg 
-          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-          ${disabled ? 'bg-gray-100 cursor-not-allowed' : 'bg-white hover:border-gray-400'}
+          border-2 border-[var(--border)] rounded-lg 
+          focus:outline-none focus:border-[var(--accent-teal)] focus:ring-4 focus:ring-[var(--accent-teal)] focus:ring-opacity-20
+          ${disabled ? 'bg-[var(--background-secondary)] cursor-not-allowed' : 'bg-white hover:border-[var(--border-secondary)]'}
           transition-colors duration-200
         `}
       />
@@ -127,7 +127,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
           <button
             type="button"
             onClick={handleClear}
-            className="text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600 transition-colors duration-200"
+            className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:text-[var(--text-primary)] transition-colors duration-200"
             aria-label="Clear search"
           >
             <svg className={iconSizes[size]} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,7 +143,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
             onClick={handleSearchClick}
             disabled={disabled}
             className={`
-              text-gray-400 hover:text-blue-600 focus:outline-none focus:text-blue-600 
+              text-[var(--text-secondary)] hover:text-[var(--accent-teal)] focus:outline-none focus:text-[var(--accent-teal)] 
               transition-colors duration-200
               ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
             `}
@@ -207,11 +207,11 @@ export const CompactSearch: React.FC<CompactSearchProps> = ({
             onChange={(e) => setQuery(e.target.value)}
             onBlur={handleBlur}
             placeholder={placeholder}
-            className="px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48"
+            className="px-3 py-2 border-2 border-[var(--border)] rounded-l-lg focus:outline-none focus:border-[var(--accent-teal)] focus:ring-4 focus:ring-[var(--accent-teal)] focus:ring-opacity-20 w-48"
           />
           <button
             type="submit"
-            className="px-3 py-2 bg-blue-600 text-white rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+            className="px-3 py-2 bg-[var(--accent-teal)] text-white rounded-r-lg hover:bg-[var(--primary-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-teal)] transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -221,7 +221,7 @@ export const CompactSearch: React.FC<CompactSearchProps> = ({
       ) : (
         <button
           onClick={() => setIsExpanded(true)}
-          className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600 transition-colors"
+          className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:text-[var(--text-primary)] transition-colors"
           aria-label="Open search"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

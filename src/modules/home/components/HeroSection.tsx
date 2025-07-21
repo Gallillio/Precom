@@ -1,42 +1,181 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Button } from '@/modules/shared/components/ui'
-import { COMPANY_INFO } from '@/modules/shared/utils/constants'
+import { VideoBackground } from '@/modules/shared/components/ui/VideoBackground'
+import { ScrollIndicator } from '@/modules/shared/components/ui/ScrollIndicator'
+import { Parallax } from '@/modules/shared/components/ui/Parallax'
+import { COMPANY_INFO, ROUTES } from '@/modules/shared/utils/constants'
 
 interface HeroSectionProps {
   className?: string
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const heroContent = {
+    headline: "Engineering Tomorrow's Infrastructure",
+    subheadline: "Innovative engineering solutions that shape the future of construction and infrastructure development.",
+    description: "We combine decades of expertise with cutting-edge technology to deliver exceptional results for our clients worldwide."
+  }
+
+  const stats = [
+    { number: "500+", label: "Projects Completed", icon: "🏗️" },
+    { number: "25", label: "Countries Served", icon: "🌍" },
+    { number: "50+", label: "Years Experience", icon: "⚡" },
+    { number: "100%", label: "Client Satisfaction", icon: "✨" }
+  ]
+
+  const fallbackImages = [
+    '/images/hero/construction-1.jpg',
+    '/images/hero/construction-2.jpg',
+    '/images/hero/construction-3.jpg'
+  ]
+
+  useEffect(() => {
+    setIsLoaded(true)
+    
+    // Auto-rotate fallback images if no video
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % fallbackImages.length)
+    }, 8000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const handleGetStarted = () => {
+    // Smooth scroll to next section or navigate to contact
+    const nextSection = document.querySelector('#services')
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
   return (
-    <section className={`bg-gradient-to-br from-blue-50 to-gray-100 ${className}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="section-padding">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="heading-1 text-gray-900 mb-6">
-              {COMPANY_INFO.name}
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              {COMPANY_INFO.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                variant="primary" 
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                Get Started
-              </Button>
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
+      {/* Video/Image Background */}
+      <VideoBackground
+        videoSrc="/videos/hero-construction.mp4"
+        fallbackImage={fallbackImages[currentSlide]}
+        posterImage="/images/hero/hero-poster.jpg"
+        className="absolute inset-0"
+        overlay={true}
+        overlayOpacity={0.6}
+      />
+
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-[var(--accent-teal)]/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[var(--primary-blue)]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }} />
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className={`transform transition-all duration-1000 delay-500 ${
+          isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
+          {/* Company Badge */}
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-white/30">
+            <div className="w-3 h-3 bg-[var(--accent-teal)] rounded-full animate-pulse" />
+            <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
+              {COMPANY_INFO.tagline}
+            </span>
+          </div>
+
+          {/* Main Headline */}
+          <h1 className="heading-hero text-white mb-6 max-w-5xl mx-auto leading-tight">
+            <span className="block">{heroContent.headline.split(' ').slice(0, 2).join(' ')}</span>
+            <span className="block bg-gradient-to-r from-[var(--accent-teal)] to-white bg-clip-text text-transparent">
+              {heroContent.headline.split(' ').slice(2).join(' ')}
+            </span>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-xl sm:text-2xl text-white/90 mb-4 max-w-4xl mx-auto font-light leading-relaxed">
+            {heroContent.subheadline}
+          </p>
+
+          {/* Description */}
+          <p className="text-lg text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            {heroContent.description}
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <Button 
+              variant="teal" 
+              size="xl"
+              className="group w-full sm:w-auto px-12 py-4 text-lg font-semibold shadow-2xl hover:shadow-[var(--accent-teal)]/25 transform hover:scale-105 transition-all duration-300"
+              onClick={handleGetStarted}
+            >
+              <span>Get Started</span>
+              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Button>
+            <Link href={ROUTES.projects}>
               <Button 
                 variant="outline" 
-                size="lg"
-                className="w-full sm:w-auto"
+                size="xl"
+                className="group w-full sm:w-auto px-12 py-4 text-lg font-semibold border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-all duration-300"
               >
-                View Our Work
+                <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span>View Our Work</span>
               </Button>
-            </div>
+            </Link>
+          </div>
+
+          {/* Stats Section */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <div 
+                key={index}
+                className={`transform transition-all duration-700 delay-${(index + 1) * 200} ${
+                  isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}
+              >
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-bold text-white mb-2 group-hover:text-[var(--accent-teal)] transition-colors duration-300">
+                    {stat.number}
+                  </div>
+                  <div className="text-white/80 text-sm font-medium uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
+        targetId="services"
+        text="Explore Services"
+        variant="arrow"
+      />
+
+      {/* Decorative Elements */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent z-10" />
+      
+      {/* Floating Action Bubble */}
+      <Link
+        href={ROUTES.contact}
+        className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[var(--accent-teal)] rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 hover:shadow-[var(--accent-teal)]/50 transition-all duration-300 group"
+      >
+        <svg className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+      </Link>
     </section>
   )
 }

@@ -24,13 +24,13 @@ export const Badge: React.FC<BadgeProps> = ({
   }
 
   const variantClasses = {
-    default: 'bg-gray-100 text-gray-800 hover:bg-gray-200',
-    primary: 'bg-blue-100 text-blue-800 hover:bg-blue-200',
-    secondary: 'bg-purple-100 text-purple-800 hover:bg-purple-200',
-    success: 'bg-green-100 text-green-800 hover:bg-green-200',
-    warning: 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200',
+    default: 'bg-[var(--secondary-gray)] text-[var(--text-primary)] hover:bg-[var(--background-tertiary)]',
+    primary: 'bg-[var(--primary-blue)] bg-opacity-10 text-[var(--primary-blue)] hover:bg-opacity-20',
+    secondary: 'bg-[var(--text-secondary)] bg-opacity-10 text-[var(--text-secondary)] hover:bg-opacity-20',
+    success: 'bg-[var(--success)] bg-opacity-10 text-[var(--success)] hover:bg-opacity-20',
+    warning: 'bg-[var(--warning)] bg-opacity-10 text-[var(--warning)] hover:bg-opacity-20',
     error: 'bg-red-100 text-red-800 hover:bg-red-200',
-    info: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200'
+    info: 'bg-[var(--accent-teal)] bg-opacity-10 text-[var(--accent-teal)] hover:bg-opacity-20'
   }
 
   const classes = `
@@ -69,10 +69,10 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   className = ''
 }) => {
   const statusConfig = {
-    online: { color: 'bg-green-500', text: 'Online' },
-    offline: { color: 'bg-gray-400', text: 'Offline' },
+    online: { color: 'bg-[var(--success)]', text: 'Online' },
+    offline: { color: 'bg-[var(--text-secondary)]', text: 'Offline' },
     busy: { color: 'bg-red-500', text: 'Busy' },
-    away: { color: 'bg-yellow-500', text: 'Away' }
+    away: { color: 'bg-[var(--warning)]', text: 'Away' }
   }
 
   const config = statusConfig[status]
@@ -81,7 +81,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
     <div className={`inline-flex items-center ${className}`}>
       <div className={`w-2 h-2 rounded-full ${config.color} ${showText ? 'mr-1.5' : ''}`} />
       {showText && (
-        <span className="text-xs text-gray-600">{config.text}</span>
+        <span className="text-xs text-[var(--text-secondary)]">{config.text}</span>
       )}
     </div>
   )
@@ -136,7 +136,7 @@ export const TagBadge: React.FC<TagBadgeProps> = ({
       {onRemove && (
         <button
           onClick={onRemove}
-          className="ml-1 text-gray-400 hover:text-gray-600 focus:outline-none"
+          className="ml-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none transition-colors duration-200"
           aria-label={`Remove ${tag} tag`}
         >
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
