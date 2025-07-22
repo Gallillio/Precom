@@ -258,146 +258,281 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
   }
 
   return (
-    <Card className={className}>
+    <div className={`bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden ${className}`}>
+      {/* Premium Header with Gradient */}
+      <div className="bg-gradient-to-r from-[#003366] via-[#004080] to-[#00B4A6] p-8">
+        <div className="text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">{title}</h2>
+          <p className="text-blue-100 text-lg leading-relaxed drop-shadow-md">{description}</p>
+          
+          {/* Decorative Elements */}
+          <div className="absolute top-4 right-4 opacity-20">
+            <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      
       <div className="p-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
-          <p className="text-gray-600 leading-relaxed">{description}</p>
-        </div>
 
-        {/* Progress Indicator */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            {STEPS.map((step, index) => (
-              <div key={step.id} className="flex items-center flex-1">
-                <div className={`
-                  w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold
-                  ${currentStep >= step.id 
-                    ? 'bg-var(--color-primary) text-white' 
-                    : 'bg-gray-200 text-gray-500'
-                  }
-                `}>
-                  {currentStep > step.id ? (
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  ) : (
-                    step.id
-                  )}
-                </div>
-                {index < STEPS.length - 1 && (
+        {/* Premium Progress Indicator */}
+        <div className="mb-10">
+          <div className="relative">
+            {/* Progress Bar Background */}
+            <div className="absolute top-6 left-6 right-6 h-1 bg-gray-200 rounded-full"></div>
+            
+            {/* Active Progress Bar */}
+            <div 
+              className="absolute top-6 left-6 h-1 bg-gradient-to-r from-[#003366] to-[#00B4A6] rounded-full transition-all duration-500 ease-out"
+              style={{ width: `calc(${((currentStep - 1) / (STEPS.length - 1)) * 100}% - 1.5rem + ${12 * ((currentStep - 1) / (STEPS.length - 1))}px)` }}
+            ></div>
+            
+            {/* Step Indicators */}
+            <div className="flex items-center justify-between mb-6 relative">
+              {STEPS.map((step, index) => (
+                <div key={step.id} className="flex flex-col items-center">
                   <div className={`
-                    flex-1 h-1 mx-4
-                    ${currentStep > step.id ? 'bg-var(--color-primary)' : 'bg-gray-200'}
-                  `} />
-                )}
-              </div>
-            ))}
+                    w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shadow-lg transition-all duration-300 transform
+                    ${currentStep >= step.id 
+                      ? 'bg-gradient-to-br from-[#003366] to-[#00B4A6] text-white scale-110 shadow-[#003366]/30' 
+                      : currentStep === step.id
+                        ? 'bg-white border-2 border-[#00B4A6] text-[#00B4A6] shadow-[#00B4A6]/20 scale-105'
+                        : 'bg-gray-100 text-gray-400 border-2 border-gray-200'
+                    }
+                  `}>
+                    {currentStep > step.id ? (
+                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    ) : (
+                      step.id
+                    )}
+                  </div>
+                  
+                  {/* Step Labels */}
+                  <div className="mt-3 text-center max-w-20">
+                    <div className={`text-xs font-semibold leading-tight ${
+                      currentStep >= step.id ? 'text-[#003366]' : 'text-gray-400'
+                    }`}>
+                      {step.title}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-900">{STEPS[currentStep - 1].title}</h3>
-            <p className="text-sm text-gray-600">{STEPS[currentStep - 1].description}</p>
+          
+          {/* Current Step Info */}
+          <div className="text-center bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl p-4 border border-blue-100">
+            <h3 className="text-xl font-bold text-[#003366] mb-1">{STEPS[currentStep - 1].title}</h3>
+            <p className="text-sm text-gray-600 font-medium">{STEPS[currentStep - 1].description}</p>
           </div>
         </div>
 
-        {/* Form Content */}
-        <div className="min-h-[400px]">
+        {/* Premium Form Content */}
+        <div className="min-h-[500px] bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100 p-8 shadow-inner">
           {/* Step 1: Contact Details */}
           {currentStep === 1 && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-800 mb-3">
+            <div className="space-y-8 animate-fadeIn">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#003366] to-[#00B4A6] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h4 className="text-2xl font-bold text-[#003366] mb-2">Tell Us About Yourself</h4>
+                <p className="text-gray-600">We'll use this information to personalize your experience</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="flex items-center text-sm font-bold text-[#003366] mb-3">
+                    <svg className="w-4 h-4 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
                     Full Name *
                   </label>
-                  <Input
-                    id="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange('name', e.target.value)}
-                    placeholder="Enter your full name"
-                    className={errors.name ? 'border-red-500 focus:ring-red-500' : ''}
-                  />
-                  {errors.name && <p className="mt-2 text-sm text-red-600">{errors.name}</p>}
+                  <div className="relative">
+                    <Input
+                      id="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      placeholder="Enter your full name"
+                      className={`pl-12 py-4 text-lg bg-white border-2 rounded-xl shadow-sm transition-all duration-300 ${
+                        errors.name 
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                          : 'border-gray-200 focus:border-[#00B4A6] focus:ring-[#00B4A6] hover:border-gray-300'
+                      }`}
+                    />
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                  {errors.name && (
+                    <div className="flex items-center mt-2 text-sm text-red-600">
+                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                      {errors.name}
+                    </div>
+                  )}
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-800 mb-3">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="flex items-center text-sm font-bold text-[#003366] mb-3">
+                    <svg className="w-4 h-4 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
                     Email Address *
                   </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    placeholder="Enter your email address"
-                    className={errors.email ? 'border-red-500 focus:ring-red-500' : ''}
-                  />
-                  {errors.email && <p className="mt-2 text-sm text-red-600">{errors.email}</p>}
+                  <div className="relative">
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      placeholder="Enter your email address"
+                      className={`pl-12 py-4 text-lg bg-white border-2 rounded-xl shadow-sm transition-all duration-300 ${
+                        errors.email 
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                          : 'border-gray-200 focus:border-[#00B4A6] focus:ring-[#00B4A6] hover:border-gray-300'
+                      }`}
+                    />
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                  {errors.email && (
+                    <div className="flex items-center mt-2 text-sm text-red-600">
+                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                      {errors.email}
+                    </div>
+                  )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-800 mb-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                <div className="space-y-2">
+                  <label htmlFor="phone" className="flex items-center text-sm font-bold text-[#003366] mb-3">
+                    <svg className="w-4 h-4 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
                     Phone Number
                   </label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    placeholder="Enter your phone number"
-                    className={errors.phone ? 'border-red-500 focus:ring-red-500' : ''}
-                  />
-                  {errors.phone && <p className="mt-2 text-sm text-red-600">{errors.phone}</p>}
+                  <div className="relative">
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      placeholder="Enter your phone number"
+                      className={`pl-12 py-4 text-lg bg-white border-2 rounded-xl shadow-sm transition-all duration-300 ${
+                        errors.phone 
+                          ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                          : 'border-gray-200 focus:border-[#00B4A6] focus:ring-[#00B4A6] hover:border-gray-300'
+                      }`}
+                    />
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                  </div>
+                  {errors.phone && (
+                    <div className="flex items-center mt-2 text-sm text-red-600">
+                      <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                      </svg>
+                      {errors.phone}
+                    </div>
+                  )}
                 </div>
 
-                <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-gray-800 mb-3">
+                <div className="space-y-2">
+                  <label htmlFor="company" className="flex items-center text-sm font-bold text-[#003366] mb-3">
+                    <svg className="w-4 h-4 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
                     Company/Organization
                   </label>
-                  <Input
-                    id="company"
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) => handleInputChange('company', e.target.value)}
-                    placeholder="Enter your company name"
-                  />
+                  <div className="relative">
+                    <Input
+                      id="company"
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) => handleInputChange('company', e.target.value)}
+                      placeholder="Enter your company name"
+                      className="pl-12 py-4 text-lg bg-white border-2 border-gray-200 rounded-xl shadow-sm focus:border-[#00B4A6] focus:ring-[#00B4A6] hover:border-gray-300 transition-all duration-300"
+                    />
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-3">
+              <div className="mt-8">
+                <label className="flex items-center text-sm font-bold text-[#003366] mb-6">
+                  <svg className="w-4 h-4 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
                   Preferred Contact Method
                 </label>
-                <div className="flex gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {[
-                    { value: 'email', label: 'Email', icon: '📧' },
-                    { value: 'phone', label: 'Phone Call', icon: '📞' },
-                    { value: 'meeting', label: 'In-Person Meeting', icon: '🤝' }
+                    { value: 'email', label: 'Email', 
+                      icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    },
+                    { value: 'phone', label: 'Phone Call', 
+                      icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                    },
+                    { value: 'meeting', label: 'In-Person Meeting', 
+                      icon: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    }
                   ].map((option) => (
                     <button
                       key={option.value}
                       type="button"
                       onClick={() => handleInputChange('preferredContact', option.value)}
                       className={`
-                        flex-1 p-3 rounded-xl border-2 transition-all text-sm font-medium
+                        flex flex-col items-center p-4 rounded-xl border-2 transition-all duration-300 font-medium hover:scale-105 hover:shadow-md
                         ${formData.preferredContact === option.value
-                          ? 'border-var(--color-primary) bg-blue-50 text-var(--color-primary)'
-                          : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                          ? 'border-[#00B4A6] bg-gradient-to-br from-teal-50 to-blue-50 text-[#003366] shadow-lg'
+                          : 'border-gray-200 hover:border-[#00B4A6] text-gray-700 bg-white'
                         }
                       `}
                     >
-                      <span className="text-lg mb-1 block">{option.icon}</span>
-                      {option.label}
+                      <div className={`mb-2 ${formData.preferredContact === option.value ? 'text-[#00B4A6]' : 'text-gray-400'}`}>
+                        {option.icon}
+                      </div>
+                      <span className="text-sm text-center leading-tight">{option.label}</span>
                     </button>
                   ))}
                 </div>
               </div>
             </div>
           )}
+          
+          {/* Add CSS animation */}
+          <style jsx>{`
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fadeIn {
+              animation: fadeIn 0.5s ease-out;
+            }
+          `}</style>
 
           {/* Step 2: Project Information */}
           {currentStep === 2 && (
@@ -725,7 +860,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
           </div>
         </div>
       </div>
-    </Card>
+    </div>
   )
 }
 
