@@ -88,63 +88,80 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
   const hasActiveFilters = filters.category || filters.tags.length > 0 || filters.status || filters.featured !== null || filters.search
 
   return (
-    <div className={`bg-white shadow-lg rounded-xl border border-gray-100 ${className}`}>
-      {/* Enhanced Header */}
-      <div className="bg-gradient-to-r from-var(--color-primary) to-var(--color-primary-dark) text-white p-6 rounded-t-xl">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-semibold">Filter & Search Projects</h3>
-            <p className="text-blue-100 text-sm mt-1">
-              {filteredCount} of {totalCount} projects {hasActiveFilters ? 'match your criteria' : 'available'}
-            </p>
+    <div className={`bg-white/90 backdrop-blur-sm shadow-2xl rounded-3xl border border-white/50 relative overflow-hidden ${className}`}>
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#003366] to-[#00B4A6] rounded-full blur-2xl" />
+        <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-gradient-to-tr from-[#00B4A6] to-[#003366] rounded-full blur-xl" />
+      </div>
+      
+      {/* Premium Header */}
+      <div className="bg-gradient-to-r from-[#003366] via-[#00456B] to-[#00B4A6] text-white p-8 rounded-t-3xl relative overflow-hidden">
+        {/* Header Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-32 h-32 border border-white/20 rounded-full animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-24 h-24 border border-white/15 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
+        <div className="flex items-center justify-between relative z-10">
+          <div className="flex items-center">
+            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-3 mr-4">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold">Advanced Project Filtering</h3>
+              <p className="text-blue-100 text-base mt-2 flex items-center">
+                <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold mr-3">
+                  {filteredCount} of {totalCount}
+                </span>
+                {hasActiveFilters ? 'projects match your search criteria' : 'projects available to explore'}
+              </p>
+            </div>
           </div>
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4 relative z-10">
             {hasActiveFilters && (
-              <Button
-                variant="outline"
-                size="sm"
+              <button
                 onClick={clearFilters}
-                className="border-white/30 text-white hover:bg-white/10"
+                className="group bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
               >
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 mr-2 inline group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
-                Clear All
-              </Button>
+                Reset Filters
+              </button>
             )}
-            <Button
-              variant="outline"
-              size="sm"
+            <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="md:hidden border-white/30 text-white hover:bg-white/10"
+              className="md:hidden group bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
             >
-              <svg className={`w-4 h-4 mr-1 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className={`w-5 h-5 mr-2 inline transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-              {isExpanded ? 'Hide' : 'Show'} Filters
-            </Button>
+              {isExpanded ? 'Hide' : 'Show'} Options
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Search Bar */}
-      <div className="p-6">
-        <div className="relative mb-6">
+      {/* Premium Search Bar */}
+      <div className="p-8 relative">
+        <div className="relative mb-8">
           <div className="relative">
-            <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
               type="text"
-              placeholder="Search projects by name, description, or client..."
+              placeholder="Search projects by name, description, client, or technology..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-var(--color-primary) focus:border-transparent transition-all text-gray-900 placeholder-gray-500"
+              className="w-full pl-16 pr-16 py-5 bg-gradient-to-r from-gray-50 to-blue-50/30 border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#00B4A6]/20 focus:border-[#00B4A6] transition-all duration-300 text-[#003366] placeholder-gray-500 shadow-inner text-lg font-medium"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#00B4A6] hover:scale-110 transition-all duration-200 bg-white rounded-full p-2 shadow-lg"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -155,38 +172,55 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
         </div>
 
         <div className={`space-y-6 ${isExpanded ? 'block' : 'hidden md:block'}`}>
-          {/* Quick Filter Pills */}
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => updateFilters({ featured: filters.featured === true ? null : true })}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                filters.featured === true
-                  ? 'bg-var(--color-primary) text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              ⭐ Featured Only
-            </button>
-            <button
-              onClick={() => updateFilters({ status: filters.status === 'completed' ? '' : 'completed' })}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                filters.status === 'completed'
-                  ? 'bg-green-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              ✓ Completed
-            </button>
-            <button
-              onClick={() => updateFilters({ status: filters.status === 'in-progress' ? '' : 'in-progress' })}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                filters.status === 'in-progress'
-                  ? 'bg-orange-500 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              🔄 In Progress
-            </button>
+          {/* Premium Quick Filter Pills */}
+          <div className="mb-8">
+            <h4 className="text-lg font-bold text-[#003366] mb-4 flex items-center">
+              <svg className="w-5 h-5 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Quick Filters
+            </h4>
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={() => updateFilters({ featured: filters.featured === true ? null : true })}
+                className={`group px-6 py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
+                  filters.featured === true
+                    ? 'bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white transform scale-105'
+                    : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-[#003366]/10 hover:to-[#00B4A6]/10 hover:text-[#003366] border border-gray-200'
+                }`}
+              >
+                <svg className="w-5 h-5 mr-2 inline group-hover:animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+                Featured Projects
+              </button>
+              <button
+                onClick={() => updateFilters({ status: filters.status === 'completed' ? '' : 'completed' })}
+                className={`group px-6 py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
+                  filters.status === 'completed'
+                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white transform scale-105'
+                    : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 border border-gray-200'
+                }`}
+              >
+                <svg className="w-5 h-5 mr-2 inline group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Completed Projects
+              </button>
+              <button
+                onClick={() => updateFilters({ status: filters.status === 'in-progress' ? '' : 'in-progress' })}
+                className={`group px-6 py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
+                  filters.status === 'in-progress'
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white transform scale-105'
+                    : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-amber-50 hover:text-orange-700 border border-gray-200'
+                }`}
+              >
+                <svg className="w-5 h-5 mr-2 inline group-hover:animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Active Projects
+              </button>
+            </div>
           </div>
 
           {/* Enhanced Dropdowns */}
@@ -208,7 +242,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
                     </option>
                   ))}
                 </select>
-                <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-[#00B4A6] pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -231,7 +265,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
                     </option>
                   ))}
                 </select>
-                <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-[#00B4A6] pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -253,7 +287,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
                   <option value="true">Featured Only</option>
                   <option value="false">Non-Featured</option>
                 </select>
-                <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-[#00B4A6] pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </div>

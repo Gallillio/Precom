@@ -1,5 +1,5 @@
 'use client'
-import React, { Suspense, useState, useEffect } from 'react'
+import React, { Suspense, useState, useEffect, useRef, useCallback } from 'react'
 import { BlogPost, BlogCategory } from '@/modules/shared/utils/types'
 import { BlogList } from '../components/BlogList'
 import { BlogCategories } from '../components/BlogCategories'
@@ -272,13 +272,81 @@ const sampleCategories: BlogCategory[] = [
 
 export const BlogScreen: React.FC = () => {
   const [loading, setLoading] = useState(true)
+  const [readingProgress, setReadingProgress] = useState(0)
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
+  // Refs for scroll animations
+  const heroRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const featuredRef = useRef<HTMLDivElement>(null)
+
+  // Ken Burns effect background images for hero
+  const heroBackgrounds = [
+    '/images/blog/hero-engineering-1.jpg',
+    '/images/blog/hero-engineering-2.jpg', 
+    '/images/blog/hero-engineering-3.jpg',
+    '/images/blog/hero-engineering-4.jpg'
+  ]
+
+  // Intersection Observer for scroll animations
+  const observerCallback = useCallback((entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setVisibleSections(prev => new Set(prev).add(entry.target.id))
+      }
+    })
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
     }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
+
+    // Ken Burns effect - cycle through hero background images
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroBackgrounds.length)
+    }, 8000)
+
+    // Reading progress tracker
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const progress = (scrollTop / (documentHeight - windowHeight)) * 100
+      setReadingProgress(Math.min(progress, 100))
+    }
+
+    // Set up intersection observer for scroll animations
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+      rootMargin: '-50px 0px'
+    })
+
+    // Start observing elements after loading
+    const observeElements = () => {
+      const elements = [
+        heroRef.current,
+        contentRef.current,
+        featuredRef.current
+      ].filter(Boolean)
+      
+      elements.forEach((element) => {
+        if (element) observer.observe(element)
+      })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    const observerTimer = setTimeout(observeElements, 1200)
+
+    return () => {
+      clearTimeout(timer)
+      clearInterval(imageInterval)
+      window.removeEventListener('scroll', handleScroll)
+      clearTimeout(observerTimer)
+      observer.disconnect()
+    }
+  }, [observerCallback, heroBackgrounds.length])
 
   if (loading) {
     return (
@@ -318,114 +386,545 @@ export const BlogScreen: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="pt-20 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container mx-auto px-4 py-16">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Engineering Insights & Innovation
+    <div className="min-h-screen relative">
+      {/* Reading Progress Indicator */}
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-[#003366] to-[#00B4A6] transition-all duration-300 ease-out"
+          style={{ width: `${readingProgress}%` }}
+        />
+      </div>
+
+      {/* Premium Magazine-Style Hero Section */}
+      <section 
+        id="blog-hero"
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        {/* Ken Burns Effect Background */}
+        <div className="absolute inset-0">
+          {heroBackgrounds.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-3000 ${
+                index === currentImageIndex ? 'opacity-40' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `linear-gradient(135deg, rgba(0,51,102,0.85) 0%, rgba(0,180,166,0.75) 100%), url(${image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                animation: index === currentImageIndex ? 'kenBurnsZoom 8s ease-in-out' : 'none'
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-20 right-20 w-64 h-64 border-2 border-white/30 rounded-full animate-pulse" />
+          <div className="absolute bottom-20 left-20 w-48 h-48 border border-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 w-96 h-96 border border-white/15 rounded-full transform -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+
+        {/* Premium Content Container */}
+        <div className={`relative z-10 container mx-auto px-4 text-center transition-all duration-1000 transform ${
+          visibleSections.has('blog-hero') 
+            ? 'translate-y-0 opacity-100' 
+            : 'translate-y-12 opacity-0'
+        }`}>
+          <div className="max-w-5xl mx-auto">
+            {/* Premium Badge */}
+            <div className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20">
+              <svg className="w-6 h-6 mr-3 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span className="text-lg font-bold text-white">Engineering Knowledge Hub</span>
+            </div>
+
+            {/* Main Headlines */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
+              Engineering
+              <span className="block bg-gradient-to-r from-[#00B4A6] to-[#00D4C4] bg-clip-text text-transparent">
+                Insights
+              </span>
+              <span className="block text-4xl md:text-5xl lg:text-6xl text-blue-100 font-light">
+                & Innovation
+              </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Stay updated with the latest trends, technologies, and best practices 
-              in engineering. Our experts share insights on structural design, 
-              project management, sustainability, and emerging technologies.
+
+            <p className="text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed max-w-4xl mx-auto font-light drop-shadow-lg">
+              Explore cutting-edge engineering practices, breakthrough technologies, and expert insights from industry leaders. 
+              Stay ahead with the latest in structural design, sustainability, and project management excellence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            {/* Premium Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <a 
-                href="#latest-articles"
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+                href="#featured-articles"
+                className="group bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-xl"
               >
-                Browse Articles
+                <svg className="w-5 h-5 mr-2 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Explore Articles
               </a>
               <a 
                 href="/contact"
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
+                className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
               >
+                <svg className="w-5 h-5 mr-2 inline group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 19v-7a8 8 0 018-8m4 4v1a2 2 0 01-2 2h-2" />
+                </svg>
                 Subscribe to Updates
               </a>
             </div>
+
+            {/* Stats Section */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">{samplePosts.length}+</div>
+                <div className="text-blue-200 text-sm uppercase tracking-wider">Expert Articles</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">{sampleCategories.length}</div>
+                <div className="text-blue-200 text-sm uppercase tracking-wider">Specializations</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">15+</div>
+                <div className="text-blue-200 text-sm uppercase tracking-wider">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
+                <div className="text-blue-200 text-sm uppercase tracking-wider">Projects</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Main Blog Content */}
-          <div className="lg:w-2/3">
-            <div id="latest-articles" className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Latest Articles</h2>
-              <p className="text-gray-600">
-                Discover the latest insights and innovations in engineering
-              </p>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
+          </div>
+        </div>
+
+        {/* Image indicators */}
+        <div className="absolute bottom-8 right-8 flex space-x-2">
+          {heroBackgrounds.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImageIndex ? 'bg-[#00B4A6] scale-125' : 'bg-white/40 hover:bg-white/60'
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Articles Section */}
+      <section 
+        id="featured-articles"
+        ref={featuredRef}
+        className={`py-20 bg-white transition-all duration-1000 transform ${
+          visibleSections.has('featured-articles')
+            ? 'translate-y-0 opacity-100'
+            : 'translate-y-12 opacity-0'
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#003366]/10 to-[#00B4A6]/10 rounded-full mb-6">
+              <svg className="w-5 h-5 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              <span className="text-sm font-semibold text-[#003366]">Latest Insights</span>
             </div>
-            
-            <Suspense fallback={<ContentLoader text="Loading articles..." />}>
-              <BlogList 
-                posts={samplePosts}
-                categories={sampleCategories}
-                showFilters={true}
-                postsPerPage={6}
-              />
-            </Suspense>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#003366] mb-6">
+              Featured Articles
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover cutting-edge engineering insights, breakthrough technologies, and expert analysis 
+              from our team of professional engineers and industry specialists.
+            </p>
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:w-1/3">
-            <div className="sticky top-24 space-y-8">
-              {/* Categories */}
-              <Suspense fallback={<CardLoader />}>
-                <BlogCategories 
+          {/* Magazine-Style Featured Layout */}
+          <div className="mb-16">
+            {samplePosts.slice(0, 1).map((featuredPost, index) => (
+              <div key={featuredPost.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className="relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/20 to-[#00B4A6]/20 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                    <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                      <div className="aspect-video bg-gradient-to-br from-[#003366] to-[#00B4A6] relative">
+                        <div className="absolute inset-0 bg-black/20" />
+                        <div className="absolute bottom-4 left-4">
+                          <span className="bg-[#00B4A6] text-white px-3 py-1 rounded-full text-sm font-semibold">
+                            {featuredPost.category}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-4 right-4 flex items-center text-white text-sm">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {featuredPost.readingTime} min read
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} space-y-6`}>
+                  <div>
+                    <div className="flex items-center space-x-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[#003366] to-[#00B4A6] rounded-full flex items-center justify-center">
+                        <span className="text-white font-bold text-lg">
+                          {featuredPost.author.name.charAt(0)}
+                        </span>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-[#003366]">{featuredPost.author.name}</p>
+                        <p className="text-sm text-gray-600">{featuredPost.author.bio}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-bold text-[#003366] mb-6 leading-tight">
+                      {featuredPost.title}
+                    </h3>
+                    <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                      {featuredPost.excerpt}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {featuredPost.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <a 
+                      href={`/blog/${featuredPost.slug}`}
+                      className="group bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white px-8 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+                    >
+                      Read Full Article
+                      <svg className="w-5 h-5 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                    <div className="text-sm text-gray-500">
+                      {new Date(featuredPost.publishedAt).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Articles Grid */}
+      <section 
+        id="main-content"
+        ref={contentRef}
+        className={`py-20 bg-gray-50 transition-all duration-1000 transform ${
+          visibleSections.has('main-content')
+            ? 'translate-y-0 opacity-100'
+            : 'translate-y-12 opacity-0'
+        }`}
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Main Blog Content */}
+            <div className="lg:w-2/3">
+              <div className="mb-12">
+                <h2 className="text-3xl font-bold text-[#003366] mb-4">Latest Engineering Insights</h2>
+                <p className="text-lg text-gray-600">
+                  Stay updated with the latest trends, technologies, and best practices in engineering
+                </p>
+              </div>
+              
+              <Suspense fallback={<ContentLoader text="Loading articles..." />}>
+                <BlogList 
+                  posts={samplePosts.slice(1)} // Exclude featured post
                   categories={sampleCategories}
-                  showPostCounts={true}
+                  showFilters={true}
+                  postsPerPage={6}
                 />
               </Suspense>
+            </div>
 
-              {/* Featured Content */}
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Engineering Newsletter
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Get the latest engineering insights, project updates, and industry news 
-                  delivered to your inbox monthly.
-                </p>
-                <div className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                    Subscribe
-                  </button>
+            {/* Enhanced Sidebar */}
+            <div className="lg:w-1/3">
+              <div className="sticky top-24 space-y-8">
+                {/* Categories */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                  <h3 className="text-xl font-bold text-[#003366] mb-6 flex items-center">
+                    <svg className="w-6 h-6 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    Specializations
+                  </h3>
+                  <Suspense fallback={<CardLoader />}>
+                    <BlogCategories 
+                      categories={sampleCategories}
+                      showPostCounts={true}
+                    />
+                  </Suspense>
                 </div>
-                <p className="text-xs text-gray-500 mt-2">
-                  We respect your privacy. Unsubscribe at any time.
-                </p>
-              </div>
 
-              {/* Contact CTA */}
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Need Engineering Consultation?
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Our expert team is ready to help with your engineering challenges. 
-                  Contact us for a consultation.
-                </p>
-                <a 
-                  href="/contact"
-                  className="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Get in Touch
-                </a>
+                {/* Premium Newsletter Signup */}
+                <div className="bg-gradient-to-br from-[#003366] to-[#00B4A6] rounded-2xl p-8 text-white shadow-xl">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">
+                      Engineering Newsletter
+                    </h3>
+                    <p className="text-blue-100 mb-6 leading-relaxed">
+                      Get exclusive insights, project updates, and industry breakthroughs 
+                      delivered monthly to your inbox.
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    <input
+                      type="email"
+                      placeholder="Enter your professional email"
+                      className="w-full px-4 py-3 rounded-xl border-0 focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-900 placeholder-gray-500"
+                    />
+                    <button className="w-full bg-white text-[#003366] px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg">
+                      Subscribe to Premium Content
+                    </button>
+                  </div>
+                  <p className="text-xs text-blue-200 mt-4 text-center">
+                    Join 5,000+ engineering professionals. Unsubscribe anytime.
+                  </p>
+                </div>
+
+                {/* Contact CTA */}
+                <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#00B4A6] to-[#00D4C4] rounded-full flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-[#003366] mb-4">
+                      Need Expert Consultation?
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      Our professional engineering team is ready to tackle your most challenging projects. 
+                      Schedule a consultation today.
+                    </p>
+                    <a 
+                      href="/contact"
+                      className="inline-flex items-center bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                      Start Consultation
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes kenBurnsZoom {
+          0% {
+            transform: scale(1) rotate(0deg);
+          }
+          50% {
+            transform: scale(1.1) rotate(0.5deg);
+          }
+          100% {
+            transform: scale(1.15) rotate(-0.3deg);
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          25% {
+            transform: translateY(-10px) rotate(1deg);
+          }
+          50% {
+            transform: translateY(-5px) rotate(-1deg);
+          }
+          75% {
+            transform: translateY(-15px) rotate(0.5deg);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+
+        /* Enhanced animation classes */
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+          background-size: 200% 100%;
+          animation: shimmer 3s infinite;
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out;
+        }
+
+        .animate-slideInLeft {
+          animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-slideInRight {
+          animation: slideInRight 0.8s ease-out;
+        }
+
+        /* Staggered delays for sequential animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+
+        /* Reading progress enhancements */
+        .reading-progress {
+          backdrop-filter: blur(10px);
+          background: rgba(0, 51, 102, 0.1);
+        }
+
+        /* Magazine-style hover effects */
+        .magazine-card {
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .magazine-card:hover {
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Premium button effects */
+        .premium-button {
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .premium-button::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.6s;
+        }
+
+        .premium-button:hover::before {
+          left: 100%;
+        }
+
+        /* Scroll reveal animations */
+        .reveal-on-scroll {
+          opacity: 0;
+          transform: translateY(50px);
+          transition: all 0.8s ease-out;
+        }
+
+        .reveal-on-scroll.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Custom scrollbar for modern browsers */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, #003366, #00B4A6);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, #004080, #00D4C4);
+        }
+      `}</style>
     </div>
   )
 }

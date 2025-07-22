@@ -19,22 +19,23 @@ interface ProjectHeroProps {
 }
 
 const ProjectHero: React.FC<ProjectHeroProps> = ({
-  title = "Our Projects",
-  subtitle = "Engineering Excellence in Action",
-  description = "Explore our portfolio of successful engineering projects that demonstrate our commitment to innovation, quality, and client satisfaction.",
+  title = "Engineering Portfolio",
+  subtitle = "Showcasing Innovation & Excellence",
+  description = "Discover our comprehensive portfolio of successful engineering projects that demonstrate technical expertise, innovative solutions, and unwavering commitment to client success across diverse industries.",
   backgroundImage,
   backgroundImages = [
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop',
-    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop',
-    'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop',
+    '/images/projects/hero-construction-site.jpg',
+    '/images/projects/hero-engineering-office.jpg',
+    '/images/projects/hero-infrastructure-bridge.jpg',
+    '/images/projects/hero-building-design.jpg'
   ],
   onCTAClick,
-  ctaText = "View All Projects",
+  ctaText = "Explore Projects",
   stats = [
-    { label: "Projects Completed", value: "200+" },
+    { label: "Projects Completed", value: "500+" },
     { label: "Years of Experience", value: "15+" },
     { label: "Client Satisfaction", value: "98%" },
-    { label: "Industries Served", value: "12+" }
+    { label: "Countries Served", value: "12+" }
   ],
   className = '',
 }) => {
@@ -58,154 +59,143 @@ const ProjectHero: React.FC<ProjectHeroProps> = ({
   const imagesToUse = backgroundImage ? [backgroundImage] : backgroundImages
 
   return (
-    <section className={`relative min-h-[80vh] overflow-hidden ${className}`}>
+    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
       {/* Ken Burns Effect Background Images */}
       {imagesToUse.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
-            index === currentImageIndex 
-              ? 'opacity-100 scale-110' 
-              : 'opacity-0 scale-100'
+          className={`absolute inset-0 transition-opacity duration-3000 ${
+            index === currentImageIndex ? 'opacity-40' : 'opacity-0'
           }`}
-        >
-          <Image
-            src={image}
-            alt={`Hero background ${index + 1}`}
-            fill
-            priority={index === 0}
-            className={`object-cover transition-all duration-[15000ms] ease-linear ${
-              index === currentImageIndex && isLoaded
-                ? 'scale-110' 
-                : 'scale-100'
-            }`}
-            sizes="100vw"
-            quality={85}
-          />
-        </div>
+          style={{
+            backgroundImage: `linear-gradient(135deg, rgba(0,51,102,0.85) 0%, rgba(0,180,166,0.75) 100%), url(${image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            animation: index === currentImageIndex ? 'kenBurnsZoom 8s ease-in-out' : 'none'
+          }}
+        />
       ))}
+
+      {/* Decorative Elements */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-20 right-20 w-64 h-64 border-2 border-white/30 rounded-full animate-pulse" />
+        <div className="absolute bottom-20 left-20 w-48 h-48 border border-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 border border-white/15 rounded-full transform -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        {/* Blueprint-style grid overlay */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="w-full h-full" 
+               style={{
+                 backgroundImage: `
+                   linear-gradient(white 1px, transparent 1px),
+                   linear-gradient(90deg, white 1px, transparent 1px)
+                 `,
+                 backgroundSize: '80px 80px'
+               }}>
+          </div>
+        </div>
+      </div>
       
-      {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-br from-var(--color-primary)/80 via-var(--color-primary)/60 to-var(--color-primary-dark)/80"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-      
-      {/* Content */}
-      <div className="relative z-10 flex items-center min-h-[80vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-          <div className="text-center">
-            <div className={`transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                {title}
-              </h1>
-            </div>
-            
-            <div className={`transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <p className="text-xl md:text-2xl lg:text-3xl text-blue-100 font-light mb-6">
-                {subtitle}
-              </p>
-            </div>
-            
-            <div className={`transform transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <p className="text-lg md:text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed mb-8">
-                {description}
-              </p>
-            </div>
-            
+      {/* Premium Content Container */}
+      <div className={`relative z-10 container mx-auto px-4 text-center transition-all duration-1000 transform ${
+        isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+      }`}>
+        <div className="max-w-5xl mx-auto">
+          {/* Premium Badge */}
+          <div className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20">
+            <svg className="w-6 h-6 mr-3 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span className="text-lg font-bold text-white">Professional Engineering Portfolio</span>
+          </div>
+
+          {/* Main Headlines */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
+            {title.split(' ').map((word, index) => (
+              <span key={index} className={index === 1 ? 'block bg-gradient-to-r from-[#00B4A6] to-[#00D4C4] bg-clip-text text-transparent' : ''}>
+                {word}{index === 0 ? ' ' : ''}
+              </span>
+            ))}
+          </h1>
+
+          <p className="text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed max-w-4xl mx-auto font-light drop-shadow-lg">
+            {description}
+          </p>
+
+          {/* Premium Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
             {onCTAClick && (
-              <div className={`transform transition-all duration-1000 delay-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <Button
-                  onClick={onCTAClick}
-                  size="lg"
-                  className="bg-white text-var(--color-primary) hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl px-8 py-4 text-lg font-semibold"
-                >
-                  {ctaText}
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
-                  </svg>
-                </Button>
-              </div>
+              <button 
+                onClick={onCTAClick}
+                className="group bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white px-10 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-xl"
+              >
+                <svg className="w-5 h-5 mr-2 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                {ctaText}
+              </button>
             )}
+            <button 
+              onClick={() => {
+                document.getElementById('featured-projects')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
+            >
+              <svg className="w-5 h-5 mr-2 inline group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Featured Projects
+            </button>
           </div>
           
-          {/* Enhanced Stats Section */}
+          {/* Premium Stats Section */}
           {stats && stats.length > 0 && (
-            <div className={`mt-20 transform transition-all duration-1000 delay-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {stats.map((stat, index) => (
-                  <div 
-                    key={index} 
-                    className="text-center group"
-                    style={{ animationDelay: `${1200 + index * 200}ms` }}
-                  >
-                    <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-xl">
-                      <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 group-hover:text-yellow-200 transition-colors">
-                        {stat.value}
-                      </div>
-                      <div className="text-blue-100 text-sm md:text-base font-medium tracking-wide uppercase">
-                        {stat.label}
-                      </div>
-                      <div className="mt-2 w-12 h-1 bg-gradient-to-r from-white/0 via-white/50 to-white/0 mx-auto rounded-full group-hover:via-yellow-200 transition-colors"></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-blue-200 text-sm uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
             </div>
           )}
         </div>
       </div>
-      
-      {/* Image indicators */}
-      {imagesToUse.length > 1 && (
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex space-x-2">
-            {imagesToUse.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex
-                    ? 'bg-white shadow-lg'
-                    : 'bg-white/50 hover:bg-white/75'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-        <div className="animate-bounce">
-          <svg className="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
         </div>
       </div>
 
-      {/* Wave Separator */}
-      <div className="absolute bottom-0 left-0 right-0 z-10">
-        <svg 
-          className="w-full h-16 text-gray-50" 
-          preserveAspectRatio="none" 
-          viewBox="0 0 1200 120" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
-            opacity=".25" 
-            fill="currentColor"
+      {/* Image indicators */}
+      <div className="absolute bottom-8 right-8 flex space-x-2">
+        {imagesToUse.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImageIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentImageIndex ? 'bg-[#00B4A6] scale-125' : 'bg-white/40 hover:bg-white/60'
+            }`}
           />
-          <path 
-            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" 
-            opacity=".5" 
-            fill="currentColor"
-          />
-          <path 
-            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" 
-            fill="currentColor"
-          />
-        </svg>
+        ))}
       </div>
+
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes kenBurnsZoom {
+          0% {
+            transform: scale(1) rotate(0deg);
+          }
+          50% {
+            transform: scale(1.1) rotate(0.5deg);
+          }
+          100% {
+            transform: scale(1.15) rotate(-0.3deg);
+          }
+        }
+      `}</style>
     </section>
   )
 }
