@@ -10,3 +10,37 @@ export { Parallax, BackgroundParallax } from './Parallax'
 export { AnimatedCounter, StatsCard } from './AnimatedCounter'
 export { MasonryGrid, ProjectCard } from './MasonryGrid'
 export { ServiceCard, ServiceGrid } from './ServiceCard'
+
+// Premium Animation System Components
+export { AnimatedLink } from './AnimatedLink'
+export { PremiumLoader, SkeletonCard, PageLoader, SectionLoader } from './PremiumLoader'
+export { 
+  ParallaxContainer, 
+  ParallaxHero, 
+  ParallaxSection, 
+  ParallaxFloat, 
+  ParallaxTextReveal 
+} from './ParallaxContainer'
+
+// Enhanced Skeleton Components
+export { 
+  Skeleton,
+  ArticleSkeleton,
+  ProjectSkeleton,
+  ServiceSkeleton,
+  TeamMemberSkeleton,
+  StatsSkeleton,
+  HeroSkeleton,
+  TableSkeleton,
+  FormSkeleton,
+  NavigationSkeleton
+} from './Skeleton'
+
+// Progressive Image Loading
+export { 
+  ProgressiveImage,
+  HeroImage,
+  BackgroundImage,
+  ImageGallery,
+  Avatar
+} from './ProgressiveImage'

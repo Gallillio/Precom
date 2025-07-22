@@ -301,7 +301,7 @@ export const BlogScreen: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 1000)
+    }, 500)
 
     // Ken Burns effect - cycle through hero background images
     const imageInterval = setInterval(() => {
@@ -350,37 +350,39 @@ export const BlogScreen: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen">
-        {/* Hero Section */}
-        <div className="pt-20 bg-gradient-to-br from-blue-50 to-indigo-100">
-          <div className="container mx-auto px-4 py-16">
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Engineering Insights & Innovation
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Stay updated with the latest trends, technologies, and best practices 
-                in engineering. Our experts share insights on structural design, 
-                project management, sustainability, and emerging technologies.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="#latest-articles"
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Browse Articles
-                </a>
-                <a 
-                  href="/contact"
-                  className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
-                >
-                  Subscribe to Updates
-                </a>
-              </div>
+      <div className="min-h-screen relative">
+        {/* Premium Loading Screen with Brand Colors */}
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background with brand colors */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#003366] via-[#00456B] to-[#00B4A6]" />
+          
+          {/* Animated geometric patterns */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 right-20 w-64 h-64 border-2 border-white/30 rounded-full animate-pulse" />
+            <div className="absolute bottom-20 left-20 w-48 h-48 border border-white/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 left-1/2 w-96 h-96 border border-white/15 rounded-full transform -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{ animationDelay: '2s' }} />
+          </div>
+
+          {/* Loading content */}
+          <div className="relative z-10 text-center text-white">
+            <div className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20">
+              <svg className="w-6 h-6 mr-3 text-[#00B4A6] animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span className="text-lg font-bold">Engineering Knowledge Hub</span>
             </div>
+
+            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+              Engineering
+              <span className="block bg-gradient-to-r from-[#00B4A6] to-[#00D4C4] bg-clip-text text-transparent">
+                Insights
+              </span>
+            </h1>
+            <p className="text-xl text-blue-100 mb-8 animate-pulse">
+              Loading premium content...
+            </p>
           </div>
         </div>
-        <ContentLoader text="Loading blog content..." />
       </div>
     )
   }
