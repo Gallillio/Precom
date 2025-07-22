@@ -127,9 +127,11 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const currentProgress = (window.scrollY / totalHeight) * 100
-      setScrollProgress(Math.min(currentProgress, 100))
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const progress = (scrollTop / (documentHeight - windowHeight)) * 100
+      setScrollProgress(Math.min(progress, 100))
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -137,13 +139,11 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
   }, [])
 
   return (
-    <div 
-      className={`fixed top-0 left-0 right-0 z-50 bg-[var(--accent-teal)] transition-all duration-300 ease-out ${className}`}
-      style={{
-        height: `${height}px`,
-        transform: `scaleX(${scrollProgress / 100})`,
-        transformOrigin: 'left center'
-      }}
-    />
+    <div className={`fixed top-0 left-0 w-full h-1 bg-gray-200 z-[60] ${className}`}>
+      <div 
+        className="h-full bg-gradient-to-r from-[#003366] to-[#00B4A6] transition-all duration-300 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
+    </div>
   )
 }

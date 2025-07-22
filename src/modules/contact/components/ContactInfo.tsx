@@ -17,9 +17,9 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null)
 
   const businessHours = [
-    { day: 'Monday - Friday', hours: '8:00 AM - 6:00 PM', isToday: true },
+    { day: 'Sunday - Thursday', hours: '8:00 AM - 6:00 PM', isToday: true },
     { day: 'Saturday', hours: '9:00 AM - 4:00 PM', isToday: false },
-    { day: 'Sunday', hours: 'Closed', isToday: false }
+    { day: 'Friday', hours: 'Closed', isToday: false }
   ]
 
   const contactMethods = [
@@ -46,7 +46,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
       title: 'Call Us',
       value: COMPANY_INFO.phone,
       link: `tel:${COMPANY_INFO.phone}`,
-      description: 'Monday to Friday from 8am to 6pm',
+      description: 'Sunday to Thursday from 8am to 6pm',
       color: 'from-green-500 to-green-600',
       bgGradient: 'from-green-50 to-green-100',
       hoverBg: 'hover:from-green-100 hover:to-green-200'

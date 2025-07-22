@@ -21,7 +21,6 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
   className = ''
 }) => {
   const [isSticky, setIsSticky] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const sidebarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -48,10 +47,6 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
           }
         }
 
-        // Calculate overall scroll progress
-        const documentHeight = document.documentElement.scrollHeight - window.innerHeight
-        const currentProgress = (window.scrollY / documentHeight) * 100
-        setScrollProgress(Math.min(currentProgress, 100))
 
         // Update active section if different
         if (currentSection !== activeSection) {
@@ -97,24 +92,6 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
               Navigate through our comprehensive service offerings
             </p>
             
-            {/* Progress Indicator */}
-            <div className="mt-4">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-xs text-body-secondary">Reading Progress</span>
-                <span className="text-xs font-medium" style={{ color: 'var(--accent-teal)' }}>
-                  {Math.round(scrollProgress)}%
-                </span>
-              </div>
-              <div className="w-full bg-[var(--secondary-gray)] rounded-full h-1.5">
-                <div 
-                  className="h-1.5 rounded-full transition-all duration-300"
-                  style={{ 
-                    backgroundColor: 'var(--accent-teal)',
-                    width: `${scrollProgress}%`
-                  }}
-                />
-              </div>
-            </div>
           </div>
 
           {/* Navigation Items */}
