@@ -3,6 +3,7 @@ import React, { useState, useEffect, Suspense } from 'react'
 import { ContactInfo as ContactInfoType } from '@/modules/shared/utils/types'
 import { ContactHero } from '../components/ContactHero'
 import { ContactForm } from '../components/ContactForm'
+import { MultiStepContactForm } from '../components/MultiStepContactForm'
 import { ContactInfo } from '../components/ContactInfo'
 import { LocationMap } from '../components/LocationMap'
 import { ContentLoader, CardLoader } from '@/modules/shared/components/common'
@@ -57,14 +58,14 @@ export const ContactScreen: React.FC = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Form */}
+            {/* Multi-Step Contact Form */}
             <div className="lg:col-span-2">
               <div id="contact-form">
                 <Suspense fallback={<CardLoader />}>
-                  <ContactForm 
+                  <MultiStepContactForm 
                     onSubmit={handleFormSubmit}
-                    title="Send Us a Message"
-                    description="Fill out the form below and we'll get back to you within 24 hours. For urgent matters, please call our emergency line."
+                    title="Start Your Engineering Project"
+                    description="Tell us about your project needs and we'll provide a comprehensive proposal tailored to your requirements."
                   />
                 </Suspense>
               </div>
@@ -98,10 +99,10 @@ export const ContactScreen: React.FC = () => {
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <Suspense fallback={<CardLoader className="h-96" />}>
               <LocationMap 
-                height="500px"
+                height="600px"
                 showDirections={true}
               />
             </Suspense>
