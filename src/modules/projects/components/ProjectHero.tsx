@@ -1,11 +1,14 @@
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/modules/shared/components/ui'
+import Image from 'next/image'
 
 interface ProjectHeroProps {
   title?: string
   subtitle?: string
   description?: string
   backgroundImage?: string
+  backgroundImages?: string[] // Multiple images for Ken Burns effect
   onCTAClick?: () => void
   ctaText?: string
   stats?: Array<{
@@ -20,6 +23,11 @@ const ProjectHero: React.FC<ProjectHeroProps> = ({
   subtitle = "Engineering Excellence in Action",
   description = "Explore our portfolio of successful engineering projects that demonstrate our commitment to innovation, quality, and client satisfaction.",
   backgroundImage,
+  backgroundImages = [
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop',
+    'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop',
+  ],
   onCTAClick,
   ctaText = "View All Projects",
   stats = [
@@ -30,61 +38,113 @@ const ProjectHero: React.FC<ProjectHeroProps> = ({
   ],
   className = '',
 }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // Ken Burns effect - rotate through images
+  useEffect(() => {
+    if (backgroundImages.length <= 1) return
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length)
+    }, 8000) // Change image every 8 seconds
+
+    return () => clearInterval(interval)
+  }, [backgroundImages.length])
+
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
+  const imagesToUse = backgroundImage ? [backgroundImage] : backgroundImages
+
   return (
-    <section className={`relative overflow-hidden ${className}`}>
-      <div 
-        className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900"
-        style={backgroundImage ? {
-          backgroundImage: `linear-gradient(rgba(29, 78, 216, 0.8), rgba(67, 56, 202, 0.8)), url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        } : {}}
-      >
-      </div>
+    <section className={`relative min-h-[80vh] overflow-hidden ${className}`}>
+      {/* Ken Burns Effect Background Images */}
+      {imagesToUse.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
+            index === currentImageIndex 
+              ? 'opacity-100 scale-110' 
+              : 'opacity-0 scale-100'
+          }`}
+        >
+          <Image
+            src={image}
+            alt={`Hero background ${index + 1}`}
+            fill
+            priority={index === 0}
+            className={`object-cover transition-all duration-[15000ms] ease-linear ${
+              index === currentImageIndex && isLoaded
+                ? 'scale-110' 
+                : 'scale-100'
+            }`}
+            sizes="100vw"
+            quality={85}
+          />
+        </div>
+      ))}
       
-      <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-br from-var(--color-primary)/80 via-var(--color-primary)/60 to-var(--color-primary-dark)/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
       
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      {/* Content */}
+      <div className="relative z-10 flex items-center min-h-[80vh]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              {title}
-            </h1>
+            <div className={`transform transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                {title}
+              </h1>
+            </div>
             
-            <p className="mt-4 text-xl md:text-2xl text-blue-100 font-medium">
-              {subtitle}
-            </p>
+            <div className={`transform transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <p className="text-xl md:text-2xl lg:text-3xl text-blue-100 font-light mb-6">
+                {subtitle}
+              </p>
+            </div>
             
-            <p className="mt-6 text-lg text-blue-100 max-w-3xl mx-auto leading-relaxed">
-              {description}
-            </p>
+            <div className={`transform transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <p className="text-lg md:text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed mb-8">
+                {description}
+              </p>
+            </div>
             
             {onCTAClick && (
-              <div className="mt-8">
+              <div className={`transform transition-all duration-1000 delay-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                 <Button
                   onClick={onCTAClick}
                   size="lg"
-                  className="bg-white text-blue-900 hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
+                  className="bg-white text-var(--color-primary) hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-2xl px-8 py-4 text-lg font-semibold"
                 >
                   {ctaText}
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
+                  </svg>
                 </Button>
               </div>
             )}
           </div>
           
+          {/* Enhanced Stats Section */}
           {stats && stats.length > 0 && (
-            <div className="mt-16">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className={`mt-20 transform transition-all duration-1000 delay-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all duration-300">
-                      <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  <div 
+                    key={index} 
+                    className="text-center group"
+                    style={{ animationDelay: `${1200 + index * 200}ms` }}
+                  >
+                    <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-xl">
+                      <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 group-hover:text-yellow-200 transition-colors">
                         {stat.value}
                       </div>
-                      <div className="text-blue-100 text-sm md:text-base font-medium">
+                      <div className="text-blue-100 text-sm md:text-base font-medium tracking-wide uppercase">
                         {stat.label}
                       </div>
+                      <div className="mt-2 w-12 h-1 bg-gradient-to-r from-white/0 via-white/50 to-white/0 mx-auto rounded-full group-hover:via-yellow-200 transition-colors"></div>
                     </div>
                   </div>
                 ))}
@@ -94,9 +154,38 @@ const ProjectHero: React.FC<ProjectHeroProps> = ({
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0">
+      {/* Image indicators */}
+      {imagesToUse.length > 1 && (
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex space-x-2">
+            {imagesToUse.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex
+                    ? 'bg-white shadow-lg'
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="animate-bounce">
+          <svg className="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Wave Separator */}
+      <div className="absolute bottom-0 left-0 right-0 z-10">
         <svg 
-          className="w-full h-16 text-white" 
+          className="w-full h-16 text-gray-50" 
           preserveAspectRatio="none" 
           viewBox="0 0 1200 120" 
           xmlns="http://www.w3.org/2000/svg"

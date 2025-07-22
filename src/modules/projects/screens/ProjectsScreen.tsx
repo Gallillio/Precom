@@ -5,6 +5,8 @@ import {
   ProjectHero, 
   ProjectCard, 
   ProjectFilter, 
+  ProjectMasonryGrid,
+  ProjectDetailModal,
   type FilterState 
 } from '../components'
 import { Container, Section, Loading, ContentLoader } from '@/modules/shared/components/common'
@@ -149,9 +151,13 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
     featured: null,
     sortBy: 'date',
     sortOrder: 'desc',
+    search: '',
   })
   const [loading, setLoading] = useState(true)
   const [filterLoading, setFilterLoading] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -182,13 +188,37 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
 
   const filteredProjects = useMemo(() => {
     let filtered = projects.filter(project => {
+      // Text search
+      if (filters.search) {
+        const searchLower = filters.search.toLowerCase()
+        const searchableText = [
+          project.title,
+          project.description,
+          project.shortDescription,
+          project.client,
+          project.category,
+          ...project.tags
+        ].join(' ').toLowerCase()
+        
+        if (!searchableText.includes(searchLower)) return false
+      }
+
+      // Category filter
       if (filters.category && project.category !== filters.category) return false
+      
+      // Status filter
       if (filters.status && project.status !== filters.status) return false
+      
+      // Featured filter
       if (filters.featured !== null && project.featured !== filters.featured) return false
+      
+      // Tags filter (OR logic - project must have at least one selected tag)
       if (filters.tags.length > 0 && !filters.tags.some(tag => project.tags.includes(tag))) return false
+      
       return true
     })
 
+    // Sorting
     filtered.sort((a, b) => {
       let comparison = 0
       
@@ -216,7 +246,13 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
   }, [projects])
 
   const handleProjectClick = (project: Project) => {
-    window.location.href = `/projects/${project.id}`
+    setSelectedProject(project)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setSelectedProject(null)
   }
 
   if (loading) {
@@ -268,6 +304,7 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                   <ProjectCard
                     key={project.id}
                     project={project}
+                    variant="featured"
                     onClick={() => handleProjectClick(project)}
                   />
                 ))}
@@ -293,6 +330,9 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
             tags={tags}
             statuses={statuses}
             onFilterChange={setFilters}
+            onSearchChange={setSearchTerm}
+            totalCount={projects.length}
+            filteredCount={filteredProjects.length}
             className="mb-8"
           />
 
@@ -317,6 +357,7 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                   featured: null,
                   sortBy: 'date',
                   sortOrder: 'desc',
+                  search: '',
                 })}
                 className="text-blue-600 hover:text-blue-700 font-medium"
               >
@@ -325,31 +366,70 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
             </div>
           ) : (
             <>
-              <div className="mb-6 text-sm text-gray-600">
-                Showing {filteredProjects.length} of {projects.length} projects
+              {/* Results Summary */}
+              <div className="flex items-center justify-between mb-8 p-4 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border">
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl font-bold text-var(--color-primary)">
+                    {filteredProjects.length}
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600">
+                      {filteredProjects.length === 1 ? 'Project' : 'Projects'} Found
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      from {projects.length} total projects
+                    </p>
+                  </div>
+                </div>
+                
+                {filteredProjects.length > 0 && (
+                  <div className="text-right">
+                    <p className="text-sm text-gray-600">
+                      Sorted by {filters.sortBy === 'date' ? 'Date' : filters.sortBy === 'title' ? 'Name' : 'Category'}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {filters.sortOrder === 'desc' ? 'Newest first' : 'Oldest first'}
+                    </p>
+                  </div>
+                )}
               </div>
               
               {filterLoading ? (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <Loading className="min-h-64" text="Loading..." />
-                  <Loading className="min-h-64" text="Loading..." />
-                  <Loading className="min-h-64" text="Loading..." />
+                <div className="space-y-8">
+                  <div className="animate-pulse text-center text-gray-500">
+                    <div className="inline-flex items-center">
+                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-var(--color-primary)" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Filtering projects...
+                    </div>
+                  </div>
+                  <ProjectMasonryGrid
+                    projects={[]}
+                    loading={true}
+                    onProjectClick={handleProjectClick}
+                  />
                 </div>
               ) : (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredProjects.map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      project={project}
-                      onClick={() => handleProjectClick(project)}
-                    />
-                  ))}
-                </div>
+                <ProjectMasonryGrid
+                  projects={filteredProjects}
+                  loading={false}
+                  onProjectClick={handleProjectClick}
+                  className="animate-fade-in"
+                />
               )}
             </>
           )}
         </Container>
       </Section>
+
+      {/* Project Detail Modal */}
+      <ProjectDetailModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   )
 }

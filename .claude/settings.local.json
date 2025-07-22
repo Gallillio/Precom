@@ -11,7 +11,8 @@
       "Bash(npm uninstall:*)",
       "Bash(npm run lint)",
       "Bash(npm run build:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npx eslint:*)"
     ],
     "deny": []
   }
