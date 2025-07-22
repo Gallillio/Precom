@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import { Footer } from '@/modules/shared/components/layout'
 import { HeaderWrapper } from '@/modules/shared/components/layout/HeaderWrapper'
-import { ErrorBoundary, ChatWidget } from '@/modules/shared/components/common'
+import { ErrorBoundary } from '@/modules/shared/components/common'
 import { ScrollProgress } from '@/modules/shared/components/ui'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,9 +37,6 @@ export default function RootLayout({
           </ErrorBoundary>
           <Footer />
         </div>
-        
-        {/* Global Chat Widget */}
-        <ChatWidget variant="default" position="bottom-right" />
       </body>
     </html>
   )

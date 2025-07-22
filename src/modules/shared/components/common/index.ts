@@ -20,4 +20,3 @@ export {
   AsyncErrorBoundary, 
   NetworkErrorBoundary 
 } from './ErrorBoundary'
-export { ChatWidget, ChatWidgetWithBadge, FloatingHelpButton } from './ChatWidget'

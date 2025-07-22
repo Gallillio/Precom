@@ -33,25 +33,31 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
 
       setIsSticky(shouldStick)
 
-      // Calculate scroll progress for each section
+      // Simple and accurate section detection
       const sections = items.map(item => document.getElementById(item.id)).filter(Boolean)
       
       if (sections.length > 0) {
-        const scrollPosition = window.scrollY + window.innerHeight / 3
+        const scrollTop = window.scrollY
+        const offset = 200 // Distance from top of viewport to trigger section change
         
         let currentSection = sections[0]?.id || items[0].id
         
-        for (const section of sections) {
-          if (section && section.offsetTop <= scrollPosition) {
-            currentSection = section.id
+        // Find the section that should be active based on scroll position
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i]
+          if (section) {
+            const sectionTop = section.offsetTop - offset
+            
+            if (scrollTop >= sectionTop) {
+              currentSection = section.id
+              break
+            }
           }
         }
 
-
-        // Update active section if different
+        // Update active section immediately without debouncing
         if (currentSection !== activeSection) {
-          // Don't trigger callback during automatic scroll detection
-          // onSectionClick(currentSection)
+          onSectionClick(currentSection)
         }
       }
     }
@@ -80,22 +86,22 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
         ref={sidebarRef}
         className={`transition-all duration-300 ${
           isSticky 
-            ? 'fixed top-24 left-8 z-40 transform-gpu' 
+            ? 'fixed top-24 left-2 lg:left-4 z-40 transform-gpu' 
             : 'relative'
         }`}
       >
-        <div className="bg-white rounded-2xl shadow-lg border border-[var(--border)] p-6 w-72">
+        <div className="bg-white rounded-2xl shadow-lg border border-[var(--border)] p-2 sm:p-3 lg:p-4 w-56 sm:w-60 lg:w-64 xl:w-72">
           {/* Header */}
-          <div className="mb-6">
-            <h3 className="heading-3 text-lg mb-2">Our Services</h3>
-            <p className="text-sm text-body-secondary">
-              Navigate through our comprehensive service offerings
+          <div className="mb-3 lg:mb-4">
+            <h3 className="heading-3 text-sm lg:text-base mb-1">Our Services</h3>
+            <p className="text-xs text-body-secondary">
+              Navigate through our service offerings
             </p>
             
           </div>
 
           {/* Navigation Items */}
-          <nav className="space-y-2">
+          <nav className="space-y-1 lg:space-y-2">
             {items.map((item, index) => {
               const isActive = activeSection === item.id
               
@@ -103,17 +109,17 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleSectionClick(item.id)}
-                  className={`w-full flex items-center p-3 rounded-xl transition-all duration-300 text-left group ${
+                  className={`w-full flex items-center p-1.5 lg:p-2 rounded-lg transition-all duration-300 text-left group ${
                     isActive 
-                      ? 'bg-[var(--accent-teal)]/10 border-2 border-[var(--accent-teal)]/20' 
-                      : 'hover:bg-[var(--secondary-gray)] border-2 border-transparent hover:border-[var(--border-secondary)]'
+                      ? 'bg-[var(--accent-teal)]/10 border border-[var(--accent-teal)]/20' 
+                      : 'hover:bg-[var(--secondary-gray)] border border-transparent hover:border-[var(--border-secondary)]'
                   }`}
                 >
                   {/* Icon */}
                   <div 
-                    className={`w-10 h-10 rounded-lg flex items-center justify-center mr-3 transition-all duration-300 ${
+                    className={`w-7 h-7 lg:w-8 lg:h-8 rounded-md flex items-center justify-center mr-2 transition-all duration-300 ${
                       isActive 
-                        ? 'bg-[var(--accent-teal)] text-white scale-110' 
+                        ? 'bg-[var(--accent-teal)] text-white scale-105' 
                         : 'bg-[var(--secondary-gray)] text-[var(--text-secondary)] group-hover:bg-[var(--accent-teal)]/20 group-hover:text-[var(--accent-teal)]'
                     }`}
                   >
@@ -123,7 +129,7 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div 
-                      className={`font-medium transition-colors duration-300 ${
+                      className={`text-xs lg:text-sm font-medium transition-colors duration-300 ${
                         isActive 
                           ? 'text-[var(--accent-teal)]' 
                           : 'text-[var(--text-primary)] group-hover:text-[var(--accent-teal)]'
@@ -132,7 +138,7 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
                       {item.title}
                     </div>
                     <div 
-                      className={`text-xs mt-1 transition-colors duration-300 ${
+                      className={`text-xs transition-colors duration-300 ${
                         isActive 
                           ? 'text-[var(--accent-teal)]/70' 
                           : 'text-[var(--text-secondary)]'
@@ -149,7 +155,7 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
                   
                   {/* Arrow */}
                   <svg 
-                    className={`w-4 h-4 ml-2 transition-all duration-300 ${
+                    className={`w-3 h-3 lg:w-4 lg:h-4 ml-1 transition-all duration-300 ${
                       isActive 
                         ? 'text-[var(--accent-teal)] translate-x-1' 
                         : 'text-[var(--text-secondary)] group-hover:text-[var(--accent-teal)] group-hover:translate-x-1'
@@ -166,17 +172,17 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
           </nav>
 
           {/* Contact CTA */}
-          <div className="mt-8 pt-6 border-t border-[var(--border)]">
-            <div className="bg-gradient-to-br from-[var(--primary-blue)]/5 to-[var(--accent-teal)]/5 rounded-xl p-4 text-center border border-[var(--accent-teal)]/20">
-              <h4 className="font-semibold mb-2" style={{ color: 'var(--primary-blue)' }}>
+          <div className="mt-3 lg:mt-4 pt-3 lg:pt-4 border-t border-[var(--border)]">
+            <div className="bg-gradient-to-br from-[var(--primary-blue)]/5 to-[var(--accent-teal)]/5 rounded-lg p-2 lg:p-3 text-center border border-[var(--accent-teal)]/20">
+              <h4 className="text-xs lg:text-sm font-semibold mb-1.5" style={{ color: 'var(--primary-blue)' }}>
                 Need Help Choosing?
               </h4>
-              <p className="text-sm text-body-secondary mb-3">
-                Speak with our experts to find the perfect solution
+              <p className="text-xs text-body-secondary mb-2 leading-tight">
+                Speak with our experts
               </p>
               <button 
                 onClick={() => window.location.href = '/contact'}
-                className="btn-teal text-sm px-4 py-2 w-full transform hover:scale-105 transition-all duration-300"
+                className="btn-teal text-xs px-3 py-1.5 w-full transform hover:scale-105 transition-all duration-300"
               >
                 Get Consultation
               </button>
