@@ -186,7 +186,7 @@ export const ContactHero: React.FC<ContactHeroProps> = ({
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white/30 text-white hover:bg-white/10 hover:border-white hover:backdrop-blur-md font-semibold transition-all duration-300"
+                  className="bg-black/30 border-white/30 text-white hover:bg-black/20 hover:border-white hover:backdrop-blur-md font-semibold transition-all duration-300"
                   onClick={() => {
                     const infoElement = document.getElementById('contact-info')
                     if (infoElement) {

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js-based engineering consultancy website (Precom) built with React 19, TypeScript, and Tailwind CSS. The project follows a modular architecture with features organized by domain.
+This is a Next.js-based automotive engineering consultancy website (Precom) built with React 19, TypeScript, and Tailwind CSS. The project follows a modular architecture with features organized by domain. Precom specializes in automotive engineering solutions, vehicle development, and automotive technology consulting.
 
 ## Commands
 
@@ -109,4 +109,4 @@ When adding new assets to `assets-needed.md`:
 - Use TypeScript types from `src/modules/shared/utils/types.ts`
 - Constants should be added to `src/modules/shared/utils/constants.ts`
 - The project uses Next.js App Router structure
-- Company branding: "Precom" - Professional Engineering Consultancy
+- Company branding: "Precom" - Automotive Engineering Consultancy specializing in vehicle development, automotive technology, and automotive systems engineering

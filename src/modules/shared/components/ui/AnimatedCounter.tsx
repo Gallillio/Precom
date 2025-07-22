@@ -140,7 +140,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
         <div className={`
           p-4 rounded-full transition-all duration-300 group-hover:scale-110
           ${variant === 'gradient' 
-            ? 'bg-white/20 text-white' 
+            ? 'bg-black/40 text-white' 
             : 'bg-[var(--accent-teal)]/10 text-[var(--accent-teal)]'
           }
         `}>

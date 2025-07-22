@@ -105,7 +105,7 @@ export const ServiceHero: React.FC<ServiceHeroProps> = ({
             <Button
               variant="outline"
               size="xl"
-              className="group bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-12 py-4 text-lg font-semibold backdrop-blur-sm transition-all duration-300"
+              className="group bg-black/30 border-white/30 text-white hover:bg-black/20 hover:border-white/50 px-12 py-4 text-lg font-semibold backdrop-blur-sm transition-all duration-300"
               onClick={() => window.location.href = '/contact'}
             >
               <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

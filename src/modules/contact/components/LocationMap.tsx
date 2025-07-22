@@ -184,7 +184,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({
                 transition-all duration-300 transform hover:scale-105 shadow-lg
                 ${isHovering 
                   ? 'bg-white text-[#003366] shadow-white/30' 
-                  : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
+                  : 'bg-black/40 backdrop-blur-sm text-white border border-white/30 hover:bg-black/50'
                 }
               `}
             >

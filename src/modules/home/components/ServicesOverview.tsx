@@ -31,14 +31,15 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
 
   const getServiceIcon = (iconName: string) => {
     const icons = {
-      building: (
+      cog: (
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      clipboard: (
+      beaker: (
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 7.172V5L8 4z" />
         </svg>
       ),
       lightbulb: (
@@ -46,13 +47,13 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       ),
-      search: (
+      'shield-check': (
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
     }
-    return icons[iconName as keyof typeof icons] || icons.building
+    return icons[iconName as keyof typeof icons] || icons.cog
   }
 
   const servicesData = Object.entries(SERVICES).map(([key, service], index) => ({
@@ -60,10 +61,10 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
     description: service.description,
     icon: getServiceIcon(service.icon),
     features: [
-      'Professional consultation',
-      'Detailed analysis & reporting',
-      'Quality assurance',
-      '24/7 support'
+      'Automotive consultation',
+      'Vehicle analysis & testing',
+      'Performance optimization',
+      '24/7 automotive support'
     ],
     link: `/services/${key}`,
     variant: index === 1 ? 'featured' as const : 'default' as const
@@ -94,17 +95,17 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
 
             {/* Main Title */}
             <h2 className="heading-1 text-[var(--text-primary)] mb-6 max-w-4xl mx-auto">
-              Engineering Solutions for{' '}
+              Automotive Engineering Solutions for{' '}
               <span className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] bg-clip-text text-transparent">
-                Tomorrow's World
+                Tomorrow's Vehicles
               </span>
             </h2>
 
             {/* Subtitle */}
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
-              From concept to completion, we deliver innovative engineering solutions 
-              that push the boundaries of what's possible while ensuring safety, 
-              sustainability, and excellence.
+              From concept to production, we deliver innovative automotive engineering solutions 
+              that push the boundaries of vehicle performance while ensuring safety, 
+              efficiency, and automotive excellence.
             </p>
 
             {/* Decorative Line */}
@@ -140,11 +141,11 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
 
             <div className="relative">
               <h3 className="text-3xl font-bold mb-4">
-                Ready to Start Your Next Project?
+                Ready to Start Your Next Vehicle Project?
               </h3>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Let's discuss how our engineering expertise can bring your vision to life. 
-                Get in touch for a consultation.
+                Let's discuss how our automotive engineering expertise can bring your vehicle vision to life. 
+                Get in touch for an automotive consultation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -157,7 +158,7 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
                   </button>
                 </Link>
                 <Link href={ROUTES.contact}>
-                  <button className="group px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 transform hover:scale-105">
+                  <button className="group px-8 py-4 border-2 border-white/30 text-white rounded-xl font-semibold text-lg hover:bg-black/20 hover:border-white/50 transition-all duration-300 transform hover:scale-105">
                     <span>Get Quote</span>
                     <svg className="w-5 h-5 ml-2 inline group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -169,19 +170,19 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
               {/* Trust Indicators */}
               <div className="flex items-center justify-center space-x-8 mt-8 pt-8 border-t border-white/20">
                 <div className="text-center">
-                  <div className="text-2xl font-bold">500+</div>
-                  <div className="text-sm text-white/80">Projects</div>
+                  <div className="text-2xl font-bold">150+</div>
+                  <div className="text-sm text-white/80">Vehicles</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold">25</div>
-                  <div className="text-sm text-white/80">Countries</div>
+                  <div className="text-2xl font-bold">35+</div>
+                  <div className="text-sm text-white/80">Egyptian Clients</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold">50+</div>
+                  <div className="text-2xl font-bold">12+</div>
                   <div className="text-sm text-white/80">Years</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold">100%</div>
+                  <div className="text-2xl font-bold">98%</div>
                   <div className="text-sm text-white/80">Satisfaction</div>
                 </div>
               </div>

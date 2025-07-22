@@ -1,76 +1,76 @@
 # Assets Needed for Website Styling Revamp
 
-This document tracks all visual assets, media files, and content needed to complete the professional engineering consultancy website redesign.
+This document tracks all visual assets, media files, and content needed to complete the professional automotive engineering consultancy website redesign.
 
 ## 🤖 AI Generation Guidelines
 
-Each asset in this document includes detailed **AI Generation Prompts** specifically crafted for the Precom engineering consultancy brand. These prompts are designed to:
+Each asset in this document includes detailed **AI Generation Prompts** specifically crafted for the Precom automotive engineering consultancy brand. These prompts are designed to:
 
-- **Maintain Brand Consistency**: All prompts reference the established color palette (deep blue #003366, teal #00B4A6) and professional engineering aesthetic
+- **Maintain Brand Consistency**: All prompts reference the established color palette (deep blue #003366, teal #00B4A6) and professional automotive engineering aesthetic
 - **Ensure Quality Standards**: Professional photography and design standards matching top-tier consultancy firms
 - **Provide Context**: Each prompt includes specific style, composition, and technical requirements
-- **Support Brand Narrative**: Assets should convey innovation, reliability, and technical excellence
+- **Support Brand Narrative**: Assets should convey automotive innovation, vehicle reliability, and automotive technical excellence
 
 **When generating assets with AI tools, use the provided prompts exactly as written for optimal results that align with the overall design system and brand identity.**
 
 ## 🎥 Video Assets
 
 ### Homepage Hero Video
-- **File**: Engineering/construction project showcase video
+- **File**: Automotive engineering/vehicle development showcase video
 - **Format**: MP4 (H.264 codec preferred)
 - **Duration**: 15-30 seconds (looping)
 - **Resolution**: 1920x1080 minimum (4K preferred for retina displays)
 - **File size**: Under 10MB for web optimization
 - **Content suggestions**:
-  - Construction sites with cranes and machinery
-  - Engineering drawings and blueprints
-  - Modern building construction
-  - Infrastructure projects (bridges, roads)
-  - Team of engineers/architects working
-- **Style**: Professional, clean, inspiring
+  - Automotive manufacturing facilities with precision machinery
+  - Vehicle design and engineering drawings/CAD models
+  - Modern automotive assembly lines
+  - Vehicle testing (crash tests, performance testing)
+  - Team of automotive engineers and designers working
+- **Style**: Professional, clean, inspiring, automotive-focused
 - **Note**: Will be used as background video with overlay gradient
 
 **🎬 AI Generation Prompt:**
 ```
-Create a cinematic 30-second time-lapse video showcasing modern engineering and construction. Show a seamless sequence of: 1) Architectural blueprints being drawn with precise lines and measurements, 2) Construction site with cranes building a modern glass office building, 3) Engineers in hard hats reviewing plans on tablets, 4) Infrastructure like bridges and roads being constructed, 5) Final shot of completed modern building at golden hour. Style: Professional, clean, inspiring with cool blue and teal color grading. Camera movements should be smooth and steady. High contrast, sharp details, corporate aesthetic matching a premium engineering consultancy brand.
+Create a cinematic 30-second time-lapse video showcasing modern automotive engineering and vehicle development. Show a seamless sequence of: 1) Automotive CAD blueprints and 3D vehicle models being designed with precise engineering specifications, 2) High-tech automotive manufacturing facility with robotic assembly lines building vehicles, 3) Automotive engineers in clean rooms reviewing vehicle designs on advanced tablets and displays, 4) Vehicle testing facilities with crash tests and performance evaluations, 5) Final shot of completed luxury vehicles in a modern showroom at golden hour. Style: Professional, clean, inspiring with cool blue and teal color grading. Camera movements should be smooth and steady. High contrast, sharp details, premium automotive engineering aesthetic matching a top-tier automotive consultancy brand.
 ```
 
 ### Additional Video Content (Future)
 - **About page: Team working video**
   **🎬 AI Generation Prompt:**
   ```
-  Create professional team working video: Engineering team collaborating in modern office environment. Show natural workflow - reviewing blueprints, using CAD software, discussing projects, problem-solving together. Diverse team, professional attire, authentic work atmosphere. 20-30 seconds, smooth camera movements, clean modern office setting.
+  Create professional team working video: Automotive engineering team collaborating in modern design studio environment. Show natural workflow - reviewing vehicle blueprints, using automotive CAD software, discussing vehicle development projects, problem-solving together around vehicle prototypes. Diverse team, professional attire, authentic automotive work atmosphere with vehicle models and automotive testing equipment visible. 20-30 seconds, smooth camera movements, clean modern automotive design facility.
   ```
 
 - **Services page: Process demonstration videos**
   **🎬 AI Generation Prompt:**
   ```
-  Create service process videos showing engineering workflows: 1) Design phase with CAD modeling, 2) Planning phase with project timelines, 3) Quality review with inspection processes. Professional, educational style showing expertise and systematic approach. Clean, well-lit environments, professional presentation.
+  Create service process videos showing automotive engineering workflows: 1) Vehicle design phase with automotive CAD modeling and aerodynamics simulation, 2) Testing phase with vehicle performance evaluation and safety testing, 3) Quality review with automotive inspection processes and certification. Professional, educational style showing automotive expertise and systematic approach. Clean, well-lit automotive engineering environments, professional presentation.
   ```
 
-- **Projects page: Time-lapse construction videos**
+- **Projects page: Time-lapse vehicle development videos**
   **🎬 AI Generation Prompt:**
   ```
-  Create dramatic time-lapse videos of construction projects from foundation to completion. Show progression of building construction, infrastructure development, or renovation projects. Fast-paced, cinematic quality, inspiring transformation showing engineering impact.
+  Create dramatic time-lapse videos of vehicle development projects from concept to completion. Show progression of vehicle design, prototype development, testing phases, and final production. Fast-paced, cinematic quality, inspiring transformation showing automotive engineering impact and innovation in vehicle development.
   ```
 
 ## 📸 Image Assets
 
 ### Hero Section Images
-- **Primary hero image**: Engineering/construction scene (3840x2160px)
+- **Primary hero image**: Automotive engineering/vehicle development scene (3840x2160px)
 - **Fallback images**: 3-5 high-quality images for carousel/rotation
 - **Mobile hero images**: Optimized versions (1080x1920px vertical)
 
 **📸 AI Generation Prompt:**
 ```
-Create 5 high-resolution hero images for an engineering consultancy website:
-1) Modern glass skyscraper construction site with cranes at golden hour, professional workers in hard hats
-2) Team of diverse engineers reviewing architectural blueprints in a modern office with floor-to-ceiling windows
-3) Aerial view of a modern bridge or infrastructure project with clean lines and geometric patterns
-4) Close-up of engineering drawings, rulers, and modern design tools on a clean white desk
-5) Modern industrial facility or commercial building with impressive architectural details
+Create 5 high-resolution hero images for an automotive engineering consultancy website:
+1) Modern automotive manufacturing facility with robotic assembly lines and luxury vehicles at golden hour, professional automotive engineers in clean room attire
+2) Team of diverse automotive engineers reviewing vehicle blueprints and 3D CAD models in a modern design studio with floor-to-ceiling windows
+3) Aerial view of a modern automotive testing facility with test tracks and vehicle prototypes with clean lines and geometric patterns
+4) Close-up of automotive engineering drawings, precision measurement tools, and modern vehicle design equipment on a clean white desk
+5) Modern automotive research facility or vehicle showroom with impressive automotive technology displays
 
-Style: Professional, clean, high-contrast photography. Color grading with cool blues and teals. Corporate aesthetic, premium quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, architectural photography style.
+Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
 ```
 
 ### Company Branding
@@ -84,24 +84,24 @@ Style: Professional, clean, high-contrast photography. Color grading with cool b
 
 **🎨 AI Generation Prompt:**
 ```
-Create a modern, professional logo for "Precom" engineering consultancy. Design should combine: 1) Clean, geometric typography using a modern sans-serif font, 2) An abstract engineering symbol (blueprint compass, structural beam, or geometric construction lines), 3) Color palette: deep professional blue (#003366) and vibrant teal (#00B4A6), 4) Minimalist design that works at small and large scales, 5) Professional, trustworthy, and innovative feeling. Style should match top-tier consulting firms like BCG or engineering companies like Buro Happold. Clean lines, perfect geometry, scalable vector design.
+Create a modern, professional logo for "Precom" automotive engineering consultancy. Design should combine: 1) Clean, geometric typography using a modern sans-serif font, 2) An abstract automotive engineering symbol (vehicle silhouette, gear with automotive elements, or dynamic motion lines suggesting vehicle movement), 3) Color palette: deep professional blue (#003366) and vibrant teal (#00B4A6), 4) Minimalist design that works at small and large scales, 5) Professional, trustworthy, and innovative feeling with automotive sophistication. Style should match top-tier automotive engineering firms and premium automotive brands. Clean lines, perfect geometry, scalable vector design with subtle automotive engineering elements.
 ```
 
 ### Service Category Images
-- **Structural Engineering**: Building/bridge construction (800x600px)
-- **Project Management**: Team collaboration, planning (800x600px)
-- **Engineering Consulting**: Technical drawings, meetings (800x600px)
-- **Design Review**: Blueprints, quality inspection (800x600px)
+- **Vehicle Engineering**: Automotive design and development (800x600px)
+- **Performance Testing**: Vehicle testing and validation (800x600px)
+- **Automotive Consulting**: Technical analysis and advisory (800x600px)
+- **Quality Assurance**: Vehicle inspection and certification (800x600px)
 
-**🏗️ AI Generation Prompt:**
+**🚗 AI Generation Prompt:**
 ```
-Create 4 professional service category images:
-1) STRUCTURAL ENGINEERING: Modern steel and concrete building frame under construction, showcasing structural beams and engineering precision
-2) PROJECT MANAGEMENT: Professional team meeting in modern conference room with project charts, tablets, and collaborative planning
-3) ENGINEERING CONSULTING: Close-up of technical blueprints, CAD drawings on screens, engineering consultation in progress
-4) DESIGN REVIEW: Quality inspection scene with engineers reviewing plans, measuring tools, and checking construction details
+Create 4 professional automotive service category images:
+1) VEHICLE ENGINEERING: Modern automotive design studio with 3D vehicle models on screens, engineering precision tools, and vehicle prototypes showcasing automotive innovation
+2) PERFORMANCE TESTING: Professional automotive testing facility with vehicles on dynamometers, crash test preparation, and performance measurement equipment
+3) AUTOMOTIVE CONSULTING: Close-up of automotive technical blueprints, vehicle CAD drawings on screens, automotive engineering consultation in progress with automotive specialists
+4) QUALITY ASSURANCE: Vehicle inspection scene with automotive engineers reviewing vehicle specifications, precision measurement tools, and checking automotive safety details
 
-Style: Clean, professional corporate photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium consulting firm branding.
+Style: Clean, professional automotive photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium automotive consulting firm branding with emphasis on precision and innovation.
 ```
 
 ### About Page Images
@@ -113,27 +113,27 @@ Style: Clean, professional corporate photography. Consistent lighting and color 
 - **Company values**: Iconographic images representing values
 
 ### Project Portfolio Images
-- **Project thumbnails**: 600x400px (minimum 20-30 projects)
+- **Project thumbnails**: 600x400px (minimum 20-30 automotive projects)
 - **Project detail images**: 1920x1080px hero images
 - **Before/after comparisons**: Matching dimensions for sliders
-- **Technical diagrams**: High-resolution engineering drawings
+- **Technical diagrams**: High-resolution automotive engineering drawings
 - **Project categories**:
-  - Residential buildings
-  - Commercial structures  
-  - Infrastructure projects
-  - Industrial facilities
-  - Renovation projects
+  - Electric Vehicle Development
+  - Performance Vehicle Engineering
+  - Automotive Safety Systems
+  - Manufacturing Process Optimization
+  - Vehicle Retrofit Projects
 
-**🏗️ AI Generation Prompt:**
+**🚗 AI Generation Prompt:**
 ```
-Create comprehensive project portfolio:
-1) RESIDENTIAL: Modern apartment buildings, condominiums, sustainable housing developments
-2) COMMERCIAL: Office buildings, retail centers, corporate headquarters with impressive architecture
-3) INFRASTRUCTURE: Bridges, roads, utilities, transportation systems showing engineering scale
-4) INDUSTRIAL: Manufacturing facilities, warehouses, production plants with functional design
-5) RENOVATION: Before/after transformations showing engineering problem-solving
+Create comprehensive automotive project portfolio:
+1) ELECTRIC VEHICLE DEVELOPMENT: Modern electric vehicles, battery systems, charging infrastructure, sustainable automotive technology
+2) PERFORMANCE VEHICLE ENGINEERING: High-performance sports cars, racing vehicles, engine optimization with impressive automotive engineering
+3) AUTOMOTIVE SAFETY SYSTEMS: Advanced driver assistance systems, crash test facilities, safety technology showing automotive safety innovation
+4) MANUFACTURING PROCESS OPTIMIZATION: Automotive production lines, robotic assembly systems, quality control processes with efficient design
+5) VEHICLE RETROFIT: Before/after vehicle transformations showing automotive engineering problem-solving and performance improvements
 
-Each category needs 4-6 high-quality images. Style: Professional architectural photography, various angles, day and night shots, showing scale and engineering achievement. Portfolio-grade presentation quality.
+Each category needs 4-6 high-quality images. Style: Professional automotive photography, various angles, day and night shots, showing automotive precision and engineering achievement. Portfolio-grade automotive presentation quality.
 ```
 
 ### Blog/News Images
@@ -143,79 +143,79 @@ Each category needs 4-6 high-quality images. Style: Professional architectural p
 
 **📰 AI Generation Prompt:**
 ```
-Create blog/news images for engineering consultancy:
-1) FEATURED ARTICLES: Industry insights, construction trends, engineering innovations - professional, editorial style
-2) THUMBNAILS: Technical topics, project updates, industry news - clean, informative visual style
-3) AUTHOR AVATARS: Professional headshots for blog contributors - consistent, authoritative presentation
+Create blog/news images for automotive engineering consultancy:
+1) FEATURED ARTICLES: Automotive industry insights, vehicle technology trends, automotive engineering innovations - professional, editorial style with automotive focus
+2) THUMBNAILS: Automotive technical topics, vehicle project updates, automotive industry news - clean, informative visual style with vehicle elements
+3) AUTHOR AVATARS: Professional headshots for automotive blog contributors - consistent, authoritative presentation with automotive industry credibility
 
-Style: Professional, editorial quality, consistent with brand aesthetic. Clean, modern, industry-relevant imagery that supports technical content and thought leadership.
+Style: Professional, editorial quality, consistent with automotive brand aesthetic. Clean, modern, automotive industry-relevant imagery that supports automotive technical content and thought leadership in vehicle engineering.
 ```
 
 ## 🎨 Graphics & Icons
 
 ### Custom Icons (SVG preferred)
-- Service category icons (outlined style)
-- Feature/benefit icons for homepage
+- Automotive service category icons (outlined style)
+- Vehicle feature/benefit icons for homepage
 - Social media icons (custom styled)
-- Process step icons
+- Automotive process step icons
 - Achievement/stats icons
 
 **🎨 AI Generation Prompt:**
 ```
-Create comprehensive icon set for engineering consultancy:
-1) SERVICE ICONS: Engineering tools, blueprints, construction, consulting symbols
-2) FEATURE ICONS: Benefits and capabilities - innovation, quality, speed, expertise
-3) SOCIAL ICONS: LinkedIn, Twitter, Facebook, Instagram with consistent styling
-4) PROCESS ICONS: Step-by-step workflow symbols - planning, design, build, deliver
-5) ACHIEVEMENT ICONS: Awards, certifications, milestones, success indicators
+Create comprehensive icon set for automotive engineering consultancy:
+1) AUTOMOTIVE SERVICE ICONS: Vehicle design tools, automotive blueprints, vehicle testing, automotive consulting symbols
+2) FEATURE ICONS: Automotive benefits and capabilities - innovation, performance, safety, automotive expertise
+3) SOCIAL ICONS: LinkedIn, Twitter, Facebook, Instagram with consistent automotive styling
+4) PROCESS ICONS: Step-by-step automotive workflow symbols - design, prototype, test, deliver vehicles
+5) ACHIEVEMENT ICONS: Automotive awards, automotive certifications, vehicle development milestones, automotive success indicators
 
-Style: Outlined icons, consistent stroke width (2px), geometric precision, professional appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+Style: Outlined icons with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes with subtle automotive engineering elements.
 ```
 
 ### Patterns & Backgrounds
-- **Geometric patterns**: Engineering-inspired backgrounds
-- **Texture overlays**: Subtle concrete, metal, or blueprint textures
+- **Geometric patterns**: Automotive engineering-inspired backgrounds
+- **Texture overlays**: Subtle carbon fiber, metal, or automotive blueprint textures
 - **Gradient overlays**: For text readability over images
 
 **🎨 AI Generation Prompt:**
 ```
-Create background elements and patterns:
-1) GEOMETRIC PATTERNS: Engineering-inspired patterns - blueprint grids, technical drawings, structural diagrams, geometric construction lines
-2) TEXTURE OVERLAYS: Subtle textures - brushed metal, concrete, blueprint paper, technical document backgrounds
-3) GRADIENT OVERLAYS: Professional gradients for text readability - blue to teal, dark to transparent, branded color combinations
+Create background elements and patterns for automotive engineering:
+1) GEOMETRIC PATTERNS: Automotive engineering-inspired patterns - vehicle blueprint grids, automotive technical drawings, vehicle structural diagrams, aerodynamic flow lines
+2) TEXTURE OVERLAYS: Subtle automotive textures - carbon fiber, brushed aluminum, automotive blueprint paper, technical automotive document backgrounds
+3) GRADIENT OVERLAYS: Professional automotive gradients for text readability - blue to teal, dark to transparent, branded color combinations with automotive sophistication
 
-Style: Subtle, professional, non-distracting backgrounds that enhance rather than compete with content. Engineering aesthetic, technical precision, brand-consistent colors.
+Style: Subtle, professional, non-distracting backgrounds that enhance rather than compete with content. Automotive engineering aesthetic, technical precision, brand-consistent colors with automotive industry feel.
 ```
 
 ## 📝 Content Assets
 
 ### Homepage Content
-- **Hero headline**: "Engineering Tomorrow's Infrastructure" (or custom)
-- **Hero subtext**: Compelling description (2-3 sentences)
-- **Service descriptions**: Brief, engaging copy for each service
+- **Hero headline**: "Engineering Tomorrow's Vehicles" (or custom)
+- **Hero subtext**: Compelling automotive-focused description (2-3 sentences)
+- **Service descriptions**: Brief, engaging copy for each automotive service
 - **Company stats**: Numbers for animated counters
-  - Years of experience
-  - Projects completed  
-  - Countries served
-  - Team size
-- **Client testimonials**: Quotes with client names/companies
+  - Years in automotive engineering
+  - Vehicles developed
+  - Automotive clients served
+  - Engineering team size
+- **Client testimonials**: Quotes with automotive client names/companies
 
 ### About Page Content
-- **Company story**: Founding history, mission, vision
-- **Team bios**: Names, positions, brief descriptions, achievements
-- **Company values**: 4-6 core values with descriptions
-- **Milestones**: Key dates and achievements for timeline
+- **Company story**: Automotive engineering founding history, automotive mission, automotive vision
+- **Team bios**: Names, automotive positions, brief automotive achievements, automotive expertise
+- **Company values**: 4-6 core automotive engineering values with descriptions
+- **Milestones**: Key automotive dates and vehicle development achievements for timeline
 
 ### Services Page Content
-- **Detailed service descriptions**: Comprehensive explanations
-- **Process descriptions**: Step-by-step workflows
-- **Case study summaries**: Success story highlights
-- **Technical specifications**: Engineering standards, certifications
+- **Detailed service descriptions**: Comprehensive automotive service explanations
+- **Process descriptions**: Step-by-step automotive development workflows
+- **Case study summaries**: Automotive success story highlights
+- **Technical specifications**: Automotive engineering standards, vehicle certifications
 
 ### Projects Content
-- **Project descriptions**: Title, location, scope, challenges, solutions
-- **Project specifications**: Size, budget, timeline, team size
-- **Client information**: Names, testimonials (where permitted)
+- **Project descriptions**: Vehicle title, development location, automotive scope, engineering challenges, automotive solutions
+- **Project specifications**: Vehicle complexity, development budget, timeline, automotive team size
+- **Client information**: Automotive client names, vehicle testimonials (where permitted)
 
 ## 🌐 Interactive Elements
 
@@ -263,10 +263,10 @@ Style: Platform-optimized dimensions, consistent branding, professional engineer
 ## 🎯 Priority Levels
 
 ### High Priority (Phase 9) - **COMPLETED: Contact Page Implementation**
-- [x] **IMPLEMENTED: Contact hero background video** (Professional engineering consultation scene)
+- [x] **IMPLEMENTED: Contact hero background video** (Professional automotive engineering consultation scene)
     **🎬 AI Generation Prompt:**
     ```
-    Create a professional contact hero background video showing engineering consultation process: 1) Engineers meeting with clients in modern conference room, 2) Reviewing blueprints and project documents together, 3) Collaborative discussion and planning, 4) Professional handshakes and agreement. 20-30 seconds, smooth camera movements, professional corporate atmosphere. Style: High-end corporate video, inspiring collaboration, trustworthy professional relationships.
+    Create a professional contact hero background video showing automotive engineering consultation process: 1) Automotive engineers meeting with automotive clients in modern conference room, 2) Reviewing vehicle blueprints and automotive project documents together, 3) Collaborative discussion and automotive planning around vehicle displays, 4) Professional handshakes and agreement with automotive prototypes visible. 20-30 seconds, smooth camera movements, professional automotive atmosphere. Style: High-end automotive corporate video, inspiring automotive collaboration, trustworthy professional automotive relationships.
     ```
     **File Path:** `/videos/contact-hero-consultation.mp4`
 - [x] **IMPLEMENTED: Office location background images** (Ken Burns effect rotation images for LocationMap)
@@ -318,66 +318,66 @@ Style: Platform-optimized dimensions, consistent branding, professional engineer
 - [ ] Hero fallback images (3-5 images)
 - [ ] Service category images (4 images)
 - [ ] Homepage content (hero text, stats, testimonials)
-- [ ] **NEW: Project showcase images** (6+ featured projects with varied sizes)
-    **🏗️ AI Generation Prompt:**
+- [ ] **NEW: Automotive project showcase images** (8+ featured automotive projects with varied sizes)
+    **🚗 AI Generation Prompt:**
     ```
-    Create 8 diverse project showcase images for engineering portfolio:
-    1) Modern residential high-rise building with glass facade
-    2) Commercial office complex with innovative architectural design
-    3) Industrial facility with clean, functional engineering design
-    4) Infrastructure bridge with impressive structural engineering
-    5) Renovation project showing before/after transformation
-    6) Sustainable building with green technology features
-    7) Large-scale construction project with cranes and activity
-    8) Completed engineering project with nighttime architectural lighting
+    Create 8 diverse automotive project showcase images for automotive engineering portfolio:
+    1) Modern electric vehicle prototype with sleek aerodynamic design
+    2) High-performance sports car with innovative automotive engineering features
+    3) Automotive manufacturing facility with clean, functional engineering design and robotic assembly
+    4) Vehicle testing facility with impressive automotive safety engineering equipment
+    5) Vehicle retrofit project showing before/after automotive transformation
+    6) Sustainable hybrid vehicle with green automotive technology features
+    7) Large-scale automotive production line with precision engineering and activity
+    8) Completed luxury vehicle project with dramatic automotive lighting and showroom presentation
     
-    Style: Professional architectural photography, various angles and perspectives. High-quality, sharp focus, impressive scale. Consistent color grading with blue undertones. Portfolio-worthy presentation.
+    Style: Professional automotive photography, various angles and perspectives showcasing vehicle design. High-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
     ```
-- [ ] **NEW: Client testimonial photo** (Professional headshot for testimonial section)
+- [ ] **NEW: Automotive client testimonial photo** (Professional headshot for testimonial section)
     **📸 AI Generation Prompt:**
     ```
-    Create professional client testimonial photo: Executive or decision-maker from construction/development industry. Well-dressed business professional, confident and satisfied expression, premium corporate headshot quality. Background should be clean and professional. Person should convey authority, success, and trustworthiness - someone whose endorsement carries weight in the engineering industry.
+    Create professional automotive client testimonial photo: Executive or decision-maker from automotive/vehicle development industry. Well-dressed automotive business professional, confident and satisfied expression, premium corporate headshot quality. Background should be clean and professional with subtle automotive elements. Person should convey automotive authority, success, and trustworthiness - someone whose endorsement carries weight in the automotive engineering industry.
     ```
-- [ ] **NEW: Company achievement icons** (Custom SVG icons for stats section)
+- [ ] **NEW: Automotive achievement icons** (Custom SVG icons for stats section)
     **🎨 AI Generation Prompt:**
     ```
-    Create 4 custom achievement icons for homepage stats:
-    1) PROJECTS COMPLETED: Building/construction icon with completion checkmark
-    2) COUNTRIES SERVED: Globe with connection points showing international reach
-    3) YEARS EXPERIENCE: Trophy or award symbol representing established expertise
-    4) CLIENT SATISFACTION: Star or rating symbol with excellence indicator
+    Create 4 custom automotive achievement icons for homepage stats:
+    1) VEHICLES DEVELOPED: Vehicle silhouette with completion checkmark and engineering elements
+    2) AUTOMOTIVE CLIENTS SERVED: Globe with automotive connection points showing international automotive reach
+    3) YEARS AUTOMOTIVE EXPERIENCE: Trophy or award symbol with automotive engineering elements representing established automotive expertise
+    4) AUTOMOTIVE CLIENT SATISFACTION: Star or rating symbol with automotive excellence indicator and vehicle elements
     
-    Style: Clean, outlined icons. Professional, celebratory feeling. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes. Achievement and success themed.
+    Style: Clean, outlined icons with subtle automotive elements. Professional, celebratory feeling with automotive sophistication. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes. Automotive achievement and success themed.
     ```
-- [ ] **NEW: About hero background image** (`/images/about/team-hero.jpg` - Team photo or office setting)
+- [ ] **NEW: About hero background image** (`/images/about/automotive-team-hero.jpg` - Automotive team photo or design studio setting)
     **📸 AI Generation Prompt:**
     ```
-    Create a professional team photo for engineering consultancy About page hero. Show diverse group of 6-8 engineers and consultants in modern office setting with floor-to-ceiling windows overlooking city skyline. Team should be professionally dressed, confident poses, mix of standing and sitting positions. Modern office interior with clean lines, engineering awards on walls, architectural models visible. Lighting: Natural daylight, professional portrait lighting. Style: Corporate headshot quality, inspirational, trustworthy, premium consulting firm aesthetic.
+    Create a professional automotive team photo for automotive engineering consultancy About page hero. Show diverse group of 6-8 automotive engineers and automotive consultants in modern automotive design studio setting with floor-to-ceiling windows overlooking automotive testing facilities or vehicle showrooms. Team should be professionally dressed, confident poses, mix of standing and sitting positions around vehicle prototypes or automotive design displays. Modern automotive office interior with clean lines, automotive engineering awards on walls, vehicle models and automotive technology visible. Lighting: Natural daylight, professional portrait lighting. Style: Corporate headshot quality, inspirational, trustworthy, premium automotive consulting firm aesthetic.
     ```
-- [ ] **NEW: Timeline milestone images** (5 images representing company history phases)
+- [ ] **NEW: Automotive timeline milestone images** (5 images representing automotive company history phases)
     **📸 AI Generation Prompt:**
     ```
-    Create 5 milestone images for company timeline (2010-2022):
-    1) 2010 FOUNDATION: Small team in modest office space, startup energy, blueprints on walls
-    2) 2013 EXPANSION: Larger modern office, more team members, new equipment and technology
-    3) 2016 INNOVATION: High-tech office with multiple monitors, BIM modeling, cutting-edge engineering software
-    4) 2019 GLOBAL REACH: International projects on world map, diverse global team, modern conference facilities
-    5) 2022 LEADERSHIP: Premium office space, awards and recognitions, established industry leader aesthetic
+    Create 5 automotive milestone images for automotive company timeline (2010-2022):
+    1) 2010 FOUNDATION: Small automotive team in modest design studio, startup energy, vehicle blueprints on walls and automotive concept sketches
+    2) 2013 EXPANSION: Larger modern automotive facility, more automotive team members, new automotive equipment and vehicle testing technology
+    3) 2016 INNOVATION: High-tech automotive office with multiple monitors, automotive CAD modeling, cutting-edge vehicle engineering software and prototypes
+    4) 2019 GLOBAL REACH: International automotive projects on world map, diverse global automotive team, modern automotive conference facilities
+    5) 2022 LEADERSHIP: Premium automotive facility, automotive awards and vehicle recognitions, established automotive industry leader aesthetic with luxury vehicle displays
     
-    Style: Professional corporate photography, consistent lighting, documentary style showing authentic growth and progress. Clean, modern, inspiring progression narrative.
+    Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
     ```
-- [ ] **NEW: Team member headshots** (Professional photos for all 6 team members)
+- [ ] **NEW: Automotive team member headshots** (Professional photos for all 6 automotive team members)
     **📸 AI Generation Prompt:**
     ```
-    Create 6 professional headshots for engineering consultancy team:
-    1) SARAH JOHNSON (Principal Engineer): Confident female engineer, 40s, professional attire, warm smile
-    2) MICHAEL CHEN (Project Manager): Professional male, 30s, business casual, approachable demeanor
-    3) EMILY RODRIGUEZ (Senior Design Engineer): Professional female, 30s, modern style, innovative look
-    4) DAVID KIM (Technology Lead): Tech-forward male, early 30s, modern glasses, cutting-edge professional
-    5) LISA THOMPSON (Quality Assurance): Confident female, 40s, authoritative yet approachable
-    6) ROBERT WILSON (Client Relations): Distinguished male, 40s, client-facing professional appearance
+    Create 6 professional headshots for automotive engineering consultancy team:
+    1) SARAH JOHNSON (Principal Automotive Engineer): Confident female automotive engineer, 40s, professional attire, warm smile with automotive industry confidence
+    2) MICHAEL CHEN (Automotive Project Manager): Professional male, 30s, business casual, approachable demeanor with automotive project experience
+    3) EMILY RODRIGUEZ (Senior Vehicle Design Engineer): Professional female, 30s, modern style, innovative automotive design look
+    4) DAVID KIM (Automotive Technology Lead): Tech-forward male, early 30s, modern glasses, cutting-edge automotive professional
+    5) LISA THOMPSON (Automotive Quality Assurance): Confident female, 40s, authoritative yet approachable with automotive precision focus
+    6) ROBERT WILSON (Automotive Client Relations): Distinguished male, 40s, client-facing automotive professional appearance
     
-    Style: Consistent professional headshots, clean background, corporate lighting, premium consulting firm quality. Each should convey expertise and approachability.
+    Style: Consistent professional automotive headshots, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Each should convey automotive expertise and approachability.
     ```
 - [ ] **NEW: Company values icons** (6 custom SVG icons for values section)
 - [ ] **NEW: Services hero background** (`/images/services/services-hero.jpg` - Professional engineering scene)
@@ -409,15 +409,15 @@ Style: Platform-optimized dimensions, consistent branding, professional engineer
     ```
     **🎨 AI Generation Prompt:**
     ```
-    Create 6 custom SVG icons for company values (outlined style, professional):
-    1) INNOVATION EXCELLENCE: Lightbulb with gear elements, representing creative engineering
-    2) QUALITY ASSURANCE: Shield with checkmark, representing protection and verification
-    3) CLIENT PARTNERSHIP: Handshake with connecting lines, representing collaboration
-    4) SUSTAINABILITY FOCUS: Earth/leaf combination, representing environmental responsibility
-    5) TECHNICAL EXPERTISE: Tools/blueprint combination, representing engineering skill
-    6) SAFETY FIRST: Hard hat with safety elements, representing workplace safety
+    Create 6 custom SVG icons for automotive company values (outlined style, professional):
+    1) AUTOMOTIVE INNOVATION EXCELLENCE: Lightbulb with automotive gear elements and vehicle silhouette, representing creative automotive engineering
+    2) VEHICLE QUALITY ASSURANCE: Shield with automotive checkmark and vehicle safety elements, representing automotive protection and verification
+    3) CLIENT PARTNERSHIP: Handshake with automotive connecting lines and vehicle elements, representing automotive collaboration
+    4) SUSTAINABLE MOBILITY: Earth/leaf combination with electric vehicle elements, representing environmental automotive responsibility
+    5) AUTOMOTIVE TECHNICAL EXPERTISE: Automotive tools/vehicle blueprint combination, representing automotive engineering skill
+    6) AUTOMOTIVE SAFETY FIRST: Automotive safety helmet with vehicle safety elements, representing automotive workplace and vehicle safety
     
-    Style: Clean, minimal, outlined icons. Consistent stroke width, geometric precision. Colors: deep blue (#003366) and teal (#00B4A6). Professional, easily recognizable, scalable vector design.
+    Style: Clean, minimal, outlined icons with subtle automotive elements. Consistent stroke width, geometric precision with automotive sophistication. Colors: deep blue (#003366) and teal (#00B4A6). Professional, easily recognizable, scalable vector design with automotive industry feel.
     ```
 - [ ] **NEW: Projects Hero Background Images** (3-4 hero images for Ken Burns effect rotation)
     **🏗️ AI Generation Prompt:**

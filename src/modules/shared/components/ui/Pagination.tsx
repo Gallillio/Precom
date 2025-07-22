@@ -59,7 +59,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     ${isActive 
       ? 'bg-blue-600 text-white border-blue-600' 
       : isDisabled 
-        ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+        ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
         : 'bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400'
     }
     transition-colors duration-200

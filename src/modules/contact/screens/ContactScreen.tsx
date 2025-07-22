@@ -290,7 +290,7 @@ export const ContactScreen: React.FC = () => {
                   </button>
                   <a 
                     href="tel:+20 1234567890"
-                    className="bg-white/20 backdrop-blur-sm text-white border border-white/30 px-8 py-3 rounded-xl font-semibold hover:bg-white/30 hover:scale-105 transition-all duration-300"
+                    className="bg-black/40 backdrop-blur-sm text-white border border-white/30 px-8 py-3 rounded-xl font-semibold hover:bg-black/50 hover:scale-105 transition-all duration-300"
                   >
                     Call Now: +20 1234567890
                   </a>

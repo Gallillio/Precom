@@ -56,11 +56,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             text-white shadow-2xl hover:shadow-[var(--accent-teal)]/30
             transform hover:scale-105 hover:-translate-y-2
           `,
-          icon: 'bg-white/20 text-white',
+          icon: 'bg-black/40 text-white',
           title: 'text-white',
           description: 'text-white/90',
           features: 'text-white/80',
-          button: 'bg-white/20 text-white hover:bg-white hover:text-[var(--primary-blue)]'
+          button: 'bg-black/40 text-white hover:bg-white hover:text-[var(--primary-blue)]'
         }
       case 'minimal':
         return {

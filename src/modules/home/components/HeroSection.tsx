@@ -16,22 +16,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const heroContent = {
-    headline: "Engineering Tomorrow's Infrastructure",
-    subheadline: "Innovative engineering solutions that shape the future of construction and infrastructure development.",
-    description: "We combine decades of expertise with cutting-edge technology to deliver exceptional results for our clients worldwide."
+    headline: "Engineering Tomorrow's Vehicles",
+    subheadline: "Leading automotive engineering solutions in Egypt that drive the future of vehicle development and automotive technology.",
+    description: "We combine decades of automotive expertise with cutting-edge technology to deliver exceptional vehicle engineering results for our Egyptian automotive clients and partners across the Middle East."
   }
 
   const stats = [
-    { number: "500+", label: "Projects Completed", icon: "🏗️" },
-    { number: "25", label: "Countries Served", icon: "🌍" },
-    { number: "50+", label: "Years Experience", icon: "⚡" },
-    { number: "100%", label: "Client Satisfaction", icon: "✨" }
+    { number: "150+", label: "Vehicles Developed", icon: "🚗" },
+    { number: "35+", label: "Egyptian Clients", icon: "🇪🇬" },
+    { number: "12+", label: "Years in Egypt", icon: "⚡" },
+    { number: "98%", label: "Client Satisfaction", icon: "✨" }
   ]
 
   const fallbackImages = [
-    '/images/hero/construction-1.jpg',
-    '/images/hero/construction-2.jpg',
-    '/images/hero/construction-3.jpg'
+    '/images/hero/automotive-1.jpg',
+    '/images/hero/automotive-2.jpg',
+    '/images/hero/automotive-3.jpg'
   ]
 
   useEffect(() => {
@@ -56,9 +56,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
     <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
       {/* Video/Image Background */}
       <VideoBackground
-        videoSrc="/videos/hero-construction.mp4"
+        videoSrc="/videos/hero-automotive.mp4"
         fallbackImage={fallbackImages[currentSlide]}
-        posterImage="/images/hero/hero-poster.jpg"
+        posterImage="/images/hero/automotive-poster.jpg"
         className="absolute inset-0"
         overlay={true}
         overlayOpacity={0.6}
@@ -77,9 +77,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
           isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
           {/* Company Badge */}
-          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-white/30">
+          <div className="inline-flex items-center space-x-2 bg-black/50 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-white/30">
             <div className="w-3 h-3 bg-[var(--accent-teal)] rounded-full animate-pulse" />
-            <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
+            <span className="text-white text-sm font-medium tracking-wider uppercase">
               {COMPANY_INFO.tagline}
             </span>
           </div>
@@ -119,7 +119,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
               <Button 
                 variant="outline" 
                 size="xl"
-                className="group w-full sm:w-auto px-12 py-4 text-lg font-semibold border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-all duration-300"
+                className="group w-full sm:w-auto px-12 py-4 text-lg font-semibold border-white/30 text-white hover:bg-black/20 hover:border-white/50 backdrop-blur-sm transition-all duration-300"
               >
                 <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -139,7 +139,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
                   isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                 }`}
               >
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+                <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-black/40 transition-all duration-300 group">
                   <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
                     {stat.icon}
                   </div>

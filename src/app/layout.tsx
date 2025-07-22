@@ -10,12 +10,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Precom - Professional Engineering Consultancy',
-    template: '%s | Precom'
+    default: 'Precom Egypt - Leading Automotive Engineering Consultancy',
+    template: '%s | Precom Egypt'
   },
-  description: 'Professional engineering consultancy providing innovative solutions for construction and infrastructure projects.',
-  keywords: ['engineering', 'consultancy', 'construction', 'infrastructure', 'design', 'structural'],
-  authors: [{ name: 'Precom' }],
+  description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering. Serving Egyptian automotive industry from Cairo and 6th of October City.',
+  keywords: ['automotive', 'engineering', 'consultancy', 'Egypt', 'vehicle', 'development', 'automotive technology', 'vehicle design', 'performance testing', 'automotive systems', 'Egyptian automotive', 'Cairo', 'automotive industry Egypt', '6th October City', 'Giza', 'Egyptian vehicles'],
+  authors: [{ name: 'Precom Egypt' }],
   viewport: 'width=device-width, initial-scale=1',
 }
 

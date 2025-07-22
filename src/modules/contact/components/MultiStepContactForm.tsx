@@ -298,7 +298,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                       ? 'bg-gradient-to-br from-[#003366] to-[#00B4A6] text-white scale-110 shadow-[#003366]/30' 
                       : currentStep === step.id
                         ? 'bg-white border-2 border-[#00B4A6] text-[#00B4A6] shadow-[#00B4A6]/20 scale-105'
-                        : 'bg-gray-100 text-gray-400 border-2 border-gray-200'
+                        : 'bg-gray-200 text-gray-500 border-2 border-gray-300'
                     }
                   `}>
                     {currentStep > step.id ? (

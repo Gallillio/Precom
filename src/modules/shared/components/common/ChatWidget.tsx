@@ -17,6 +17,15 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [hasInteracted, setHasInteracted] = useState(false)
+
+  // Check if user has previously interacted with chat
+  useEffect(() => {
+    const hasClicked = localStorage.getItem('chat-widget-clicked')
+    if (hasClicked === 'true') {
+      setHasInteracted(true)
+    }
+  }, [])
 
   // Show widget after page load
   useEffect(() => {
@@ -66,16 +75,24 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       {/* Chat Widget */}
       <Link
         href={config.href}
-        className={`fixed ${positionClasses[position]} z-50 w-16 h-16 bg-gradient-to-r from-[#003366] to-[#00B4A6] rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 hover:shadow-xl hover:shadow-[#00B4A6]/30 transition-all duration-300 group transform ${
+        className={`fixed ${positionClasses[position]} z-50 w-16 h-16 bg-gradient-to-r from-[#003366] to-[#00B4A6] rounded-full shadow-2xl flex items-center justify-center text-white hover:scale-110 transition-all duration-300 group transform ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
         } ${className}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={() => {
+          localStorage.setItem('chat-widget-clicked', 'true')
+          setHasInteracted(true)
+        }}
         aria-label={config.tooltip}
       >
-        {/* Pulsing ring animation */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#003366] to-[#00B4A6] animate-ping opacity-30" />
-        <div className="absolute inset-1 rounded-full bg-gradient-to-r from-[#003366] to-[#00B4A6] animate-pulse" />
+        {/* Pulsing ring animation - only show if user hasn't interacted */}
+        {!hasInteracted && (
+          <>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#003366] to-[#00B4A6] animate-ping opacity-30" />
+            <div className="absolute inset-1 rounded-full bg-gradient-to-r from-[#003366] to-[#00B4A6] animate-pulse" />
+          </>
+        )}
         
         {/* Icon */}
         <div className="relative z-10">
@@ -89,8 +106,8 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
       {/* Tooltip */}
       <div 
         className={`fixed ${
-          position === 'bottom-right' ? 'bottom-20 right-4' : 'bottom-20 left-4'
-        } z-40 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg transition-all duration-300 transform pointer-events-none ${
+          position === 'bottom-right' ? 'bottom-24 right-4' : 'bottom-24 left-4'
+        } z-50 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg transition-all duration-300 transform pointer-events-none ${
           isHovered && isVisible 
             ? 'translate-y-0 opacity-100' 
             : 'translate-y-2 opacity-0'
@@ -102,10 +119,6 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({
         } w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900`} />
       </div>
 
-      {/* Backdrop blur when hovered (optional enhancement) */}
-      {isHovered && (
-        <div className="fixed inset-0 bg-black/5 backdrop-blur-[1px] z-30 transition-all duration-300" />
-      )}
     </>
   )
 }

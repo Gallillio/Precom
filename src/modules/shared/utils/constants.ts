@@ -1,16 +1,17 @@
 // Company Information
 export const COMPANY_INFO = {
   name: 'Precom',
-  tagline: 'Professional Engineering Consultancy',
-  description: 'Professional engineering consultancy providing innovative solutions for construction and infrastructure projects.',
-  email: 'info@precom.com',
-  phone: '+20 1234567890',
+  tagline: 'Automotive Engineering Consultancy',
+  description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering.',
+  email: 'info@precom-egypt.com',
+  phone: '+20 2 2735 4567',
+  mobile: '+20 100 123 4567',
   address: {
-    street: '123 Engineering Street',
-    city: 'Tech City',
-    state: 'TC',
-    zipCode: '12345',
-    country: 'United States'
+    street: '15 Automotive Industry Zone, 6th of October City',
+    city: 'Giza',
+    governorate: 'Giza',
+    postalCode: '12573',
+    country: 'Egypt'
   }
 } as const
 
@@ -27,27 +28,27 @@ export const ROUTES = {
   cookies: '/cookies'
 } as const
 
-// Services Categories
+// Automotive Services Categories
 export const SERVICES = {
-  structural: {
-    title: 'Structural Engineering',
-    description: 'Comprehensive structural design and analysis services',
-    icon: 'building'
+  vehicleEngineering: {
+    title: 'Vehicle Engineering',
+    description: 'Complete vehicle design, development, and optimization services',
+    icon: 'cog'
   },
-  project: {
-    title: 'Project Management',
-    description: 'End-to-end project management and coordination',
-    icon: 'clipboard'
+  performanceTesting: {
+    title: 'Performance Testing',
+    description: 'Comprehensive vehicle testing, validation, and performance analysis',
+    icon: 'beaker'
   },
-  consulting: {
-    title: 'Engineering Consulting',
-    description: 'Expert technical consulting and advisory services',
+  automotiveConsulting: {
+    title: 'Automotive Consulting',
+    description: 'Expert automotive technical consulting and strategic advisory services',
     icon: 'lightbulb'
   },
-  design: {
-    title: 'Design Review',
-    description: 'Thorough design review and quality assurance',
-    icon: 'search'
+  qualityAssurance: {
+    title: 'Quality Assurance',
+    description: 'Rigorous automotive quality control, inspection, and certification services',
+    icon: 'shield-check'
   }
 } as const
 
@@ -111,9 +112,9 @@ export const API_ENDPOINTS = {
 
 // SEO Defaults
 export const SEO_DEFAULTS = {
-  title: 'Precom - Professional Engineering Consultancy',
-  description: 'Professional engineering consultancy providing innovative solutions for construction and infrastructure projects.',
-  keywords: ['engineering', 'consultancy', 'construction', 'infrastructure', 'design', 'structural'],
+  title: 'Precom - Leading Automotive Engineering Consultancy in Egypt',
+  description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering. Serving Egyptian automotive industry.',
+  keywords: ['automotive', 'engineering', 'consultancy', 'Egypt', 'vehicle', 'development', 'automotive technology', 'vehicle design', 'performance testing', 'automotive systems', 'Egyptian automotive', 'Cairo', 'automotive industry Egypt'],
   ogImage: '/images/og-image.jpg',
   twitterCard: 'summary_large_image'
 } as const

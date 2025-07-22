@@ -15,86 +15,86 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
   const projectsData = [
     {
       id: '1',
-      title: 'Metropolitan Bridge Complex',
-      category: 'Infrastructure',
-      image: '/images/projects/bridge-complex.jpg',
-      description: 'A revolutionary cable-stayed bridge design spanning 2.5km, connecting two major metropolitan areas with sustainable engineering solutions.',
+      title: 'El Nasr Electric Vehicle Project',
+      category: 'Electric Vehicles',
+      image: '/images/projects/electric-sedan.jpg',
+      description: 'Revolutionary electric vehicle developed for Egyptian market featuring 400km range, solar charging integration, and desert-climate optimization.',
       stats: [
-        { label: 'Length', value: '2.5km' },
-        { label: 'Budget', value: '$180M' },
-        { label: 'Duration', value: '3 years' }
+        { label: 'Range', value: '400km' },
+        { label: 'Solar Integration', value: '15% boost' },
+        { label: 'Development', value: '18 months' }
       ],
-      tags: ['Bridge Engineering', 'Sustainability', 'Urban Planning'],
+      tags: ['Electric Drivetrain', 'Solar Power', 'Egyptian Design'],
       featured: true
     },
     {
       id: '2',
-      title: 'Green Energy Campus',
-      category: 'Commercial',
-      image: '/images/projects/energy-campus.jpg',
-      description: 'Net-zero energy commercial complex with integrated renewable systems and smart building technologies.',
+      title: 'Cairo Rally Championship Car',
+      category: 'Performance Vehicles',
+      image: '/images/projects/sports-car.jpg',
+      description: 'High-performance rally car engineered for Egyptian terrain, featuring sand-resistant systems and enhanced cooling for desert conditions.',
       stats: [
-        { label: 'Area', value: '450k sqft' },
-        { label: 'Energy', value: 'Net-Zero' }
+        { label: 'Power', value: '420hp' },
+        { label: 'Desert Rating', value: '50°C+' }
       ],
-      tags: ['Renewable Energy', 'Smart Buildings', 'LEED Platinum']
+      tags: ['Desert Engineering', 'Rally Performance', 'Egyptian Terrain']
     },
     {
       id: '3',
-      title: 'Coastal Flood Defense',
-      category: 'Infrastructure',
-      image: '/images/projects/flood-defense.jpg',
-      description: 'Advanced coastal protection system combining natural and engineered solutions to protect 50km of shoreline.',
+      title: 'Egyptian Postal Service Fleet',
+      category: 'Fleet Vehicles',
+      image: '/images/projects/fleet-vehicles.jpg',
+      description: 'Complete redesign of Egypt Post delivery vehicles optimized for Egyptian road conditions, fuel efficiency, and payload capacity.',
       stats: [
-        { label: 'Protection', value: '50km' },
-        { label: 'Storm Rating', value: 'Category 5' }
+        { label: 'Fleet Size', value: '5,000+' },
+        { label: 'Efficiency Gain', value: '+40%' }
       ],
-      tags: ['Climate Resilience', 'Coastal Engineering', 'Environmental']
+      tags: ['Egyptian Roads', 'Fuel Efficiency', 'Postal Service']
     },
     {
       id: '4',
-      title: 'High-Rise Innovation Tower',
-      category: 'Residential',
-      image: '/images/projects/innovation-tower.jpg',
-      description: 'Award-winning 60-story residential tower featuring cutting-edge seismic resistance and energy efficiency.',
+      title: 'Uber Egypt Autonomous Pilot',
+      category: 'Autonomous Systems',
+      image: '/images/projects/autonomous-delivery.jpg',
+      description: 'Autonomous vehicle pilot program for Cairo traffic conditions, featuring advanced AI for Egyptian driving patterns and navigation.',
       stats: [
-        { label: 'Height', value: '280m' },
-        { label: 'Units', value: '450' }
+        { label: 'Pilot Vehicles', value: '50' },
+        { label: 'Cairo Routes', value: '25' }
       ],
-      tags: ['High-Rise', 'Seismic Design', 'Luxury Living']
+      tags: ['Cairo Traffic', 'AI Navigation', 'Egyptian Roads']
     },
     {
       id: '5',
-      title: 'Industrial Automation Complex',
-      category: 'Industrial',
-      image: '/images/projects/automation-complex.jpg',
-      description: 'State-of-the-art manufacturing facility with fully automated systems and Industry 4.0 integration.',
+      title: 'Ghabbour Auto Assembly Line',
+      category: 'Manufacturing',
+      image: '/images/projects/auto-manufacturing.jpg',
+      description: 'Modernization of automotive assembly line in 6th of October City with robotic systems and quality control for Egyptian automotive industry.',
       stats: [
-        { label: 'Automation', value: '95%' },
-        { label: 'Efficiency', value: '+40%' }
+        { label: 'Automation', value: '85%' },
+        { label: 'Production Increase', value: '+50%' }
       ],
-      tags: ['Industry 4.0', 'Automation', 'Smart Manufacturing']
+      tags: ['6th October City', 'Egyptian Manufacturing', 'Ghabbour Auto']
     },
     {
       id: '6',
-      title: 'Transit Hub Redevelopment',
-      category: 'Infrastructure',
-      image: '/images/projects/transit-hub.jpg',
-      description: 'Complete modernization of central transit station serving 100,000+ daily passengers.',
+      title: 'Cairo BRT Electric Buses',
+      category: 'Public Transport',
+      image: '/images/projects/electric-bus.jpg',
+      description: 'Electric bus system for Cairo BRT with charging stations and route optimization for Greater Cairo metropolitan area.',
       stats: [
-        { label: 'Capacity', value: '100k/day' },
-        { label: 'Platforms', value: '24' }
+        { label: 'Fleet Size', value: '100 buses' },
+        { label: 'Daily Passengers', value: '50k+' }
       ],
-      tags: ['Public Transit', 'Urban Mobility', 'Accessibility']
+      tags: ['Cairo BRT', 'Egyptian Public Transit', 'Greater Cairo']
     }
   ]
 
   const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'Infrastructure', label: 'Infrastructure' },
-    { id: 'Commercial', label: 'Commercial' },
-    { id: 'Residential', label: 'Residential' },
-    { id: 'Industrial', label: 'Industrial' }
+    { id: 'all', label: 'All Vehicles' },
+    { id: 'Electric Vehicles', label: 'Electric Vehicles' },
+    { id: 'Performance Vehicles', label: 'Performance' },
+    { id: 'Autonomous Systems', label: 'Autonomous' },
+    { id: 'Manufacturing', label: 'Manufacturing' }
   ]
 
   const filteredProjects = activeFilter === 'all' 
@@ -158,16 +158,16 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
 
             {/* Title */}
             <h2 className="heading-1 text-[var(--text-primary)] mb-6 max-w-4xl mx-auto">
-              Projects That Shape{' '}
+              Vehicles That Shape{' '}
               <span className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] bg-clip-text text-transparent">
-                The Future
+                Tomorrow's Mobility
               </span>
             </h2>
 
             {/* Subtitle */}
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed mb-10">
-              Explore our portfolio of groundbreaking engineering projects that demonstrate 
-              our commitment to innovation, sustainability, and excellence.
+              Explore our portfolio of groundbreaking automotive engineering projects that demonstrate 
+              our commitment to automotive innovation, sustainable mobility, and vehicle excellence.
             </p>
 
             {/* Filter Tabs */}
@@ -217,17 +217,17 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
 
             <div className="relative">
               <h3 className="text-3xl font-bold text-[var(--text-primary)] mb-4">
-                Have a Project in Mind?
+                Have a Vehicle Project in Mind?
               </h3>
               <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-                From concept to completion, we're here to bring your engineering vision to life. 
-                Let's discuss how we can help.
+                From concept to production, we're here to bring your automotive vision to life. 
+                Let's discuss how we can help develop your next vehicle.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={ROUTES.projects}>
                   <button className="group px-8 py-4 bg-[var(--primary-blue)] text-white rounded-xl font-semibold text-lg hover:bg-[var(--accent-teal)] transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    <span>View All Projects</span>
+                    <span>View All Vehicles</span>
                     <svg className="w-5 h-5 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -235,7 +235,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
                 </Link>
                 <Link href={ROUTES.contact}>
                   <button className="group px-8 py-4 border-2 border-[var(--border-secondary)] text-[var(--text-primary)] rounded-xl font-semibold text-lg hover:border-[var(--accent-teal)] hover:text-[var(--accent-teal)] transition-all duration-300 transform hover:scale-105">
-                    <span>Start Your Project</span>
+                    <span>Start Your Vehicle Project</span>
                     <svg className="w-5 h-5 ml-2 inline group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
@@ -246,16 +246,16 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
               {/* Stats Row */}
               <div className="flex items-center justify-center divide-x divide-[var(--border)] mt-8 pt-8">
                 <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">500+</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Completed</div>
+                  <div className="text-2xl font-bold text-[var(--primary-blue)]">150+</div>
+                  <div className="text-sm text-[var(--text-secondary)]">Vehicles Developed</div>
                 </div>
                 <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">25</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Countries</div>
+                  <div className="text-2xl font-bold text-[var(--primary-blue)]">35+</div>
+                  <div className="text-sm text-[var(--text-secondary)]">Egyptian Clients</div>
                 </div>
                 <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">$2B+</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Project Value</div>
+                  <div className="text-2xl font-bold text-[var(--primary-blue)]">500M</div>
+                  <div className="text-sm text-[var(--text-secondary)]">EGP Project Value</div>
                 </div>
               </div>
             </div>

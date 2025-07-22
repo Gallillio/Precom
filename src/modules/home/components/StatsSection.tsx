@@ -14,13 +14,14 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
     {
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
         </svg>
       ),
-      value: 500,
+      value: 150,
       suffix: '+',
-      label: 'Projects Completed',
-      description: 'Successfully delivered across various sectors',
+      label: 'Vehicles Developed',
+      description: 'Successfully engineered across Egyptian automotive sectors',
       variant: 'gradient' as const
     },
     {
@@ -29,9 +30,9 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      value: 25,
-      label: 'Countries Served',
-      description: 'Global reach with local expertise',
+      value: 35,
+      label: 'Egyptian Clients',
+      description: 'Egyptian automotive reach with specialized local expertise',
       variant: 'default' as const
     },
     {
@@ -40,10 +41,10 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      value: 50,
+      value: 12,
       suffix: '+',
-      label: 'Years of Experience',
-      description: 'Decades of engineering excellence',
+      label: 'Years in Egypt',
+      description: 'Specialized automotive engineering excellence in Egypt',
       variant: 'default' as const
     },
     {
@@ -112,9 +113,9 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}>
             {/* Badge */}
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20">
+            <div className="inline-flex items-center space-x-2 bg-black/40 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20">
               <div className="w-2 h-2 bg-[var(--accent-teal)] rounded-full animate-pulse" />
-              <span className="text-white/90 text-sm font-medium tracking-wider uppercase">
+              <span className="text-white text-sm font-medium tracking-wider uppercase">
                 Proven Excellence
               </span>
             </div>
@@ -129,8 +130,8 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
 
             {/* Subtitle */}
             <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Our track record speaks for itself. These milestones represent years of 
-              dedication to engineering excellence and client satisfaction.
+              Our automotive track record speaks for itself. These milestones represent years of 
+              dedication to automotive engineering excellence and client satisfaction.
             </p>
           </div>
         </div>
@@ -159,8 +160,8 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
           {/* Testimonial Quote */}
           <div className="max-w-4xl mx-auto mb-8">
             <blockquote className="text-2xl sm:text-3xl font-light text-white/90 italic leading-relaxed">
-              "Working with Precom has been transformational for our infrastructure projects. 
-              Their expertise and commitment to excellence is unmatched."
+              "Working with Precom has been transformational for our vehicle development projects in Egypt. 
+              Their automotive expertise and commitment to excellence is unmatched in the Egyptian market."
             </blockquote>
             <div className="flex items-center justify-center space-x-4 mt-8">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
@@ -169,8 +170,8 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
                 </svg>
               </div>
               <div className="text-left">
-                <div className="text-white font-semibold">Sarah Johnson</div>
-                <div className="text-white/60 text-sm">Director, Metropolitan Infrastructure</div>
+                <div className="text-white font-semibold">Dr. Ahmed Hassan</div>
+                <div className="text-white/60 text-sm">Director, Egyptian Automotive Manufacturing</div>
               </div>
             </div>
           </div>
