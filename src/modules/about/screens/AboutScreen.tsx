@@ -1,7 +1,10 @@
+'use client'
 import React from 'react'
 import { TeamSection } from '../components/TeamSection'
 import { MissionVision } from '../components/MissionVision'
-import { CompanyStory } from '../components/CompanyStory'
+import { CompanyTimeline } from '../components/CompanyTimeline'
+import { ValuesSection } from '../components/ValuesSection'
+import { AboutHero } from '../components/AboutHero'
 import { TeamMember } from '@/modules/shared/utils/types'
 
 const teamMembers: TeamMember[] = [
@@ -89,43 +92,31 @@ const teamMembers: TeamMember[] = [
 export const AboutScreen: React.FC = () => {
   return (
     <div className="min-h-screen">
-      <div className="pt-20">
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            About Precom
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We are a leading engineering consultancy dedicated to delivering innovative, 
-            sustainable, and reliable solutions for complex engineering challenges. 
-            Our expertise spans across multiple disciplines, ensuring comprehensive 
-            support for all your engineering needs.
-          </p>
-        </div>
-      </div>
-
-      <CompanyStory />
+      <AboutHero />
+      <CompanyTimeline />
       <MissionVision />
+      <ValuesSection />
       <TeamSection teamMembers={teamMembers} />
       
-      <section className="py-16 bg-blue-50">
+      <section className="section-padding-lg section-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="heading-2 mb-6">
             Ready to Work Together?
           </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-large mb-12 max-w-2xl mx-auto text-white/90">
             Let&apos;s discuss how our engineering expertise can help bring your project to life. 
             Contact us today for a consultation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a 
               href="/contact"
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              className="btn-teal px-12 py-4 text-lg font-semibold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               Get in Touch
             </a>
             <a 
               href="/services"
-              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors"
+              className="btn-outline bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-12 py-4 text-lg font-semibold backdrop-blur-sm transition-all duration-300"
             >
               Our Services
             </a>

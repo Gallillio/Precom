@@ -1,0 +1,8 @@
+export { ServiceHero } from './ServiceHero'
+export { ServiceCard } from './ServiceCard'
+export { ServiceDetails } from './ServiceDetails'
+export { ServiceFeatures } from './ServiceFeatures'
+export { ServicesSidebar } from './ServicesSidebar'
+export { ServiceTabs } from './ServiceTabs'
+export { BeforeAfterSlider } from './BeforeAfterSlider'
+export { AlternatingServiceLayout } from './AlternatingServiceLayout'

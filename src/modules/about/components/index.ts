@@ -1,0 +1,6 @@
+export { AboutHero } from './AboutHero'
+export { CompanyTimeline } from './CompanyTimeline'
+export { CompanyStory } from './CompanyStory'
+export { MissionVision } from './MissionVision'
+export { TeamSection } from './TeamSection'
+export { ValuesSection } from './ValuesSection'

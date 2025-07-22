@@ -89,6 +89,19 @@ When working on the website styling revamp:
 - If additional assets are needed (videos, images, etc.), compile a list and present it after code generation
 - Always reference the design guide for specific implementation details, color schemes, typography, and animation guidelines
 
+## AI Asset Generation Protocol
+
+When adding new assets to `assets-needed.md`:
+- **ALWAYS include detailed AI generation prompts** for each visual asset (images, videos, icons, graphics)
+- Prompts should reference the established brand guidelines:
+  - Color palette: Deep blue (#003366), teal (#00B4A6), supporting grays and whites
+  - Style: Professional, clean, modern engineering consultancy aesthetic
+  - Quality: Premium, matching top-tier consulting firms (BCG, Buro Happold standards)
+  - Brand narrative: Innovation, reliability, technical excellence, approachable professionalism
+- Include specific technical requirements (dimensions, formats, styles)
+- Ensure prompts maintain visual consistency across the entire asset library
+- Reference the comprehensive prompt examples in `assets-needed.md` for format and detail level
+
 ## Important Notes
 
 - Always check existing shared components before creating new ones
