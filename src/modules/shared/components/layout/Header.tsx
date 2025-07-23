@@ -152,8 +152,8 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
 
   return (
     <>
-      {/* Spacer for fixed header - now needed on all pages since header is always transparent initially */}
-      <div className="h-20" />
+      {/* Spacer for fixed header */}
+      <div className={isHomePage ? '' : 'h-20'} />
       
       <header className={`${headerClasses} ${className}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -290,9 +290,13 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
                 }`}
               />
               <Button
-                variant="teal"
+                variant={isScrolled || !isHomePage ? 'primary' : 'outline'}
                 size="sm"
-                className="transition-all duration-300"
+                className={`transition-all duration-300 ${
+                  !isScrolled && isHomePage
+                    ? 'border-white text-white hover:bg-white hover:text-[var(--primary-blue)]'
+                    : ''
+                }`}
               >
                 Get Quote
               </Button>
