@@ -61,17 +61,37 @@ Create a cinematic 30-second time-lapse video showcasing modern automotive engin
 - **Fallback images**: 3-5 high-quality images for carousel/rotation
 - **Mobile hero images**: Optimized versions (1080x1920px vertical)
 
-**📸 AI Generation Prompt:**
-```
-Create 5 high-resolution hero images for an automotive engineering consultancy website:
-1) Modern automotive manufacturing facility with robotic assembly lines and luxury vehicles at golden hour, professional automotive engineers in clean room attire
-2) Team of diverse automotive engineers reviewing vehicle blueprints and 3D CAD models in a modern design studio with floor-to-ceiling windows
-3) Aerial view of a modern automotive testing facility with test tracks and vehicle prototypes with clean lines and geometric patterns
-4) Close-up of automotive engineering drawings, precision measurement tools, and modern vehicle design equipment on a clean white desk
-5) Modern automotive research facility or vehicle showroom with impressive automotive technology displays
+**📸 AI Generation Prompts (Individual Images):**
 
-Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
+- [x] **Hero Image 1**: Automotive Manufacturing Facility ✅ **ADDED**
 ```
+Create high-resolution hero image of modern automotive manufacturing facility with robotic assembly lines and luxury vehicles at golden hour, professional automotive engineers in clean room attire. Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
+```
+**File Path**: `/images/Hero Images/Hero Image 1 Automotive Manufacturing Facility.png`
+
+- [x] **Hero Image 2**: Automotive Engineering Team ✅ **ADDED**
+```
+Create high-resolution hero image of team of diverse automotive engineers reviewing vehicle blueprints and 3D CAD models in a modern design studio with floor-to-ceiling windows. Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
+```
+**File Path**: `/images/Hero Images/Hero Image 2 Automotive Engineering Team.png`
+
+- [x] **Hero Image 3**: Automotive Testing Facility ✅ **ADDED**
+```
+Create high-resolution hero image of aerial view of a modern automotive testing facility with test tracks and vehicle prototypes with clean lines and geometric patterns. Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
+```
+**File Path**: `/images/Hero Images/Hero Image 3 Automotive Testing Facility.png`
+
+- [x] **Hero Image 4**: Automotive Engineering Tools ✅ **ADDED**
+```
+Create high-resolution hero image of close-up of automotive engineering drawings, precision measurement tools, and modern vehicle design equipment on a clean white desk. Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
+```
+**File Path**: `/images/Hero Images/Hero Image 4 Automotive Engineering Tools.png`
+
+- [x] **Hero Image 5**: Automotive Research Facility ✅ **ADDED**
+```
+Create high-resolution hero image of modern automotive research facility or vehicle showroom with impressive automotive technology displays. Style: Professional, clean, high-contrast automotive photography. Color grading with cool blues and teals. Premium automotive aesthetic, high-quality, inspiring and aspirational feeling. Sharp focus, dramatic lighting, automotive photography style emphasizing precision and innovation.
+```
+**File Path**: `/images/Hero Images/Hero Image 5 Automotive Research Facility.png`
 
 ### Company Branding
 - **Logo**: 
@@ -93,15 +113,26 @@ Create a modern, professional logo for "Precom" automotive engineering consultan
 - **Automotive Consulting**: Technical analysis and advisory (800x600px)
 - **Quality Assurance**: Vehicle inspection and certification (800x600px)
 
-**🚗 AI Generation Prompt:**
-```
-Create 4 professional automotive service category images:
-1) VEHICLE ENGINEERING: Modern automotive design studio with 3D vehicle models on screens, engineering precision tools, and vehicle prototypes showcasing automotive innovation
-2) PERFORMANCE TESTING: Professional automotive testing facility with vehicles on dynamometers, crash test preparation, and performance measurement equipment
-3) AUTOMOTIVE CONSULTING: Close-up of automotive technical blueprints, vehicle CAD drawings on screens, automotive engineering consultation in progress with automotive specialists
-4) QUALITY ASSURANCE: Vehicle inspection scene with automotive engineers reviewing vehicle specifications, precision measurement tools, and checking automotive safety details
+**🚗 AI Generation Prompts (Individual Service Images):**
 
-Style: Clean, professional automotive photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium automotive consulting firm branding with emphasis on precision and innovation.
+- [ ] **Vehicle Engineering Service Image**
+```
+Create professional automotive service image for VEHICLE ENGINEERING: Modern automotive design studio with 3D vehicle models on screens, engineering precision tools, and vehicle prototypes showcasing automotive innovation. Style: Clean, professional automotive photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium automotive consulting firm branding with emphasis on precision and innovation.
+```
+
+- [ ] **Performance Testing Service Image**
+```
+Create professional automotive service image for PERFORMANCE TESTING: Professional automotive testing facility with vehicles on dynamometers, crash test preparation, and performance measurement equipment. Style: Clean, professional automotive photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium automotive consulting firm branding with emphasis on precision and innovation.
+```
+
+- [ ] **Automotive Consulting Service Image**
+```
+Create professional automotive service image for AUTOMOTIVE CONSULTING: Close-up of automotive technical blueprints, vehicle CAD drawings on screens, automotive engineering consultation in progress with automotive specialists. Style: Clean, professional automotive photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium automotive consulting firm branding with emphasis on precision and innovation.
+```
+
+- [ ] **Quality Assurance Service Image**
+```
+Create professional automotive service image for QUALITY ASSURANCE: Vehicle inspection scene with automotive engineers reviewing vehicle specifications, precision measurement tools, and checking automotive safety details. Style: Clean, professional automotive photography. Consistent lighting and color grading with cool blue undertones. High-quality, sharp focus, modern aesthetic matching premium automotive consulting firm branding with emphasis on precision and innovation.
 ```
 
 ### About Page Images
@@ -124,16 +155,61 @@ Style: Clean, professional automotive photography. Consistent lighting and color
   - Manufacturing Process Optimization
   - Vehicle Retrofit Projects
 
-**🚗 AI Generation Prompt:**
-```
-Create comprehensive automotive project portfolio:
-1) ELECTRIC VEHICLE DEVELOPMENT: Modern electric vehicles, battery systems, charging infrastructure, sustainable automotive technology
-2) PERFORMANCE VEHICLE ENGINEERING: High-performance sports cars, racing vehicles, engine optimization with impressive automotive engineering
-3) AUTOMOTIVE SAFETY SYSTEMS: Advanced driver assistance systems, crash test facilities, safety technology showing automotive safety innovation
-4) MANUFACTURING PROCESS OPTIMIZATION: Automotive production lines, robotic assembly systems, quality control processes with efficient design
-5) VEHICLE RETROFIT: Before/after vehicle transformations showing automotive engineering problem-solving and performance improvements
+**🚗 AI Generation Prompts (Individual Project Categories):**
 
-Each category needs 4-6 high-quality images. Style: Professional automotive photography, various angles, day and night shots, showing automotive precision and engineering achievement. Portfolio-grade automotive presentation quality.
+**ELECTRIC VEHICLE DEVELOPMENT:**
+- [ ] **Electric Vehicle Project 1**
+```
+Create professional automotive portfolio image for ELECTRIC VEHICLE DEVELOPMENT: Modern electric vehicle prototype with sleek aerodynamic design, showcasing sustainable automotive technology. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+- [ ] **Electric Vehicle Project 2**
+```
+Create professional automotive portfolio image for ELECTRIC VEHICLE DEVELOPMENT: Electric vehicle battery systems and charging infrastructure technology. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+**PERFORMANCE VEHICLE ENGINEERING:**
+- [ ] **Performance Vehicle Project 1**
+```
+Create professional automotive portfolio image for PERFORMANCE VEHICLE ENGINEERING: High-performance sports car with innovative automotive engineering features. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+- [ ] **Performance Vehicle Project 2**
+```
+Create professional automotive portfolio image for PERFORMANCE VEHICLE ENGINEERING: Racing vehicle with engine optimization showing impressive automotive engineering. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+**AUTOMOTIVE SAFETY SYSTEMS:**
+- [ ] **Safety Systems Project 1**
+```
+Create professional automotive portfolio image for AUTOMOTIVE SAFETY SYSTEMS: Advanced driver assistance systems technology showing automotive safety innovation. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+- [ ] **Safety Systems Project 2**
+```
+Create professional automotive portfolio image for AUTOMOTIVE SAFETY SYSTEMS: Crash test facilities with safety technology demonstration. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+**MANUFACTURING PROCESS OPTIMIZATION:**
+- [ ] **Manufacturing Project 1**
+```
+Create professional automotive portfolio image for MANUFACTURING PROCESS OPTIMIZATION: Automotive production lines with robotic assembly systems. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+- [ ] **Manufacturing Project 2**
+```
+Create professional automotive portfolio image for MANUFACTURING PROCESS OPTIMIZATION: Quality control processes with efficient automotive manufacturing design. Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+**VEHICLE RETROFIT:**
+- [ ] **Retrofit Project 1**
+```
+Create professional automotive portfolio image for VEHICLE RETROFIT: Before/after vehicle transformation showing automotive engineering problem-solving (before state). Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
+```
+
+- [ ] **Retrofit Project 2**
+```
+Create professional automotive portfolio image for VEHICLE RETROFIT: Before/after vehicle transformation showing performance improvements (after state). Style: Professional automotive photography, portfolio-grade presentation quality showing automotive precision and engineering achievement.
 ```
 
 ### Blog/News Images
@@ -160,16 +236,111 @@ Style: Professional, editorial quality, consistent with automotive brand aesthet
 - Automotive process step icons
 - Achievement/stats icons
 
-**🎨 AI Generation Prompt:**
-```
-Create comprehensive icon set for automotive engineering consultancy:
-1) AUTOMOTIVE SERVICE ICONS: Vehicle design tools, automotive blueprints, vehicle testing, automotive consulting symbols
-2) FEATURE ICONS: Automotive benefits and capabilities - innovation, performance, safety, automotive expertise
-3) SOCIAL ICONS: LinkedIn, Twitter, Facebook, Instagram with consistent automotive styling
-4) PROCESS ICONS: Step-by-step automotive workflow symbols - design, prototype, test, deliver vehicles
-5) ACHIEVEMENT ICONS: Automotive awards, automotive certifications, vehicle development milestones, automotive success indicators
+**🎨 AI Generation Prompts (Individual Icon Sets):**
 
-Style: Outlined icons with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes with subtle automotive engineering elements.
+**AUTOMOTIVE SERVICE ICONS:**
+- [ ] **Vehicle Design Tools Icon**
+```
+Create outlined icon for automotive service: Vehicle design tools with automotive elements. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Automotive Blueprints Icon**
+```
+Create outlined icon for automotive service: Automotive blueprints with vehicle elements. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Vehicle Testing Icon**
+```
+Create outlined icon for automotive service: Vehicle testing with automotive symbols. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Automotive Consulting Icon**
+```
+Create outlined icon for automotive service: Automotive consulting symbols. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+**FEATURE ICONS:**
+- [ ] **Innovation Icon**
+```
+Create outlined icon for automotive feature: Innovation with automotive elements. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Performance Icon**
+```
+Create outlined icon for automotive feature: Performance with vehicle elements. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Safety Icon**
+```
+Create outlined icon for automotive feature: Safety with automotive symbols. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Automotive Expertise Icon**
+```
+Create outlined icon for automotive feature: Automotive expertise symbols. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+**SOCIAL ICONS:**
+- [ ] **LinkedIn Icon (Automotive Style)**
+```
+Create outlined social media icon: LinkedIn with consistent automotive styling. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Twitter Icon (Automotive Style)**
+```
+Create outlined social media icon: Twitter with consistent automotive styling. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Facebook Icon (Automotive Style)**
+```
+Create outlined social media icon: Facebook with consistent automotive styling. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Instagram Icon (Automotive Style)**
+```
+Create outlined social media icon: Instagram with consistent automotive styling. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+**PROCESS ICONS:**
+- [ ] **Design Process Icon**
+```
+Create outlined process icon: Vehicle design step in automotive workflow. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Prototype Process Icon**
+```
+Create outlined process icon: Vehicle prototype step in automotive workflow. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Test Process Icon**
+```
+Create outlined process icon: Vehicle testing step in automotive workflow. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Deliver Process Icon**
+```
+Create outlined process icon: Vehicle delivery step in automotive workflow. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+**ACHIEVEMENT ICONS:**
+- [ ] **Automotive Awards Icon**
+```
+Create outlined achievement icon: Automotive awards symbol. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Automotive Certifications Icon**
+```
+Create outlined achievement icon: Automotive certifications symbol. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Vehicle Development Milestones Icon**
+```
+Create outlined achievement icon: Vehicle development milestones symbol. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
+```
+
+- [ ] **Automotive Success Indicators Icon**
+```
+Create outlined achievement icon: Automotive success indicators symbol. Style: Outlined icon with automotive elements, consistent stroke width (2px), geometric precision, professional automotive appearance. Colors: deep blue (#003366) and teal (#00B4A6). Scalable vector design, works at 16px to 64px sizes.
 ```
 
 ### Patterns & Backgrounds
@@ -313,72 +484,152 @@ Style: Platform-optimized dimensions, consistent branding, professional engineer
     - `/images/projects/hero-building-design.jpg`
 
 ### High Priority (Remaining Core Assets) - **PRIORITY FOR PHASE 11**
-- [ ] Homepage hero video
-- [ ] Company logo (SVG + PNG variants)
-- [ ] Hero fallback images (3-5 images)
-- [ ] Service category images (4 images)
-- [ ] Homepage content (hero text, stats, testimonials)
-- [ ] **NEW: Automotive project showcase images** (8+ featured automotive projects with varied sizes)
-    **🚗 AI Generation Prompt:**
-    ```
-    Create 8 diverse automotive project showcase images for automotive engineering portfolio:
-    1) Modern electric vehicle prototype with sleek aerodynamic design
-    2) High-performance sports car with innovative automotive engineering features
-    3) Automotive manufacturing facility with clean, functional engineering design and robotic assembly
-    4) Vehicle testing facility with impressive automotive safety engineering equipment
-    5) Vehicle retrofit project showing before/after automotive transformation
-    6) Sustainable hybrid vehicle with green automotive technology features
-    7) Large-scale automotive production line with precision engineering and activity
-    8) Completed luxury vehicle project with dramatic automotive lighting and showroom presentation
-    
-    Style: Professional automotive photography, various angles and perspectives showcasing vehicle design. High-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
-    ```
-- [ ] **NEW: Automotive client testimonial photo** (Professional headshot for testimonial section)
-    **📸 AI Generation Prompt:**
-    ```
-    Create professional automotive client testimonial photo: Executive or decision-maker from automotive/vehicle development industry. Well-dressed automotive business professional, confident and satisfied expression, premium corporate headshot quality. Background should be clean and professional with subtle automotive elements. Person should convey automotive authority, success, and trustworthiness - someone whose endorsement carries weight in the automotive engineering industry.
-    ```
-- [ ] **NEW: Automotive achievement icons** (Custom SVG icons for stats section)
-    **🎨 AI Generation Prompt:**
-    ```
-    Create 4 custom automotive achievement icons for homepage stats:
-    1) VEHICLES DEVELOPED: Vehicle silhouette with completion checkmark and engineering elements
-    2) AUTOMOTIVE CLIENTS SERVED: Globe with automotive connection points showing international automotive reach
-    3) YEARS AUTOMOTIVE EXPERIENCE: Trophy or award symbol with automotive engineering elements representing established automotive expertise
-    4) AUTOMOTIVE CLIENT SATISFACTION: Star or rating symbol with automotive excellence indicator and vehicle elements
-    
-    Style: Clean, outlined icons with subtle automotive elements. Professional, celebratory feeling with automotive sophistication. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes. Automotive achievement and success themed.
-    ```
-- [ ] **NEW: About hero background image** (`/images/about/automotive-team-hero.jpg` - Automotive team photo or design studio setting)
-    **📸 AI Generation Prompt:**
-    ```
-    Create a professional automotive team photo for automotive engineering consultancy About page hero. Show diverse group of 6-8 automotive engineers and automotive consultants in modern automotive design studio setting with floor-to-ceiling windows overlooking automotive testing facilities or vehicle showrooms. Team should be professionally dressed, confident poses, mix of standing and sitting positions around vehicle prototypes or automotive design displays. Modern automotive office interior with clean lines, automotive engineering awards on walls, vehicle models and automotive technology visible. Lighting: Natural daylight, professional portrait lighting. Style: Corporate headshot quality, inspirational, trustworthy, premium automotive consulting firm aesthetic.
-    ```
-- [ ] **NEW: Automotive timeline milestone images** (5 images representing automotive company history phases)
-    **📸 AI Generation Prompt:**
-    ```
-    Create 5 automotive milestone images for automotive company timeline (2010-2022):
-    1) 2010 FOUNDATION: Small automotive team in modest design studio, startup energy, vehicle blueprints on walls and automotive concept sketches
-    2) 2013 EXPANSION: Larger modern automotive facility, more automotive team members, new automotive equipment and vehicle testing technology
-    3) 2016 INNOVATION: High-tech automotive office with multiple monitors, automotive CAD modeling, cutting-edge vehicle engineering software and prototypes
-    4) 2019 GLOBAL REACH: International automotive projects on world map, diverse global automotive team, modern automotive conference facilities
-    5) 2022 LEADERSHIP: Premium automotive facility, automotive awards and vehicle recognitions, established automotive industry leader aesthetic with luxury vehicle displays
-    
-    Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
-    ```
-- [ ] **NEW: Automotive team member headshots** (Professional photos for all 6 automotive team members)
-    **📸 AI Generation Prompt:**
-    ```
-    Create 6 professional headshots for automotive engineering consultancy team:
-    1) SARAH JOHNSON (Principal Automotive Engineer): Confident female automotive engineer, 40s, professional attire, warm smile with automotive industry confidence
-    2) MICHAEL CHEN (Automotive Project Manager): Professional male, 30s, business casual, approachable demeanor with automotive project experience
-    3) EMILY RODRIGUEZ (Senior Vehicle Design Engineer): Professional female, 30s, modern style, innovative automotive design look
-    4) DAVID KIM (Automotive Technology Lead): Tech-forward male, early 30s, modern glasses, cutting-edge automotive professional
-    5) LISA THOMPSON (Automotive Quality Assurance): Confident female, 40s, authoritative yet approachable with automotive precision focus
-    6) ROBERT WILSON (Automotive Client Relations): Distinguished male, 40s, client-facing automotive professional appearance
-    
-    Style: Consistent professional automotive headshots, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Each should convey automotive expertise and approachability.
-    ```
+
+**CORE ASSETS:**
+- [ ] **Homepage Hero Video**
+  **🎬 AI Generation Prompt:**
+  ```
+  Create a cinematic 30-second time-lapse video showcasing modern automotive engineering and vehicle development. Show a seamless sequence of: 1) Automotive CAD blueprints and 3D vehicle models being designed with precise engineering specifications, 2) High-tech automotive manufacturing facility with robotic assembly lines building vehicles, 3) Automotive engineers in clean rooms reviewing vehicle designs on advanced tablets and displays, 4) Vehicle testing facilities with crash tests and performance evaluations, 5) Final shot of completed luxury vehicles in a modern showroom at golden hour. Style: Professional, clean, inspiring with cool blue and teal color grading. Camera movements should be smooth and steady. High contrast, sharp details, premium automotive engineering aesthetic matching a top-tier automotive consultancy brand.
+  ```
+
+- [ ] **Company Logo (SVG Format)**
+  **🎨 AI Generation Prompt:**
+  ```
+  Create a modern, professional logo for "Precom" automotive engineering consultancy. Design should combine: 1) Clean, geometric typography using a modern sans-serif font, 2) An abstract automotive engineering symbol (vehicle silhouette, gear with automotive elements, or dynamic motion lines suggesting vehicle movement), 3) Color palette: deep professional blue (#003366) and vibrant teal (#00B4A6), 4) Minimalist design that works at small and large scales, 5) Professional, trustworthy, and innovative feeling with automotive sophistication. Style should match top-tier automotive engineering firms and premium automotive brands. Clean lines, perfect geometry, scalable vector design with subtle automotive engineering elements.
+  ```
+
+- [ ] **Company Logo (PNG 512x512)**
+- [ ] **Company Logo (PNG 256x256)**
+- [ ] **Company Logo (PNG 128x128)**
+- [ ] **Company Logo (PNG 64x64)**
+- [ ] **Company Logo (White Version)**
+**AUTOMOTIVE PROJECT SHOWCASE IMAGES:**
+- [ ] **Electric Vehicle Prototype Project**
+  ```
+  Create automotive project showcase image: Modern electric vehicle prototype with sleek aerodynamic design. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **High-Performance Sports Car Project**
+  ```
+  Create automotive project showcase image: High-performance sports car with innovative automotive engineering features. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **Automotive Manufacturing Facility Project**
+  ```
+  Create automotive project showcase image: Automotive manufacturing facility with clean, functional engineering design and robotic assembly. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **Vehicle Testing Facility Project**
+  ```
+  Create automotive project showcase image: Vehicle testing facility with impressive automotive safety engineering equipment. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **Vehicle Retrofit Project**
+  ```
+  Create automotive project showcase image: Vehicle retrofit project showing before/after automotive transformation. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **Sustainable Hybrid Vehicle Project**
+  ```
+  Create automotive project showcase image: Sustainable hybrid vehicle with green automotive technology features. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **Automotive Production Line Project**
+  ```
+  Create automotive project showcase image: Large-scale automotive production line with precision engineering and activity. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+
+- [ ] **Luxury Vehicle Showroom Project**
+  ```
+  Create automotive project showcase image: Completed luxury vehicle project with dramatic automotive lighting and showroom presentation. Style: Professional automotive photography, high-quality, sharp focus, impressive automotive scale. Consistent color grading with blue undertones. Portfolio-worthy automotive presentation emphasizing engineering excellence.
+  ```
+**TESTIMONIAL & TEAM ASSETS:**
+- [ ] **Automotive Client Testimonial Photo**
+  **📸 AI Generation Prompt:**
+  ```
+  Create professional automotive client testimonial photo: Executive or decision-maker from automotive/vehicle development industry. Well-dressed automotive business professional, confident and satisfied expression, premium corporate headshot quality. Background should be clean and professional with subtle automotive elements. Person should convey automotive authority, success, and trustworthiness - someone whose endorsement carries weight in the automotive engineering industry.
+  ```
+**AUTOMOTIVE ACHIEVEMENT ICONS:**
+- [ ] **Vehicles Developed Achievement Icon**
+  ```
+  Create custom automotive achievement icon for VEHICLES DEVELOPED: Vehicle silhouette with completion checkmark and engineering elements. Style: Clean, outlined icon with subtle automotive elements. Professional, celebratory feeling with automotive sophistication. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes.
+  ```
+
+- [ ] **Automotive Clients Served Achievement Icon**
+  ```
+  Create custom automotive achievement icon for AUTOMOTIVE CLIENTS SERVED: Globe with automotive connection points showing international automotive reach. Style: Clean, outlined icon with subtle automotive elements. Professional, celebratory feeling with automotive sophistication. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes.
+  ```
+
+- [ ] **Years Automotive Experience Achievement Icon**
+  ```
+  Create custom automotive achievement icon for YEARS AUTOMOTIVE EXPERIENCE: Trophy or award symbol with automotive engineering elements representing established automotive expertise. Style: Clean, outlined icon with subtle automotive elements. Professional, celebratory feeling with automotive sophistication. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes.
+  ```
+
+- [ ] **Automotive Client Satisfaction Achievement Icon**
+  ```
+  Create custom automotive achievement icon for AUTOMOTIVE CLIENT SATISFACTION: Star or rating symbol with automotive excellence indicator and vehicle elements. Style: Clean, outlined icon with subtle automotive elements. Professional, celebratory feeling with automotive sophistication. Consistent with company branding colors (blue/teal). Easily recognizable at small and large sizes.
+  ```
+**ABOUT PAGE ASSETS:**
+- [ ] **About Hero Background Image** (`/images/about/automotive-team-hero.jpg`)
+  **📸 AI Generation Prompt:**
+  ```
+  Create a professional automotive team photo for automotive engineering consultancy About page hero. Show diverse group of 6-8 automotive engineers and automotive consultants in modern automotive design studio setting with floor-to-ceiling windows overlooking automotive testing facilities or vehicle showrooms. Team should be professionally dressed, confident poses, mix of standing and sitting positions around vehicle prototypes or automotive design displays. Modern automotive office interior with clean lines, automotive engineering awards on walls, vehicle models and automotive technology visible. Lighting: Natural daylight, professional portrait lighting. Style: Corporate headshot quality, inspirational, trustworthy, premium automotive consulting firm aesthetic.
+  ```
+**AUTOMOTIVE TIMELINE MILESTONE IMAGES:**
+- [ ] **2010 Foundation Milestone Image**
+  ```
+  Create automotive milestone image for 2010 FOUNDATION: Small automotive team in modest design studio, startup energy, vehicle blueprints on walls and automotive concept sketches. Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
+  ```
+
+- [ ] **2013 Expansion Milestone Image**
+  ```
+  Create automotive milestone image for 2013 EXPANSION: Larger modern automotive facility, more automotive team members, new automotive equipment and vehicle testing technology. Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
+  ```
+
+- [ ] **2016 Innovation Milestone Image**
+  ```
+  Create automotive milestone image for 2016 INNOVATION: High-tech automotive office with multiple monitors, automotive CAD modeling, cutting-edge vehicle engineering software and prototypes. Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
+  ```
+
+- [ ] **2019 Global Reach Milestone Image**
+  ```
+  Create automotive milestone image for 2019 GLOBAL REACH: International automotive projects on world map, diverse global automotive team, modern automotive conference facilities. Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
+  ```
+
+- [ ] **2022 Leadership Milestone Image**
+  ```
+  Create automotive milestone image for 2022 LEADERSHIP: Premium automotive facility, automotive awards and vehicle recognitions, established automotive industry leader aesthetic with luxury vehicle displays. Style: Professional automotive corporate photography, consistent lighting, documentary style showing authentic automotive growth and progress. Clean, modern, inspiring automotive progression narrative emphasizing vehicle development achievements.
+  ```
+**AUTOMOTIVE TEAM MEMBER HEADSHOTS:**
+- [ ] **Sarah Johnson Headshot** (Principal Automotive Engineer)
+  ```
+  Create professional headshot for SARAH JOHNSON (Principal Automotive Engineer): Confident female automotive engineer, 40s, professional attire, warm smile with automotive industry confidence. Style: Consistent professional automotive headshot, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Should convey automotive expertise and approachability.
+  ```
+
+- [ ] **Michael Chen Headshot** (Automotive Project Manager)
+  ```
+  Create professional headshot for MICHAEL CHEN (Automotive Project Manager): Professional male, 30s, business casual, approachable demeanor with automotive project experience. Style: Consistent professional automotive headshot, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Should convey automotive expertise and approachability.
+  ```
+
+- [ ] **Emily Rodriguez Headshot** (Senior Vehicle Design Engineer)
+  ```
+  Create professional headshot for EMILY RODRIGUEZ (Senior Vehicle Design Engineer): Professional female, 30s, modern style, innovative automotive design look. Style: Consistent professional automotive headshot, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Should convey automotive expertise and approachability.
+  ```
+
+- [ ] **David Kim Headshot** (Automotive Technology Lead)
+  ```
+  Create professional headshot for DAVID KIM (Automotive Technology Lead): Tech-forward male, early 30s, modern glasses, cutting-edge automotive professional. Style: Consistent professional automotive headshot, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Should convey automotive expertise and approachability.
+  ```
+
+- [ ] **Lisa Thompson Headshot** (Automotive Quality Assurance)
+  ```
+  Create professional headshot for LISA THOMPSON (Automotive Quality Assurance): Confident female, 40s, authoritative yet approachable with automotive precision focus. Style: Consistent professional automotive headshot, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Should convey automotive expertise and approachability.
+  ```
+
+- [ ] **Robert Wilson Headshot** (Automotive Client Relations)
+  ```
+  Create professional headshot for ROBERT WILSON (Automotive Client Relations): Distinguished male, 40s, client-facing automotive professional appearance. Style: Consistent professional automotive headshot, clean background with subtle automotive elements, corporate lighting, premium automotive consulting firm quality. Should convey automotive expertise and approachability.
+  ```
 - [ ] **NEW: Company values icons** (6 custom SVG icons for values section)
 - [ ] **NEW: Services hero background** (`/images/services/services-hero.jpg` - Professional engineering scene)
     **🎨 AI Generation Prompt:**

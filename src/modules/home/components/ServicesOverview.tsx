@@ -9,7 +9,7 @@ interface ServicesOverviewProps {
 }
 
 export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = '' }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     const observer = new IntersectionObserver(

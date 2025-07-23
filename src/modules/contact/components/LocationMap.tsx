@@ -29,7 +29,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({
     '/images/office/office-lobby.jpg'
   ]
 
-  const address = `${COMPANY_INFO.address.street}, ${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.state} ${COMPANY_INFO.address.zipCode}`
+  const address = `${COMPANY_INFO.address.street}, ${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.governorate} ${COMPANY_INFO.address.postalCode}`
   const encodedAddress = encodeURIComponent(address)
   
   // Google Maps embed URL
@@ -211,7 +211,7 @@ export const LocationMap: React.FC<LocationMapProps> = ({
                 <h4 className="text-xl font-bold text-[#003366] mb-3">Professional Engineering Office</h4>
                 <p className="text-gray-700 leading-relaxed text-lg font-medium">
                   {COMPANY_INFO.address.street}<br />
-                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state} {COMPANY_INFO.address.zipCode}<br />
+                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.governorate} {COMPANY_INFO.address.postalCode}<br />
                   {COMPANY_INFO.address.country}
                 </p>
                 <div className="mt-4 flex items-center text-sm text-[#00B4A6] bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg px-3 py-2">

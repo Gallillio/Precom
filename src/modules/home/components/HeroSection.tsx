@@ -29,18 +29,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   ]
 
   const fallbackImages = [
-    '/images/hero/automotive-1.jpg',
-    '/images/hero/automotive-2.jpg',
-    '/images/hero/automotive-3.jpg'
+    '/images/hero/hero-1-manufacturing.png',
+    '/images/hero/hero-2-engineering-team.png',
+    '/images/hero/hero-3-testing-facility.png',
+    '/images/hero/hero-4-engineering-tools.png',
+    '/images/hero/hero-5-research-facility.png'
   ]
 
   useEffect(() => {
     setIsLoaded(true)
     
-    // Auto-rotate fallback images if no video
+    // Debug log
+    console.log('Hero images paths:', fallbackImages)
+    console.log('Current slide:', currentSlide, 'Image:', fallbackImages[currentSlide])
+    
+    // Auto-rotate hero images (Ken Burns effect)
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % fallbackImages.length)
-    }, 8000)
+      setCurrentSlide((prev) => {
+        const newSlide = (prev + 1) % fallbackImages.length
+        console.log('Switching to slide:', newSlide, 'Image:', fallbackImages[newSlide])
+        return newSlide
+      })
+    }, 6000) // Slightly faster rotation to showcase all 5 images
 
     return () => clearInterval(interval)
   }, [])
@@ -54,14 +64,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
   }
   return (
     <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
-      {/* Video/Image Background */}
-      <VideoBackground
-        videoSrc="/videos/hero-automotive.mp4"
-        fallbackImage={fallbackImages[currentSlide]}
-        posterImage="/images/hero/automotive-poster.jpg"
-        className="absolute inset-0"
-        overlay={true}
-        overlayOpacity={0.6}
+      {/* Hero Background Images */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+        style={{
+          backgroundImage: `url(${fallbackImages[currentSlide]})`
+        }}
+      />
+      
+      {/* Overlay */}
+      <div 
+        className="absolute inset-0 z-10"
+        style={{
+          background: `linear-gradient(
+            135deg,
+            rgba(0, 51, 102, 0.4) 0%,
+            rgba(0, 180, 166, 0.28) 50%,
+            rgba(0, 51, 102, 0.36) 100%
+          )`
+        }}
       />
 
       {/* Animated Background Elements */}
@@ -76,13 +97,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
         <div className={`transform transition-all duration-1000 delay-500 ${
           isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
-          {/* Company Badge */}
-          <div className="inline-flex items-center space-x-2 bg-black/50 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-white/30">
-            <div className="w-3 h-3 bg-[var(--accent-teal)] rounded-full animate-pulse" />
-            <span className="text-white text-sm font-medium tracking-wider uppercase">
-              {COMPANY_INFO.tagline}
-            </span>
-          </div>
 
           {/* Main Headline */}
           <h1 className="heading-hero text-white mb-6 max-w-5xl mx-auto leading-tight">

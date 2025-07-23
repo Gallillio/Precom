@@ -23,7 +23,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   className = '',
   index = 0
 }) => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   const [isHovered, setIsHovered] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 

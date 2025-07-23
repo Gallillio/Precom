@@ -59,8 +59,8 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
         </svg>
       ),
       title: 'Visit Us',
-      value: `${COMPANY_INFO.address.street}, ${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.state} ${COMPANY_INFO.address.zipCode}`,
-      link: `https://maps.google.com/?q=${encodeURIComponent(`${COMPANY_INFO.address.street}, ${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.state} ${COMPANY_INFO.address.zipCode}`)}`,
+      value: `${COMPANY_INFO.address.street}, ${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.governorate} ${COMPANY_INFO.address.postalCode}`,
+      link: `https://maps.google.com/?q=${encodeURIComponent(`${COMPANY_INFO.address.street}, ${COMPANY_INFO.address.city}, ${COMPANY_INFO.address.governorate} ${COMPANY_INFO.address.postalCode}`)}`,
       description: 'Come visit our office for an in-person consultation',
       color: 'from-[#00B4A6] to-[#00A098]',
       bgGradient: 'from-teal-50 to-teal-100',

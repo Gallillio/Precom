@@ -162,16 +162,16 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
             <div className="flex items-center">
               <Link href={ROUTES.home} className="flex items-center space-x-3">
                 <div className="flex-shrink-0">
+                  <img 
+                    src="/images/logo.png" 
+                    alt={`${COMPANY_INFO.name} Logo`}
+                    className="h-10 w-auto transition-opacity duration-300"
+                  />
+                </div>
+                <div className="flex-shrink-0">
                   <h1 className={logoClasses}>
                     {COMPANY_INFO.name}
                   </h1>
-                  <p className={`text-xs font-medium transition-colors duration-300 ${
-                    isScrolled || !isHomePage
-                      ? 'text-[var(--text-secondary)]'
-                      : 'text-white/80'
-                  }`}>
-                    {COMPANY_INFO.tagline}
-                  </p>
                 </div>
               </Link>
             </div>
