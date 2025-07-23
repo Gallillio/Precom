@@ -17,6 +17,23 @@ export const metadata: Metadata = {
   keywords: ['automotive', 'engineering', 'consultancy', 'Egypt', 'vehicle', 'development', 'automotive technology', 'vehicle design', 'performance testing', 'automotive systems', 'Egyptian automotive', 'Cairo', 'automotive industry Egypt', '6th October City', 'Giza', 'Egyptian vehicles'],
   authors: [{ name: 'Precom Egypt' }],
   viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
+  openGraph: {
+    title: 'Precom Egypt - Leading Automotive Engineering Consultancy',
+    description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering.',
+    images: ['/images/logo.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Precom Egypt - Leading Automotive Engineering Consultancy',
+    description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering.',
+    images: ['/images/logo.png'],
+  },
 }
 
 export default function RootLayout({

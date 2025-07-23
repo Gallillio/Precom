@@ -679,9 +679,24 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                 </label>
                 <div className="flex gap-4">
                   {[
-                    { value: 'low', label: 'Low Priority', color: 'green', icon: '🟢' },
-                    { value: 'medium', label: 'Standard', color: 'yellow', icon: '🟡' },
-                    { value: 'high', label: 'High Priority', color: 'red', icon: '🔴' }
+                    { 
+                      value: 'low', 
+                      label: 'Low Priority', 
+                      color: 'green', 
+                      icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" className="text-green-500" /></svg>
+                    },
+                    { 
+                      value: 'medium', 
+                      label: 'Standard', 
+                      color: 'yellow', 
+                      icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" className="text-yellow-500" /></svg>
+                    },
+                    { 
+                      value: 'high', 
+                      label: 'High Priority', 
+                      color: 'red', 
+                      icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" className="text-red-500" /></svg>
+                    }
                   ].map((urgency) => (
                     <button
                       key={urgency.value}
@@ -695,7 +710,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                         }
                       `}
                     >
-                      <span className="text-lg mb-1 block">{urgency.icon}</span>
+                      <div className="mb-1 flex justify-center">{urgency.icon}</div>
                       {urgency.label}
                     </button>
                   ))}
@@ -718,7 +733,11 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                 className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-var(--color-primary) transition-colors cursor-pointer"
                 onClick={() => fileInputRef.current?.click()}
               >
-                <div className="text-4xl mb-4">📁</div>
+                <div className="text-gray-400 mb-4">
+                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-5L12 5H5a2 2 0 00-2 2z" />
+                  </svg>
+                </div>
                 <p className="text-lg font-medium text-gray-700 mb-2">
                   Drop files here or click to browse
                 </p>
@@ -741,7 +760,11 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                   {formData.attachments.map((file, index) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div className="flex items-center">
-                        <div className="text-2xl mr-3">📄</div>
+                        <div className="text-gray-400 mr-3">
+                          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
                         <div>
                           <p className="font-medium text-gray-800">{file.name}</p>
                           <p className="text-sm text-gray-500">

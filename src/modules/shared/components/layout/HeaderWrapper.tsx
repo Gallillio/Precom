@@ -8,7 +8,8 @@ interface HeaderWrapperProps {
 
 export const HeaderWrapper: React.FC<HeaderWrapperProps> = ({ className }) => {
   const pathname = usePathname()
-  const isHomePage = pathname === '/'
+  // Enable transparent header behavior on all pages
+  const isHomePage = true
 
   return <Header isHomePage={isHomePage} className={className} />
 }

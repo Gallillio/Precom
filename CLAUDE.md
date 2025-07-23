@@ -17,6 +17,17 @@ This is a Next.js-based automotive engineering consultancy website (Precom) buil
 ### Testing
 No test framework is currently configured.
 
+## Development Rules
+
+### Modularity
+From `rules/modularity.mdc`: When adding new features, check the current codebase for existing reusable functions and components. If they don't exist, create new reusable ones. Focus on modularity.
+
+### File Structure
+From `rules/filestructure.mdc`: The main folder structure is based on modules. Each module contains components, screens, and utils folders as needed.
+
+### Workflow Restrictions
+- Never run `npm run dev` unless specifically instructed that it is okay in the prompt
+
 ## Architecture
 
 ### Module Structure
@@ -47,14 +58,6 @@ Located in `src/modules/shared/`:
 - `src/modules/shared/utils/helpers.ts` - Utility functions
 - `src/app/layout.tsx` - Root layout with Header/Footer
 - `src/app/page.tsx` - Home page component
-
-## Development Rules
-
-### Modularity
-From `rules/modularity.mdc`: When adding new features, check the current codebase for existing reusable functions and components. If they don't exist, create new reusable ones. Focus on modularity.
-
-### File Structure
-From `rules/filestructure.mdc`: The main folder structure is based on modules. Each module contains components, screens, and utils folders as needed.
 
 ## Code Conventions
 

@@ -44,6 +44,11 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
+              <img 
+                src="/images/logo.png" 
+                alt="Precom Logo"
+                className="h-8 w-auto mr-3"
+              />
               <h2 className="text-xl font-bold">Precom</h2>
             </div>
             <p className="text-gray-400 text-sm mb-4">
