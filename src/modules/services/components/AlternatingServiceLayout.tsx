@@ -53,7 +53,7 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleServices(prev => [...new Set([...prev, index])])
+            setVisibleServices(prev => Array.from(new Set([...prev, index])))
           }
         },
         { threshold: 0.2 }
@@ -78,7 +78,7 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
           <div 
             key={service.id}
             id={service.id}
-            ref={el => serviceRefs.current[index] = el}
+            ref={el => { serviceRefs.current[index] = el; }}
             className="container mx-auto px-4"
           >
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${

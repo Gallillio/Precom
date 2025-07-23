@@ -120,7 +120,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ teamMembers, className
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleMembers(prev => [...new Set([...prev, index])])
+            setVisibleMembers(prev => Array.from(new Set([...prev, index])))
           }
         },
         { threshold: 0.3 }
@@ -165,7 +165,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ teamMembers, className
             return (
               <div 
                 key={member.id}
-                ref={el => memberRefs.current[index] = el}
+                ref={el => { memberRefs.current[index] = el; }}
                 className={`transform transition-all duration-700 delay-${index * 100} ${
                   isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}

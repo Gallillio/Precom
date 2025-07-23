@@ -71,10 +71,10 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
         break
       case 2:
         if (!formData.projectType) newErrors.projectType = 'Project type is required'
-        if (!formData.subject.trim()) newErrors.subject = 'Project subject is required'
-        if (!formData.message.trim()) {
+        if (!formData.subject?.trim()) newErrors.subject = 'Project subject is required'
+        if (!formData.message?.trim()) {
           newErrors.message = 'Project description is required'
-        } else if (formData.message.trim().length < 20) {
+        } else if (formData.message?.trim().length < 20) {
           newErrors.message = 'Please provide more details (at least 20 characters)'
         }
         break
@@ -342,7 +342,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                   </svg>
                 </div>
                 <h4 className="text-2xl font-bold text-[#003366] mb-2">Tell Us About Yourself</h4>
-                <p className="text-gray-600">We'll use this information to personalize your experience</p>
+                <p className="text-gray-600">We&apos;ll use this information to personalize your experience</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

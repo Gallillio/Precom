@@ -621,11 +621,11 @@ export const BlogScreen: React.FC = () => {
                       </svg>
                     </a>
                     <div className="text-sm text-gray-500">
-                      {new Date(featuredPost.publishedAt).toLocaleDateString('en-US', { 
+                      {featuredPost.publishedAt ? new Date(featuredPost.publishedAt).toLocaleDateString('en-US', { 
                         year: 'numeric', 
                         month: 'long', 
                         day: 'numeric' 
-                      })}
+                      }) : 'No date'}
                     </div>
                   </div>
                 </div>

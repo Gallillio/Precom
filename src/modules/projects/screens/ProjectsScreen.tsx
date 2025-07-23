@@ -187,7 +187,7 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
         if (entry.isIntersecting) {
           const elementId = entry.target.getAttribute('data-animate-id')
           if (elementId) {
-            setVisibleElements(prev => new Set([...prev, elementId]))
+            setVisibleElements(prev => new Set(Array.from(prev).concat(elementId)))
           }
         }
       })

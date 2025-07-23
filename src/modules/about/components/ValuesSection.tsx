@@ -103,10 +103,10 @@ export const ValuesSection: React.FC<ValuesSectionProps> = ({ className = '' }) 
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleValues(prev => [...new Set([...prev, index])])
+            setVisibleValues(prev => Array.from(new Set([...prev, index])))
             // Trigger progress animation after a small delay
             setTimeout(() => {
-              setAnimateProgress(prev => [...new Set([...prev, index])])
+              setAnimateProgress(prev => Array.from(new Set([...prev, index])))
             }, 300 + index * 100)
           }
         },
@@ -141,7 +141,7 @@ export const ValuesSection: React.FC<ValuesSectionProps> = ({ className = '' }) 
             return (
               <div 
                 key={index}
-                ref={el => valueRefs.current[index] = el}
+                ref={el => { valueRefs.current[index] = el; }}
               >
                 <Card 
                   className={`card-hover h-full transform transition-all duration-700 delay-${index * 100} ${

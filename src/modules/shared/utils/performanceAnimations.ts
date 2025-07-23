@@ -341,13 +341,14 @@ export const setPerformantCSSVariables = (element: HTMLElement): void => {
 export const lazyLoadAnimation = async (animationName: string): Promise<void> => {
   switch (animationName) {
     case 'kenBurns':
-      // Dynamically import heavy animation code only when needed
-      const { heavyKenBurnsEffect } = await import('./heavyAnimations')
-      return heavyKenBurnsEffect()
+      // TODO: Implement heavy animation module
+      console.log('Ken Burns animation would be loaded here')
+      return
     
     case 'parallax':
-      const { advancedParallax } = await import('./heavyAnimations')
-      return advancedParallax()
+      // TODO: Implement heavy animation module
+      console.log('Advanced parallax animation would be loaded here')
+      return
     
     default:
       console.warn(`Animation ${animationName} not found`)

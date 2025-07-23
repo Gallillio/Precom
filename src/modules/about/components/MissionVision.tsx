@@ -17,7 +17,7 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ className = '' }) 
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleCards(prev => [...new Set([...prev, index])])
+            setVisibleCards(prev => Array.from(new Set([...prev, index])))
           }
         },
         { threshold: 0.3 }
@@ -48,7 +48,7 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ className = '' }) 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
           {/* Mission Card */}
           <div 
-            ref={el => cardRefs.current[0] = el}
+            ref={el => { cardRefs.current[0] = el; }}
             className={`transform transition-all duration-700 ${
               visibleCards.includes(0) ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
@@ -92,7 +92,7 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ className = '' }) 
 
           {/* Vision Card */}
           <div 
-            ref={el => cardRefs.current[1] = el}
+            ref={el => { cardRefs.current[1] = el; }}
             className={`transform transition-all duration-700 delay-200 ${
               visibleCards.includes(1) ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
@@ -138,7 +138,7 @@ export const MissionVision: React.FC<MissionVisionProps> = ({ className = '' }) 
 
         {/* Principles Overview */}
         <div 
-          ref={el => cardRefs.current[2] = el}
+          ref={el => { cardRefs.current[2] = el; }}
           className={`transform transition-all duration-700 delay-400 ${
             visibleCards.includes(2) ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
           }`}

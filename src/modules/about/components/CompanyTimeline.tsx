@@ -89,7 +89,7 @@ export const CompanyTimeline: React.FC<CompanyTimelineProps> = ({ className = ''
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisibleItems(prev => [...new Set([...prev, index])])
+            setVisibleItems(prev => Array.from(new Set([...prev, index])))
           }
         },
         { threshold: 0.3 }
@@ -127,7 +127,7 @@ export const CompanyTimeline: React.FC<CompanyTimelineProps> = ({ className = ''
               return (
                 <div 
                   key={index}
-                  ref={el => itemRefs.current[index] = el}
+                  ref={el => { itemRefs.current[index] = el; }}
                   className={`relative flex items-center ${isLeft ? 'justify-start' : 'justify-end'}`}
                 >
                   {/* Timeline Dot */}

@@ -41,7 +41,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         entries.forEach((entry) => {
           const itemId = entry.target.getAttribute('data-timeline-id')
           if (itemId && entry.isIntersecting) {
-            setVisibleItems(prev => new Set([...prev, itemId]))
+            setVisibleItems(prev => new Set(Array.from(prev).concat(itemId)))
           }
         })
       },

@@ -160,7 +160,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
             <h2 className="heading-1 text-[var(--text-primary)] mb-6 max-w-4xl mx-auto">
               Vehicles That Shape{' '}
               <span className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] bg-clip-text text-transparent">
-                Tomorrow's Mobility
+                Tomorrow&apos;s Mobility
               </span>
             </h2>
 
@@ -220,8 +220,8 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
                 Have a Vehicle Project in Mind?
               </h3>
               <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-                From concept to production, we're here to bring your automotive vision to life. 
-                Let's discuss how we can help develop your next vehicle.
+                From concept to production, we&apos;re here to bring your automotive vision to life. 
+                Let&apos;s discuss how we can help develop your next vehicle.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

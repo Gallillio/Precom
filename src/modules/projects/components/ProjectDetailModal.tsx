@@ -66,8 +66,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     <Modal 
       isOpen={isOpen} 
       onClose={onClose}
-      size="full"
-      className="max-w-7xl mx-auto"
+      size="xl"
     >
       <div className="flex flex-col h-full max-h-[90vh] overflow-hidden">
         {/* Header */}

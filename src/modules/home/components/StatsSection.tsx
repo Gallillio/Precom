@@ -160,8 +160,8 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ className = '' }) =>
           {/* Testimonial Quote */}
           <div className="max-w-4xl mx-auto mb-8">
             <blockquote className="text-2xl sm:text-3xl font-light text-white/90 italic leading-relaxed">
-              "Working with Precom has been transformational for our vehicle development projects in Egypt. 
-              Their automotive expertise and commitment to excellence is unmatched in the Egyptian market."
+              &ldquo;Working with Precom has been transformational for our vehicle development projects in Egypt. 
+              Their automotive expertise and commitment to excellence is unmatched in the Egyptian market.&rdquo;
             </blockquote>
             <div className="flex items-center justify-center space-x-4 mt-8">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">

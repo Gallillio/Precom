@@ -97,7 +97,7 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
             <h2 className="heading-1 text-[var(--text-primary)] mb-6 max-w-4xl mx-auto">
               Automotive Engineering Solutions for{' '}
               <span className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] bg-clip-text text-transparent">
-                Tomorrow's Vehicles
+                Tomorrow&apos;s Vehicles
               </span>
             </h2>
 
@@ -144,7 +144,7 @@ export const ServicesOverview: React.FC<ServicesOverviewProps> = ({ className = 
                 Ready to Start Your Next Vehicle Project?
               </h3>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Let's discuss how our automotive engineering expertise can bring your vehicle vision to life. 
+                Let&apos;s discuss how our automotive engineering expertise can bring your vehicle vision to life. 
                 Get in touch for an automotive consultation.
               </p>
 

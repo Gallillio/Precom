@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
   const [isScrolled, setIsScrolled] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const pathname = usePathname()
-  const servicesTimeoutRef = useRef<NodeJS.Timeout>()
+  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const navigation = [
     { name: 'Home', href: ROUTES.home },
