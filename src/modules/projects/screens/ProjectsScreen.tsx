@@ -6,6 +6,7 @@ import {
   ProjectCard, 
   ProjectFilter, 
   ProjectMasonryGrid,
+  ProjectListView,
   ProjectDetailModal,
   type FilterState 
 } from '../components'
@@ -18,30 +19,30 @@ interface ProjectsScreenProps {
 const sampleProjects: Project[] = [
   {
     id: '1',
-    title: 'Skyline Tower Complex',
-    description: 'A comprehensive structural engineering project for a 40-story residential tower complex featuring innovative seismic resistance design and sustainable building practices.',
-    shortDescription: 'Structural engineering for a 40-story residential tower with innovative seismic resistance.',
-    category: 'Structural Engineering',
-    tags: ['High-rise', 'Seismic Design', 'Residential', 'Sustainable'],
+    title: 'Digital Manufacturing Implementation',
+    description: 'Comprehensive technology operations consulting for a major manufacturing company to implement Industry 4.0 solutions, including IoT integration, automated production lines, and real-time monitoring systems.',
+    shortDescription: 'Technology operations consulting for Industry 4.0 manufacturing transformation.',
+    category: 'Technology Operations',
+    tags: ['Industry 4.0', 'IoT Integration', 'Automation', 'Manufacturing'],
     images: [
       {
         id: '1',
-        url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop',
-        alt: 'Skyline Tower Complex exterior view',
+        url: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&h=600&fit=crop',
+        alt: 'Modern manufacturing facility with automated systems',
         isPrimary: true,
-        caption: 'Completed tower showcasing modern architectural design'
+        caption: 'Smart manufacturing facility with integrated IoT systems'
       },
       {
         id: '2',
-        url: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop',
-        alt: 'Tower under construction',
+        url: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop',
+        alt: 'Automated production line',
         isPrimary: false,
-        caption: 'Construction phase showing structural framework'
+        caption: 'Automated production line with real-time monitoring'
       }
     ],
-    client: 'Metropolitan Development Corp',
+    client: 'TechManufacturing Inc.',
     duration: '18 months',
-    budget: '$2.5M',
+    budget: '$3.2M',
     status: 'completed',
     featured: true,
     createdAt: new Date('2023-01-15'),
@@ -49,21 +50,21 @@ const sampleProjects: Project[] = [
   },
   {
     id: '2',
-    title: 'Industrial Bridge Infrastructure',
-    description: 'Design and project management for a steel truss bridge connecting two industrial facilities, featuring load optimization and environmental impact assessment.',
-    shortDescription: 'Steel truss bridge design connecting industrial facilities with optimized load capacity.',
-    category: 'Project Management',
-    tags: ['Bridge Design', 'Industrial', 'Steel Structure', 'Environmental'],
+    title: 'Global Supply Chain Optimization',
+    description: 'End-to-end supply chain management project for an international retail company, optimizing logistics networks, vendor relationships, and inventory management across 15 countries.',
+    shortDescription: 'International supply chain optimization across 15 countries for retail operations.',
+    category: 'Supply Chain Management',
+    tags: ['Global Logistics', 'Vendor Management', 'Inventory Optimization', 'International Trade'],
     images: [
       {
         id: '3',
-        url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop',
-        alt: 'Industrial bridge spanning between facilities',
+        url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop',
+        alt: 'Global logistics and supply chain visualization',
         isPrimary: true,
-        caption: 'Completed bridge connecting industrial facilities'
+        caption: 'Global supply chain network optimization'
       }
     ],
-    client: 'TechCorp Industries',
+    client: 'GlobalRetail Corp',
     duration: '12 months',
     status: 'completed',
     featured: false,
@@ -72,22 +73,22 @@ const sampleProjects: Project[] = [
   },
   {
     id: '3',
-    title: 'Smart City Infrastructure Review',
-    description: 'Comprehensive engineering consulting and design review for smart city infrastructure including traffic management systems, utilities integration, and public safety enhancements.',
-    shortDescription: 'Consulting and design review for smart city infrastructure and utilities integration.',
-    category: 'Engineering Consulting',
-    tags: ['Smart City', 'Infrastructure', 'Traffic Management', 'Utilities'],
+    title: 'Renewable Energy Park Feasibility Study',
+    description: 'Comprehensive feasibility analysis for a 500MW solar and wind energy park, including technical assessments, financial modeling, environmental impact studies, and regulatory compliance evaluation.',
+    shortDescription: 'Feasibility study for large-scale renewable energy park development.',
+    category: 'Feasibility Studies',
+    tags: ['Renewable Energy', 'Financial Modeling', 'Environmental Impact', 'Regulatory Compliance'],
     images: [
       {
         id: '4',
-        url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
-        alt: 'Smart city infrastructure overview',
+        url: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop',
+        alt: 'Wind and solar energy park',
         isPrimary: true,
-        caption: 'Modern city infrastructure with integrated smart systems'
+        caption: 'Renewable energy park with solar and wind integration'
       }
     ],
-    client: 'City Planning Department',
-    duration: '24 months',
+    client: 'GreenEnergy Ventures',
+    duration: '8 months',
     status: 'in-progress',
     featured: true,
     createdAt: new Date('2023-08-10'),
@@ -95,22 +96,22 @@ const sampleProjects: Project[] = [
   },
   {
     id: '4',
-    title: 'Renewable Energy Facility Design',
-    description: 'Complete design review and quality assurance for a solar panel installation facility, including structural integrity assessment and compliance verification.',
-    shortDescription: 'Design review for solar panel facility with structural integrity assessment.',
-    category: 'Design Review',
-    tags: ['Renewable Energy', 'Solar', 'Quality Assurance', 'Compliance'],
+    title: 'Infrastructure Development Tender',
+    description: 'Complete tender preparation and submission for a major infrastructure development project, including technical documentation, cost analysis, project scheduling, and compliance verification.',
+    shortDescription: 'Comprehensive tender services for major infrastructure development project.',
+    category: 'Tender Services',
+    tags: ['Infrastructure', 'Technical Documentation', 'Cost Analysis', 'Project Scheduling'],
     images: [
       {
         id: '5',
-        url: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop',
-        alt: 'Solar panel installation facility',
+        url: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop',
+        alt: 'Infrastructure construction site',
         isPrimary: true,
-        caption: 'Solar panel array at renewable energy facility'
+        caption: 'Major infrastructure development project site'
       }
     ],
-    client: 'GreenTech Solutions',
-    duration: '8 months',
+    client: 'National Infrastructure Authority',
+    duration: '6 months',
     status: 'completed',
     featured: false,
     createdAt: new Date('2023-05-05'),
@@ -118,27 +119,73 @@ const sampleProjects: Project[] = [
   },
   {
     id: '5',
-    title: 'Commercial Plaza Redevelopment',
-    description: 'Structural analysis and renovation planning for a historic commercial plaza, balancing preservation requirements with modern safety standards.',
-    shortDescription: 'Historic plaza renovation balancing preservation with modern safety standards.',
-    category: 'Structural Engineering',
-    tags: ['Historic Preservation', 'Commercial', 'Renovation', 'Safety Standards'],
+    title: 'Corporate Training Program Development',
+    description: 'Design and implementation of comprehensive training and development programs for a multinational corporation, including leadership development, technical skills training, and performance management systems.',
+    shortDescription: 'Corporate training program development for multinational company workforce.',
+    category: 'Training & Development',
+    tags: ['Leadership Development', 'Skills Training', 'Performance Management', 'Corporate Learning'],
     images: [
       {
         id: '6',
-        url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
-        alt: 'Historic commercial plaza renovation',
+        url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
+        alt: 'Corporate training session',
         isPrimary: true,
-        caption: 'Renovated commercial plaza maintaining historic character'
+        caption: 'Corporate training and development program in progress'
       }
     ],
-    client: 'Historic District Authority',
+    client: 'MultiCorp International',
     duration: '15 months',
     status: 'planned',
     featured: false,
     createdAt: new Date('2024-01-10'),
     updatedAt: new Date('2024-01-10')
-  }
+  },
+  {
+    id: '6',
+    title: 'International Market Entry Strategy',
+    description: 'Business representation and market entry consulting for European companies expanding into emerging markets, including regulatory compliance, local partnerships, and strategic positioning.',
+    shortDescription: 'Market entry strategy and business representation for European companies.',
+    category: 'Business Representation',
+    tags: ['Market Entry', 'International Business', 'Regulatory Compliance', 'Strategic Partnerships'],
+    images: [
+      {
+        id: '7',
+        url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
+        alt: 'International business meeting',
+        isPrimary: true,
+        caption: 'International business representation and market entry consulting'
+      }
+    ],
+    client: 'European Business Consortium',
+    duration: '10 months',
+    status: 'in-progress',
+    featured: true,
+    createdAt: new Date('2023-09-15'),
+    updatedAt: new Date('2024-11-20')
+  },
+  {
+    id: '7',
+    title: 'Smart City Development Project',
+    description: 'Comprehensive project management for a smart city development initiative, coordinating multiple stakeholders, technology vendors, and government agencies to deliver integrated urban solutions.',
+    shortDescription: 'Project management for comprehensive smart city development initiative.',
+    category: 'Project Management',
+    tags: ['Smart City', 'Urban Planning', 'Stakeholder Management', 'Technology Integration'],
+    images: [
+      {
+        id: '8',
+        url: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=600&fit=crop',
+        alt: 'Smart city infrastructure',
+        isPrimary: true,
+        caption: 'Smart city development with integrated technology solutions'
+      }
+    ],
+    client: 'Metropolitan City Council',
+    duration: '24 months',
+    status: 'in-progress',
+    featured: false,
+    createdAt: new Date('2023-06-01'),
+    updatedAt: new Date('2024-10-15')
+  },
 ]
 
 const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
@@ -152,6 +199,7 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
     sortBy: 'date',
     sortOrder: 'desc',
     search: '',
+    viewMode: 'grid',
   })
   const [loading, setLoading] = useState(true)
   const [filterLoading, setFilterLoading] = useState(false)
@@ -554,6 +602,7 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                   sortBy: 'date',
                   sortOrder: 'desc',
                   search: '',
+                  viewMode: 'grid',
                 })}
                 className="bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
@@ -565,75 +614,6 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
             </div>
           ) : (
             <>
-              {/* Premium Results Summary */}
-              <div
-                ref={resultsRef}
-                data-animate-id="results"
-                className={`mb-10 p-8 bg-gradient-to-r from-[#003366]/5 via-white to-[#00B4A6]/5 rounded-3xl border border-white/50 shadow-xl backdrop-blur-sm relative overflow-hidden transition-all duration-1000 transform ${
-                  visibleElements.has('results')
-                    ? 'translate-y-0 opacity-100 scale-100'
-                    : 'translate-y-8 opacity-0 scale-95'
-                }`}
-              >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-5">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#003366] to-[#00B4A6] rounded-full blur-xl" />
-                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#00B4A6] to-[#003366] rounded-full blur-lg" />
-                </div>
-                
-                <div className="flex flex-col md:flex-row md:items-center justify-between relative z-10">
-                  <div className="flex items-center space-x-6">
-                    {/* Project Count Badge */}
-                    <div className="bg-gradient-to-r from-[#003366] to-[#00B4A6] rounded-2xl p-6 shadow-xl">
-                      <div className="text-4xl font-bold text-white text-center">
-                        {filteredProjects.length}
-                      </div>
-                      <div className="text-white/80 text-sm text-center mt-1">
-                        {filteredProjects.length === 1 ? 'Project' : 'Projects'}
-                      </div>
-                    </div>
-                    
-                    {/* Summary Information */}
-                    <div>
-                      <h3 className="text-2xl font-bold text-[#003366] mb-2">
-                        Portfolio Results
-                      </h3>
-                      <p className="text-gray-600 text-base">
-                        Showing <span className="font-semibold text-[#00B4A6]">{filteredProjects.length}</span> of <span className="font-semibold text-[#003366]">{projects.length}</span> total engineering projects
-                      </p>
-                      
-                      {/* Active Filters Indicator */}
-                      {(filters.search || filters.category || filters.tags.length > 0 || filters.status || filters.featured !== null) && (
-                        <div className="flex items-center mt-3">
-                          <svg className="w-4 h-4 mr-2 text-[#00B4A6]" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
-                          </svg>
-                          <span className="text-sm text-gray-600">
-                            Filters applied - showing refined results
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  
-                  {/* Sort Information */}
-                  {filteredProjects.length > 0 && (
-                    <div className="mt-6 md:mt-0 bg-white/50 backdrop-blur-sm rounded-2xl p-4 border border-white/50">
-                      <div className="text-center">
-                        <div className="text-sm font-semibold text-[#003366] mb-1">
-                          Sorted by
-                        </div>
-                        <div className="text-base font-bold text-[#00B4A6]">
-                          {filters.sortBy === 'date' ? 'Date Created' : filters.sortBy === 'title' ? 'Project Name' : 'Category'}
-                        </div>
-                        <div className="text-xs text-gray-500 mt-1">
-                          {filters.sortOrder === 'desc' ? '↓ Newest First' : '↑ Oldest First'}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
               
               {filterLoading ? (
                 <div className="space-y-8">
@@ -646,11 +626,19 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                       Filtering projects...
                     </div>
                   </div>
-                  <ProjectMasonryGrid
-                    projects={[]}
-                    loading={true}
-                    onProjectClick={handleProjectClick}
-                  />
+                  {filters.viewMode === 'grid' ? (
+                    <ProjectMasonryGrid
+                      projects={[]}
+                      loading={true}
+                      onProjectClick={handleProjectClick}
+                    />
+                  ) : (
+                    <ProjectListView
+                      projects={[]}
+                      loading={true}
+                      onProjectClick={handleProjectClick}
+                    />
+                  )}
                 </div>
               ) : (
                 <div
@@ -662,12 +650,21 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                       : 'translate-y-16 opacity-0'
                   }`}
                 >
-                  <ProjectMasonryGrid
-                    projects={filteredProjects}
-                    loading={false}
-                    onProjectClick={handleProjectClick}
-                    className="animate-fade-in"
-                  />
+                  {filters.viewMode === 'grid' ? (
+                    <ProjectMasonryGrid
+                      projects={filteredProjects}
+                      loading={false}
+                      onProjectClick={handleProjectClick}
+                      className="animate-fade-in"
+                    />
+                  ) : (
+                    <ProjectListView
+                      projects={filteredProjects}
+                      loading={false}
+                      onProjectClick={handleProjectClick}
+                      className="animate-fade-in"
+                    />
+                  )}
                 </div>
               )}
             </>

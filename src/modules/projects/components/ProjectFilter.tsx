@@ -21,6 +21,7 @@ export interface FilterState {
   sortBy: 'date' | 'title' | 'category'
   sortOrder: 'asc' | 'desc'
   search: string
+  viewMode: 'grid' | 'list'
 }
 
 const ProjectFilter: React.FC<ProjectFilterProps> = ({
@@ -41,20 +42,30 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
     sortBy: 'date',
     sortOrder: 'desc',
     search: '',
+    viewMode: 'grid',
   })
 
   const [isExpanded, setIsExpanded] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
 
-  // Debounce search updates
+  // Debounce search updates and maintain search when other filters change
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
-      onFilterChange({ ...filters, search: searchTerm })
+      const updatedFilters = { ...filters, search: searchTerm }
+      setFilters(updatedFilters)
+      onFilterChange(updatedFilters)
       onSearchChange(searchTerm)
     }, 300)
 
     return () => clearTimeout(debounceTimer)
   }, [searchTerm])
+
+  // Sync search term with filters when other filters change (to maintain search)
+  useEffect(() => {
+    if (filters.search !== searchTerm) {
+      setSearchTerm(filters.search)
+    }
+  }, [filters.search])
 
   const updateFilters = (newFilters: Partial<FilterState>) => {
     const updatedFilters = { ...filters, ...newFilters }
@@ -71,6 +82,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
       sortBy: 'date',
       sortOrder: 'desc',
       search: '',
+      viewMode: filters.viewMode, // Preserve view mode
     }
     setFilters(clearedFilters)
     setSearchTerm('')
@@ -88,140 +100,142 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
   const hasActiveFilters = filters.category || filters.tags.length > 0 || filters.status || filters.featured !== null || filters.search
 
   return (
-    <div className={`bg-white/90 backdrop-blur-sm shadow-2xl rounded-3xl border border-white/50 relative overflow-hidden ${className}`}>
-      {/* Premium Background Elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#003366] to-[#00B4A6] rounded-full blur-2xl" />
-        <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-gradient-to-tr from-[#00B4A6] to-[#003366] rounded-full blur-xl" />
-      </div>
-      
-      {/* Premium Header */}
-      <div className="bg-gradient-to-r from-[#003366] via-[#00456B] to-[#00B4A6] text-white p-8 rounded-t-3xl relative overflow-hidden">
-        {/* Header Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-32 h-32 border border-white/20 rounded-full animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-24 h-24 border border-white/15 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
-        <div className="flex items-center justify-between relative z-10">
-          <div className="flex items-center">
-            <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-3 mr-4">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold">Advanced Project Filtering</h3>
-              <p className="text-blue-100 text-base mt-2 flex items-center">
-                <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold mr-3">
-                  {filteredCount} of {totalCount}
-                </span>
-                {hasActiveFilters ? 'projects match your search criteria' : 'projects available to explore'}
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4 relative z-10">
-            {hasActiveFilters && (
-              <button
-                onClick={clearFilters}
-                className="group bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
-              >
-                <svg className="w-5 h-5 mr-2 inline group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                Reset Filters
-              </button>
-            )}
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="md:hidden group bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-2xl font-semibold hover:bg-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
-            >
-              <svg className={`w-5 h-5 mr-2 inline transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-              {isExpanded ? 'Hide' : 'Show'} Options
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Premium Search Bar */}
-      <div className="p-8 relative">
-        <div className="relative mb-8">
-          <div className="relative">
-            <svg className="absolute left-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className={`bg-white/95 backdrop-blur-sm shadow-lg rounded-2xl border border-gray-200/50 ${className}`}>
+      {/* Compact Header Bar */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-6 border-b border-gray-200/50">
+        {/* Left: Search and Results */}
+        <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-4">
+          {/* Search Bar */}
+          <div className="relative flex-1 max-w-md">
+            <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
               type="text"
-              placeholder="Search projects by name, description, client, or technology..."
+              placeholder="Search projects..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-16 pr-16 py-5 bg-gradient-to-r from-gray-50 to-blue-50/30 border border-gray-200/50 rounded-2xl focus:outline-none focus:ring-4 focus:ring-[#00B4A6]/20 focus:border-[#00B4A6] transition-all duration-300 text-[#003366] placeholder-gray-500 shadow-inner text-lg font-medium"
+              className="w-full pl-10 pr-10 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00B4A6]/30 focus:border-[#00B4A6] transition-all duration-200 text-sm"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#00B4A6] hover:scale-110 transition-all duration-200 bg-white rounded-full p-2 shadow-lg"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             )}
           </div>
+          
+          {/* Results Count */}
+          <div className="flex items-center gap-2 text-sm text-gray-600 whitespace-nowrap">
+            <span className="font-medium text-[#003366]">{filteredCount}</span>
+            <span>of {totalCount} projects</span>
+          </div>
         </div>
 
-        <div className={`space-y-6 ${isExpanded ? 'block' : 'hidden md:block'}`}>
-          {/* Premium Quick Filter Pills */}
-          <div className="mb-8">
-            <h4 className="text-lg font-bold text-[#003366] mb-4 flex items-center">
-              <svg className="w-5 h-5 mr-2 text-[#00B4A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Quick Filters
-            </h4>
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => updateFilters({ featured: filters.featured === true ? null : true })}
-                className={`group px-6 py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
-                  filters.featured === true
-                    ? 'bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white transform scale-105'
-                    : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-[#003366]/10 hover:to-[#00B4A6]/10 hover:text-[#003366] border border-gray-200'
-                }`}
-              >
-                <svg className="w-5 h-5 mr-2 inline group-hover:animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-                Featured Projects
-              </button>
-              <button
-                onClick={() => updateFilters({ status: filters.status === 'completed' ? '' : 'completed' })}
-                className={`group px-6 py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
-                  filters.status === 'completed'
-                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white transform scale-105'
-                    : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:text-green-700 border border-gray-200'
-                }`}
-              >
-                <svg className="w-5 h-5 mr-2 inline group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                Completed Projects
-              </button>
-              <button
-                onClick={() => updateFilters({ status: filters.status === 'in-progress' ? '' : 'in-progress' })}
-                className={`group px-6 py-3 rounded-2xl font-bold text-base transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
-                  filters.status === 'in-progress'
-                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white transform scale-105'
-                    : 'bg-white/80 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-amber-50 hover:text-orange-700 border border-gray-200'
-                }`}
-              >
-                <svg className="w-5 h-5 mr-2 inline group-hover:animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-                Active Projects
-              </button>
-            </div>
+        {/* Right: Quick Actions */}
+        <div className="flex items-center gap-3">
+          {/* Quick Filter Pills */}
+          <div className="hidden sm:flex items-center gap-2">
+            <button
+              onClick={() => updateFilters({ featured: filters.featured === true ? null : true })}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                filters.featured === true
+                  ? 'bg-[#003366] text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              ⭐ Featured
+            </button>
+            <button
+              onClick={() => updateFilters({ status: filters.status === 'completed' ? '' : 'completed' })}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                filters.status === 'completed'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              ✓ Completed
+            </button>
           </div>
+
+          {/* View Mode Toggle */}
+          <div className="flex bg-gray-100 rounded-lg p-1">
+            <button 
+              onClick={() => updateFilters({ viewMode: 'grid' })}
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${
+                filters.viewMode === 'grid'
+                  ? 'bg-white text-[#003366] shadow-sm'
+                  : 'text-gray-600 hover:text-gray-800'
+              }`}
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </button>
+            <button 
+              onClick={() => updateFilters({ viewMode: 'list' })}
+              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${
+                filters.viewMode === 'list'
+                  ? 'bg-white text-[#003366] shadow-sm'
+                  : 'text-gray-600 hover:text-gray-800'
+              }`}
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Advanced Filters Toggle */}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              isExpanded || hasActiveFilters
+                ? 'bg-[#003366] text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+            </svg>
+            Filters
+            {hasActiveFilters && (
+              <span className="bg-white/20 text-xs px-1.5 py-0.5 rounded-full">
+                {(filters.category ? 1 : 0) + filters.tags.length + (filters.status && filters.status !== '' ? 1 : 0) + (filters.featured !== null ? 1 : 0)}
+              </span>
+            )}
+            <svg 
+              className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          {/* Reset Filters */}
+          {hasActiveFilters && (
+            <button
+              onClick={clearFilters}
+              className="text-gray-400 hover:text-gray-600 p-2"
+              title="Reset all filters"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Advanced Filters Expanded Content */}
+      <div className={`transition-all duration-300 ${isExpanded ? 'block' : 'hidden'}`}>
+        <div className="p-6 space-y-6">
 
           {/* Enhanced Dropdowns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -306,7 +320,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
                   onClick={() => toggleTag(tag)}
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all shadow-sm hover:shadow-md ${
                     filters.tags.includes(tag)
-                      ? 'bg-var(--color-primary) text-white shadow-lg transform scale-105'
+                      ? 'bg-[#003366] text-white shadow-lg transform scale-105'
                       : 'bg-white text-gray-700 border border-gray-200 hover:border-var(--color-primary) hover:text-var(--color-primary)'
                   }`}
                 >
@@ -321,62 +335,30 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
             </div>
           </div>
 
-          {/* Enhanced Sort Controls */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-gray-200">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">
-                  Sort By
-                </label>
-                <div className="relative">
-                  <select
-                    value={filters.sortBy}
-                    onChange={(e) => updateFilters({ sortBy: e.target.value as 'date' | 'title' | 'category' })}
-                    className="px-4 py-2 pr-8 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-var(--color-primary) focus:border-transparent transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="date">Date Created</option>
-                    <option value="title">Project Name</option>
-                    <option value="category">Category</option>
-                  </select>
-                  <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">
-                  Order
-                </label>
-                <div className="relative">
-                  <select
-                    value={filters.sortOrder}
-                    onChange={(e) => updateFilters({ sortOrder: e.target.value as 'asc' | 'desc' })}
-                    className="px-4 py-2 pr-8 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-var(--color-primary) focus:border-transparent transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="desc">Newest First</option>
-                    <option value="asc">Oldest First</option>
-                  </select>
-                  <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            {/* View Options */}
+          {/* Sort Controls */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200">
             <div>
-              <label className="block text-sm font-semibold text-gray-800 mb-2">
-                View
-              </label>
-              <div className="flex bg-gray-100 rounded-xl p-1">
-                <button className="px-3 py-1 rounded-lg bg-var(--color-primary) text-white text-sm font-medium">
-                  Grid
-                </button>
-                <button className="px-3 py-1 text-gray-600 text-sm font-medium hover:text-gray-800">
-                  List
-                </button>
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+              <select
+                value={filters.sortBy}
+                onChange={(e) => updateFilters({ sortBy: e.target.value as 'date' | 'title' | 'category' })}
+                className="px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00B4A6]/30 focus:border-[#00B4A6]"
+              >
+                <option value="date">Date Created</option>
+                <option value="title">Project Name</option>
+                <option value="category">Category</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Order</label>
+              <select
+                value={filters.sortOrder}
+                onChange={(e) => updateFilters({ sortOrder: e.target.value as 'asc' | 'desc' })}
+                className="px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#00B4A6]/30 focus:border-[#00B4A6]"
+              >
+                <option value="desc">Newest First</option>
+                <option value="asc">Oldest First</option>
+              </select>
             </div>
           </div>
 
@@ -396,7 +378,7 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
               </div>
               <div className="flex flex-wrap gap-2">
                 {filters.search && (
-                  <span className="inline-flex items-center bg-var(--color-primary) text-white px-3 py-1 rounded-full text-xs font-medium">
+                  <span className="inline-flex items-center bg-[#003366] text-white px-3 py-1 rounded-full text-xs font-medium">
                     <svg className="w-3 h-3 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
