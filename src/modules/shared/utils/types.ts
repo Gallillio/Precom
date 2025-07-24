@@ -82,37 +82,6 @@ export interface ProjectImage {
   isPrimary: boolean
 }
 
-// Blog Types
-export interface BlogPost extends BaseEntity {
-  title: string
-  slug: string
-  excerpt: string
-  content: string
-  author: Author
-  category: string
-  tags: string[]
-  coverImage?: string
-  published: boolean
-  publishedAt?: Date
-  readingTime: number
-}
-
-export interface Author {
-  id: string
-  name: string
-  bio?: string
-  avatar?: string
-  email?: string
-  socialLinks?: SocialLinks
-}
-
-export interface BlogCategory {
-  id: string
-  name: string
-  slug: string
-  description: string
-  postCount: number
-}
 
 // Team Types
 export interface TeamMember {

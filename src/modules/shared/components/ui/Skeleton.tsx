@@ -69,7 +69,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   )
 }
 
-// Article/Blog Card Skeleton
+// Article Card Skeleton
 export const ArticleSkeleton: React.FC<{ className?: string }> = ({ 
   className = '' 
 }) => (

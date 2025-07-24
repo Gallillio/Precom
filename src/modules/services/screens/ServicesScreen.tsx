@@ -8,45 +8,45 @@ import { ServiceFeatures } from '../components/ServiceFeatures'
 import { Card, Button } from '@/modules/shared/components/ui'
 import Link from 'next/link'
 
-// Comprehensive services data for new design
+// Comprehensive industrial and business services data
 const servicesData = [
   {
-    id: 'structural',
-    title: 'Structural Engineering',
-    subtitle: 'Building Tomorrow\'s Infrastructure',
-    description: 'Comprehensive structural engineering solutions that combine innovative design with proven engineering principles to create safe, efficient, and cost-effective structures.',
-    image: '/images/services/structural-engineering.jpg',
+    id: 'technology-operations',
+    title: 'Technology Operations',
+    subtitle: 'Optimizing Industrial Operations',
+    description: 'Complete factory operations optimization, manufacturing technology implementation, and industrial process management services to enhance productivity and efficiency.',
+    image: '/images/services/technology-operations.jpg',
     features: [
       {
-        title: 'Seismic Analysis',
-        description: 'Advanced earthquake-resistant design and retrofitting',
+        title: 'Factory Optimization',
+        description: 'Manufacturing process improvement and automation implementation',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
           </svg>
         )
       },
       {
-        title: 'Foundation Design',
-        description: 'Optimized foundation systems for all soil conditions',
+        title: 'Industrial Technology',
+        description: 'Advanced manufacturing systems and equipment integration',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           </svg>
         )
       },
       {
-        title: 'Steel & Concrete',
-        description: 'Expert design in both steel and reinforced concrete',
+        title: 'Process Management',
+        description: 'Workflow optimization and quality control systems',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
         )
       },
       {
-        title: 'Code Compliance',
-        description: 'Adherence to all local and international building codes',
+        title: 'Performance Monitoring',
+        description: 'KPI tracking and operational efficiency assessment',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -55,56 +55,30 @@ const servicesData = [
       }
     ],
     stats: [
-      { label: 'Success Rate', value: '99.8%' },
-      { label: 'Projects Completed', value: '200+' },
-      { label: 'Average Timeline', value: '4-8 weeks' }
-    ],
-    subServices: [
-      {
-        id: 'seismic',
-        title: 'Seismic Engineering',
-        description: 'Specialized earthquake-resistant design and structural analysis for high-risk seismic zones.',
-        features: ['Dynamic analysis', 'Base isolation design', 'Retrofit solutions', 'Seismic risk assessment'],
-        icon: (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>),
-        details: { duration: '6-10 weeks', complexity: 'High', expertise: 'Seismic Specialists' }
-      },
-      {
-        id: 'foundation',
-        title: 'Foundation Engineering',
-        description: 'Comprehensive foundation design for all soil conditions and structural requirements.',
-        features: ['Soil analysis', 'Deep foundations', 'Shallow foundations', 'Ground improvement'],
-        icon: (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16" /></svg>),
-        details: { duration: '3-6 weeks', complexity: 'Medium', expertise: 'Geotechnical Engineers' }
-      },
-      {
-        id: 'steel-design',
-        title: 'Steel Structure Design',
-        description: 'Advanced steel structural systems for commercial and industrial applications.',
-        features: ['Moment frames', 'Braced frames', 'Composite design', 'Connection design'],
-        icon: (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z" /></svg>),
-        details: { duration: '4-8 weeks', complexity: 'High', expertise: 'Steel Specialists' }
-      }
+      { label: 'Efficiency Improvement', value: '35%' },
+      { label: 'Factories Optimized', value: '50+' },
+      { label: 'Cost Reduction', value: '25%' }
     ]
   },
   {
-    id: 'project-management',
-    title: 'Project Management',
-    subtitle: 'Delivering Excellence On Time',
-    description: 'Professional project management services that ensure your engineering projects are completed on schedule, within budget, and to the highest quality standards.',
-    image: '/images/services/project-management.jpg',
+    id: 'supply-chain',
+    title: 'Supply Chain Management',
+    subtitle: 'Streamlining Operations',
+    description: 'End-to-end supply chain optimization, logistics planning, procurement strategies, and distribution management to ensure efficient operations and cost reduction.',
+    image: '/images/services/supply-chain.jpg',
     features: [
       {
-        title: 'Schedule Management',
-        description: 'Detailed planning and timeline optimization',
+        title: 'Logistics Planning',
+        description: 'Strategic distribution and transportation optimization',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         )
       },
       {
-        title: 'Budget Control',
-        description: 'Cost management and financial oversight',
+        title: 'Procurement Strategy',
+        description: 'Vendor management and cost-effective sourcing solutions',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
@@ -112,8 +86,258 @@ const servicesData = [
         )
       },
       {
+        title: 'Inventory Management',
+        description: 'Stock optimization and demand forecasting',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+        )
+      },
+      {
+        title: 'Distribution Networks',
+        description: 'Efficient delivery systems and network optimization',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+          </svg>
+        )
+      }
+    ],
+    stats: [
+      { label: 'Cost Savings', value: '30%' },
+      { label: 'Supply Chains Optimized', value: '40+' },
+      { label: 'Delivery Improvement', value: '45%' }
+    ]
+  },
+  {
+    id: 'feasibility-studies',
+    title: 'Feasibility Studies',
+    subtitle: 'Strategic Project Assessment',
+    description: 'Comprehensive technical, financial, and economic analysis to assess project viability, investment potential, and strategic decision-making support.',
+    image: '/images/services/feasibility-studies.jpg',
+    features: [
+      {
+        title: 'Technical Analysis',
+        description: 'Engineering feasibility and technical requirements assessment',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Financial Modeling',
+        description: 'Investment analysis, ROI calculations, and cost-benefit assessment',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Economic Impact',
+        description: 'Market analysis and economic viability assessment',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          </svg>
+        )
+      },
+      {
+        title: 'Risk Assessment',
+        description: 'Project risk identification and mitigation strategies',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        )
+      }
+    ],
+    stats: [
+      { label: 'Studies Completed', value: '120+' },
+      { label: 'Investment Assessed', value: '$500M+' },
+      { label: 'Success Rate', value: '95%' }
+    ]
+  },
+  {
+    id: 'tender-services',
+    title: 'Tender Services',
+    subtitle: 'Professional Tender Management',
+    description: 'Comprehensive tender preparation, documentation, and submission support services to maximize your chances of winning contracts and securing business opportunities.',
+    image: '/images/services/tender-services.jpg',
+    features: [
+      {
+        title: 'Tender Preparation',
+        description: 'Professional bid document preparation and strategy development',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Documentation Support',
+        description: 'Technical specifications and compliance documentation',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        )
+      },
+      {
+        title: 'Compliance Review',
+        description: 'Regulatory compliance and quality assurance verification',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Submission Management',
+        description: 'Timely submission and follow-up management',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      }
+    ],
+    stats: [
+      { label: 'Tenders Prepared', value: '200+' },
+      { label: 'Success Rate', value: '75%' },
+      { label: 'Value Won', value: '$250M+' }
+    ]
+  },
+  {
+    id: 'training-development',
+    title: 'Training & Development',
+    subtitle: 'Building Organizational Capacity',
+    description: 'Comprehensive employee training programs, skills development initiatives, and technical capacity building to enhance workforce capabilities and organizational performance.',
+    image: '/images/services/training-development.jpg',
+    features: [
+      {
+        title: 'Technical Training',
+        description: 'Specialized technical skills development and certification programs',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        )
+      },
+      {
+        title: 'Leadership Development',
+        description: 'Management and leadership skills enhancement programs',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Skills Assessment',
+        description: 'Competency evaluation and skills gap analysis',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+        )
+      },
+      {
+        title: 'Custom Programs',
+        description: 'Tailored training solutions for specific organizational needs',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+          </svg>
+        )
+      }
+    ],
+    stats: [
+      { label: 'Employees Trained', value: '2,500+' },
+      { label: 'Training Programs', value: '150+' },
+      { label: 'Satisfaction Rate', value: '98%' }
+    ]
+  },
+  {
+    id: 'business-representation',
+    title: 'Business Representation',
+    subtitle: 'Market Entry & Partnership',
+    description: 'Professional representation services for local and foreign companies seeking market entry, business development, and strategic partnerships in Egypt and regional markets.',
+    image: '/images/services/business-representation.jpg',
+    features: [
+      {
+        title: 'Market Entry',
+        description: 'Strategic market entry planning and execution support',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+          </svg>
+        )
+      },
+      {
+        title: 'Partnership Development',
+        description: 'Strategic alliance and partnership facilitation',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Regulatory Support',
+        description: 'Legal compliance and regulatory navigation assistance',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        )
+      },
+      {
+        title: 'Cultural Bridge',
+        description: 'Cross-cultural business communication and relationship building',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+        )
+      }
+    ],
+    stats: [
+      { label: 'Companies Represented', value: '80+' },
+      { label: 'Market Entries', value: '45+' },
+      { label: 'Success Rate', value: '90%' }
+    ]
+  },
+  {
+    id: 'project-management',
+    title: 'Project Management',
+    subtitle: 'Delivering Excellence On Time',
+    description: 'Professional project planning, execution, and delivery management services ensuring projects are completed on schedule, within budget, and to the highest quality standards.',
+    image: '/images/services/project-management.jpg',
+    features: [
+      {
+        title: 'Project Planning',
+        description: 'Comprehensive project planning and resource allocation',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        )
+      },
+      {
+        title: 'Schedule Management',
+        description: 'Timeline optimization and milestone tracking',
+        icon: (
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        )
+      },
+      {
         title: 'Risk Management',
-        description: 'Proactive risk identification and mitigation',
+        description: 'Proactive risk identification and mitigation strategies',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -122,7 +346,7 @@ const servicesData = [
       },
       {
         title: 'Quality Assurance',
-        description: 'Comprehensive quality control processes',
+        description: 'Comprehensive quality control and performance monitoring',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -131,39 +355,21 @@ const servicesData = [
       }
     ],
     stats: [
+      { label: 'Projects Delivered', value: '300+' },
       { label: 'On-Time Delivery', value: '95%' },
-      { label: 'Budget Adherence', value: '98%' },
-      { label: 'Client Satisfaction', value: '100%' }
-    ],
-    subServices: [
-      {
-        id: 'construction-pm',
-        title: 'Construction Management',
-        description: 'End-to-end construction project management from planning through completion.',
-        features: ['Site supervision', 'Contractor coordination', 'Progress monitoring', 'Safety management'],
-        icon: (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16" /></svg>),
-        details: { duration: 'Project-dependent', complexity: 'High', expertise: 'Construction Managers' }
-      },
-      {
-        id: 'design-pm',
-        title: 'Design Management',
-        description: 'Coordinated management of multi-disciplinary design teams and deliverables.',
-        features: ['Design coordination', 'Review management', 'Schedule control', 'Quality oversight'],
-        icon: (<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707" /></svg>),
-        details: { duration: '3-12 months', complexity: 'Medium', expertise: 'Design Managers' }
-      }
+      { label: 'Budget Adherence', value: '98%' }
     ]
   },
   {
-    id: 'consulting',
-    title: 'Engineering Consulting',
-    subtitle: 'Expert Technical Guidance',
-    description: 'Independent engineering consulting services providing expert technical advice, feasibility studies, and strategic guidance for complex engineering challenges.',
-    image: '/images/services/consulting.jpg',
+    id: 'strategic-consulting',
+    title: 'Strategic Consulting',
+    subtitle: 'Business Growth & Strategy',
+    description: 'Comprehensive strategic consulting services including market studies, business development, strategic management, and human resources planning to drive sustainable growth.',
+    image: '/images/services/strategic-consulting.jpg',
     features: [
       {
-        title: 'Feasibility Studies',
-        description: 'Comprehensive technical and economic analysis',
+        title: 'Market Studies',
+        description: 'In-depth market analysis and competitive intelligence',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -171,87 +377,37 @@ const servicesData = [
         )
       },
       {
-        title: 'Expert Witness',
-        description: 'Professional testimony and technical expertise',
+        title: 'Business Development',
+        description: 'Growth strategies and expansion planning',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16l3-1" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
           </svg>
         )
       },
       {
-        title: 'Value Engineering',
-        description: 'Cost optimization without compromising quality',
+        title: 'Strategic Planning',
+        description: 'Long-term strategic roadmaps and implementation plans',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
         )
       },
       {
-        title: 'Code Review',
-        description: 'Compliance verification and regulatory guidance',
+        title: 'HR Planning',
+        description: 'Organizational design and human resources strategy',
         icon: (
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
         )
       }
     ],
     stats: [
-      { label: 'Cost Savings', value: '15-30%' },
-      { label: 'Expert Reviews', value: '150+' },
-      { label: 'Success Rate', value: '100%' }
-    ]
-  },
-  {
-    id: 'design-review',
-    title: 'Design Review & QA',
-    subtitle: 'Ensuring Design Excellence', 
-    description: 'Independent design review services providing thorough verification and validation of engineering designs to ensure optimal performance, safety, and code compliance.',
-    image: '/images/services/design-review.jpg',
-    features: [
-      {
-        title: 'Peer Review',
-        description: 'Independent verification by senior engineers',
-        icon: (
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857" />
-          </svg>
-        )
-      },
-      {
-        title: 'Calculation Check',
-        description: 'Detailed verification of structural calculations',
-        icon: (
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-        )
-      },
-      {
-        title: 'Drawing Review',
-        description: 'Comprehensive review of technical drawings',
-        icon: (
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-        )
-      },
-      {
-        title: 'Quality Audit',
-        description: 'Systematic quality assurance processes',
-        icon: (
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )
-      }
-    ],
-    stats: [
-      { label: 'Reviews Completed', value: '300+' },
-      { label: 'Issues Identified', value: '2,500+' },
-      { label: 'Time Saved', value: '40%' }
+      { label: 'Strategies Developed', value: '150+' },
+      { label: 'Revenue Growth', value: '40%' },
+      { label: 'Client Retention', value: '95%' }
     ]
   }
 ]
@@ -259,11 +415,56 @@ const servicesData = [
 // Sidebar navigation items
 const sidebarItems = [
   {
-    id: 'structural',
-    title: 'Structural Engineering',
+    id: 'technology-operations',
+    title: 'Technology Operations',
     icon: (
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      </svg>
+    )
+  },
+  {
+    id: 'supply-chain',
+    title: 'Supply Chain Management',
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+      </svg>
+    )
+  },
+  {
+    id: 'feasibility-studies',
+    title: 'Feasibility Studies',
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    )
+  },
+  {
+    id: 'tender-services',
+    title: 'Tender Services',
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    )
+  },
+  {
+    id: 'training-development',
+    title: 'Training & Development',
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+    )
+  },
+  {
+    id: 'business-representation',
+    title: 'Business Representation',
+    icon: (
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
       </svg>
     )
   },
@@ -272,76 +473,107 @@ const sidebarItems = [
     title: 'Project Management',
     icon: (
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
       </svg>
     )
   },
   {
-    id: 'consulting',
-    title: 'Engineering Consulting',
+    id: 'strategic-consulting',
+    title: 'Strategic Consulting',
     icon: (
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3" />
-      </svg>
-    )
-  },
-  {
-    id: 'design-review',
-    title: 'Design Review & QA',
-    icon: (
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>
     )
   }
 ]
 
-// Before/After comparison data
+// Before/After comparison data - Updated for industrial context
 const beforeAfterData = [
   {
-    id: 'structural-retrofit',
-    title: 'Seismic Retrofit Project',
-    category: 'Structural Engineering',
-    beforeImage: '/images/services/before-after/structural-before.jpg',
-    afterImage: '/images/services/before-after/structural-after.jpg',
-    beforeDescription: 'Original building with seismic vulnerabilities',
-    afterDescription: 'Retrofitted structure with enhanced earthquake resistance',
+    id: 'factory-optimization',
+    title: 'Manufacturing Efficiency Improvement',
+    category: 'Technology Operations',
+    beforeImage: '/images/services/before-after/factory-before.jpg',
+    afterImage: '/images/services/before-after/factory-after.jpg',
+    beforeDescription: 'Traditional factory setup with manual processes',
+    afterDescription: 'Optimized automated manufacturing system',
     improvements: [
-      'Increased seismic resistance by 300%',
-      'Added base isolation system',
-      'Upgraded structural connections',
-      'Improved building safety rating to A+'
+      'Increased production efficiency by 45%',
+      'Reduced operational costs by 30%',
+      'Improved quality control systems',
+      'Enhanced worker safety standards'
     ],
     projectDetails: {
-      location: 'San Francisco, CA',
-      timeline: '6 months',
-      budget: '$2.5M'
+      location: 'Cairo Industrial Zone',
+      timeline: '8 months',
+      budget: '$1.2M'
     }
   },
   {
-    id: 'project-optimization',
-    title: 'Construction Timeline Optimization',
-    category: 'Project Management',
-    beforeImage: '/images/services/before-after/pm-before.jpg',
-    afterImage: '/images/services/before-after/pm-after.jpg',
-    beforeDescription: 'Project facing delays and budget overruns',
-    afterDescription: 'Streamlined project delivery with optimized processes',
+    id: 'supply-chain-optimization',
+    title: 'Supply Chain Transformation',
+    category: 'Supply Chain Management',
+    beforeImage: '/images/services/before-after/supply-before.jpg',
+    afterImage: '/images/services/before-after/supply-after.jpg',
+    beforeDescription: 'Fragmented supply chain with multiple inefficiencies',
+    afterDescription: 'Integrated supply chain management system',
     improvements: [
-      'Reduced timeline by 40%',
-      'Saved 25% on project costs',
-      'Improved team coordination',
-      'Zero safety incidents'
+      'Reduced delivery times by 50%',
+      'Lowered inventory costs by 35%',
+      'Improved supplier relationships',
+      'Enhanced demand forecasting accuracy'
     ],
     projectDetails: {
-      location: 'Los Angeles, CA',
+      location: 'Alexandria Manufacturing Hub',
+      timeline: '12 months',
+      budget: '$2.8M'
+    }
+  },
+  {
+    id: 'training-transformation',
+    title: 'Workforce Development Program',
+    category: 'Training & Development',
+    beforeImage: '/images/services/before-after/training-before.jpg',
+    afterImage: '/images/services/before-after/training-after.jpg',
+    beforeDescription: 'Limited skill development with outdated training methods',
+    afterDescription: 'Comprehensive digital training ecosystem with certified programs',
+    improvements: [
+      'Increased employee competency scores by 60%',
+      'Reduced training time by 40%',
+      'Achieved 95% certification completion rate',
+      'Improved employee retention by 25%'
+    ],
+    projectDetails: {
+      location: 'Giza Manufacturing Complex',
+      timeline: '6 months',
+      budget: '$450K'
+    }
+  },
+  {
+    id: 'market-entry-success',
+    title: 'International Market Entry',
+    category: 'Business Representation',
+    beforeImage: '/images/services/before-after/market-before.jpg',
+    afterImage: '/images/services/before-after/market-after.jpg',
+    beforeDescription: 'Foreign company struggling with local market understanding',
+    afterDescription: 'Successful market penetration with established local partnerships',
+    improvements: [
+      'Achieved 25% market share within 18 months',
+      'Established partnerships with 15 local distributors',
+      'Reduced market entry costs by 40%',
+      'Accelerated go-to-market timeline by 8 months'
+    ],
+    projectDetails: {
+      location: 'Cairo & Alexandria Markets',
       timeline: '18 months',
-      budget: '$8.2M'
+      budget: '$680K'
     }
   }
 ]
 
 export const ServicesScreen: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('structural')
+  const [activeSection, setActiveSection] = useState('technology-operations')
 
   useEffect(() => {
     // Set up intersection observer for automatic section detection
@@ -388,10 +620,10 @@ export const ServicesScreen: React.FC = () => {
           <section id="services-content" className="section-padding-lg">
             <div className="container mx-auto px-4">
               <div className="text-center mb-16">
-                <h2 className="heading-2 mb-6">Comprehensive Engineering Solutions</h2>
+                <h2 className="heading-2 mb-6">Comprehensive Industrial & Business Solutions</h2>
                 <p className="text-large text-body-secondary max-w-3xl mx-auto">
-                  Our integrated approach to engineering services ensures seamless project delivery 
-                  from concept to completion, backed by decades of industry expertise.
+                  Our integrated approach to industrial and business consulting ensures seamless project delivery 
+                  from concept to completion, backed by decades of industry expertise across multiple sectors.
                 </p>
               </div>
             </div>
@@ -404,10 +636,10 @@ export const ServicesScreen: React.FC = () => {
           <section className="section-padding-lg section-secondary">
             <div className="container mx-auto px-4">
               <div className="text-center mb-16">
-                <h2 className="heading-2 mb-6">Proven Results</h2>
+                <h2 className="heading-2 mb-6">Proven Industrial Results</h2>
                 <p className="text-large text-body-secondary max-w-3xl mx-auto">
-                  See the transformative impact of our engineering solutions through real project case studies 
-                  and measurable improvements.
+                  See the transformative impact of our industrial and business solutions through real project case studies 
+                  and measurable improvements across various industries.
                 </p>
               </div>
               <BeforeAfterSlider items={beforeAfterData} />
@@ -421,11 +653,11 @@ export const ServicesScreen: React.FC = () => {
           <section className="section-padding-lg section-primary">
             <div className="container mx-auto px-4 text-center">
               <h2 className="heading-2 text-white mb-6">
-                Ready to Start Your Next Project?
+                Ready to Transform Your Operations?
               </h2>
               <p className="text-large text-white/90 mb-12 max-w-3xl mx-auto">
-                Let&apos;s discuss your engineering requirements and create a customized solution 
-                that delivers exceptional results for your specific needs.
+                Let&apos;s discuss your industrial and business requirements and create a customized solution 
+                that delivers exceptional results for your specific industry needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Button

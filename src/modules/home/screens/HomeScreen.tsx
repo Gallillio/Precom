@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroSection, ServicesOverview, StatsSection, ProjectShowcase, CallToAction } from '../components'
+import { HeroSection, ServicesOverview, StatsSection, ProjectShowcase } from '../components'
 
 export const HomeScreen: React.FC = () => {
   return (
@@ -8,7 +8,6 @@ export const HomeScreen: React.FC = () => {
       <ServicesOverview />
       <StatsSection />
       <ProjectShowcase />
-      <CallToAction />
     </div>
   )
 }

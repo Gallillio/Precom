@@ -27,6 +27,7 @@ From `rules/filestructure.mdc`: The main folder structure is based on modules. E
 
 ### Workflow Restrictions
 - Never run `npm run dev` unless specifically instructed that it is okay in the prompt
+- Never run bash "npm run build" unless the user specifically asks you to
 
 ## Architecture
 

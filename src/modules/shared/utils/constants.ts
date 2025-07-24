@@ -1,13 +1,13 @@
 // Company Information
 export const COMPANY_INFO = {
   name: 'Precom',
-  tagline: 'Automotive Engineering Consultancy',
-  description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering.',
+  tagline: 'Industrial & Business Consultancy',
+  description: 'Leading industrial and business consultancy in Egypt specializing in technology operations, supply chain management, feasibility studies, project management, and strategic business solutions.',
   email: 'info@precom-egypt.com',
   phone: '+20 2 2735 4567',
   mobile: '+20 100 123 4567',
   address: {
-    street: '15 Automotive Industry Zone, 6th of October City',
+    street: '15 Industrial Zone, 6th of October City',
     city: 'Giza',
     governorate: 'Giza',
     postalCode: '12573',
@@ -21,34 +21,53 @@ export const ROUTES = {
   about: '/about',
   services: '/services',
   projects: '/projects',
-  blog: '/blog',
   contact: '/contact',
   privacy: '/privacy',
   terms: '/terms',
   cookies: '/cookies'
 } as const
 
-// Automotive Services Categories
+// Industrial & Business Services Categories
 export const SERVICES = {
-  vehicleEngineering: {
-    title: 'Vehicle Engineering',
-    description: 'Complete vehicle design, development, and optimization services',
+  technologyOperations: {
+    title: 'Technology Operations',
+    description: 'Factory operations optimization, manufacturing technology, and industrial process management',
     icon: 'cog'
   },
-  performanceTesting: {
-    title: 'Performance Testing',
-    description: 'Comprehensive vehicle testing, validation, and performance analysis',
-    icon: 'beaker'
+  supplyChainManagement: {
+    title: 'Supply Chain Management',
+    description: 'End-to-end supply chain optimization, logistics planning, and procurement strategies',
+    icon: 'truck'
   },
-  automotiveConsulting: {
-    title: 'Automotive Consulting',
-    description: 'Expert automotive technical consulting and strategic advisory services',
+  feasibilityStudies: {
+    title: 'Feasibility Studies',
+    description: 'Comprehensive technical, financial, and economic analysis for project viability assessment',
+    icon: 'chart-bar'
+  },
+  tenderServices: {
+    title: 'Tender Services',
+    description: 'Professional tender preparation, documentation, and submission support services',
+    icon: 'document-text'
+  },
+  trainingDevelopment: {
+    title: 'Training & Development',
+    description: 'Employee training programs, skills development, and technical capacity building',
+    icon: 'academic-cap'
+  },
+  businessRepresentation: {
+    title: 'Business Representation',
+    description: 'Local and foreign company representation, market entry, and business development',
+    icon: 'globe'
+  },
+  projectManagement: {
+    title: 'Project Management',
+    description: 'Professional project planning, execution, and delivery management services',
+    icon: 'clipboard-list'
+  },
+  strategicConsulting: {
+    title: 'Strategic Consulting',
+    description: 'Market studies, business development, strategic management, and HR planning services',
     icon: 'lightbulb'
-  },
-  qualityAssurance: {
-    title: 'Quality Assurance',
-    description: 'Rigorous automotive quality control, inspection, and certification services',
-    icon: 'shield-check'
   }
 } as const
 
@@ -106,15 +125,14 @@ export const VALIDATION = {
 export const API_ENDPOINTS = {
   contact: '/api/contact',
   newsletter: '/api/newsletter',
-  projects: '/api/projects',
-  blog: '/api/blog'
+  projects: '/api/projects'
 } as const
 
 // SEO Defaults
 export const SEO_DEFAULTS = {
-  title: 'Precom - Leading Automotive Engineering Consultancy in Egypt',
-  description: 'Leading automotive engineering consultancy in Egypt specializing in vehicle development, automotive technology solutions, and automotive systems engineering. Serving Egyptian automotive industry.',
-  keywords: ['automotive', 'engineering', 'consultancy', 'Egypt', 'vehicle', 'development', 'automotive technology', 'vehicle design', 'performance testing', 'automotive systems', 'Egyptian automotive', 'Cairo', 'automotive industry Egypt'],
+  title: 'Precom - Leading Industrial & Business Consultancy in Egypt',
+  description: 'Leading industrial and business consultancy in Egypt specializing in technology operations, supply chain management, feasibility studies, project management, and strategic business solutions.',
+  keywords: ['industrial consultancy', 'business consulting', 'Egypt', 'technology operations', 'supply chain management', 'feasibility studies', 'project management', 'tender services', 'business development', 'strategic management', 'manufacturing', 'industrial engineering', 'Egyptian industry', 'Cairo', 'business solutions Egypt'],
   ogImage: '/images/og-image.jpg',
   twitterCard: 'summary_large_image'
 } as const

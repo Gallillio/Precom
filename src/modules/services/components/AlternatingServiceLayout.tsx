@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState, useRef } from 'react'
+import React from 'react'
 import { Card, Button } from '@/modules/shared/components/ui'
 import { ServiceTabs } from './ServiceTabs'
 
@@ -43,42 +43,15 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
   services,
   className = ''
 }) => {
-  const [visibleServices, setVisibleServices] = useState<number[]>([])
-  const serviceRefs = useRef<(HTMLDivElement | null)[]>([])
-
-  useEffect(() => {
-    const observers = serviceRefs.current.map((ref, index) => {
-      if (!ref) return null
-      
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setVisibleServices(prev => Array.from(new Set([...prev, index])))
-          }
-        },
-        { threshold: 0.2 }
-      )
-      
-      observer.observe(ref)
-      return observer
-    })
-
-    return () => {
-      observers.forEach(observer => observer?.disconnect())
-    }
-  }, [])
-
   return (
     <div className={`space-y-24 ${className}`}>
       {services.map((service, index) => {
-        const isVisible = visibleServices.includes(index)
         const isEven = index % 2 === 0
 
         return (
           <div 
             key={service.id}
             id={service.id}
-            ref={el => { serviceRefs.current[index] = el; }}
             className="container mx-auto px-4"
           >
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
@@ -86,9 +59,7 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
             }`}>
               {/* Image Side */}
               <div 
-                className={`relative ${!isEven ? 'lg:col-start-2' : ''} transform transition-all duration-1000 ${
-                  isVisible ? 'translate-x-0 opacity-100' : `${isEven ? '-translate-x-8' : 'translate-x-8'} opacity-0`
-                }`}
+                className={`relative ${!isEven ? 'lg:col-start-2' : ''}`}
               >
                 <Card className="overflow-hidden group">
                   {/* Main Service Image */}
@@ -135,9 +106,7 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
 
               {/* Content Side */}
               <div 
-                className={`${!isEven ? 'lg:col-start-1' : ''} transform transition-all duration-1000 delay-300 ${
-                  isVisible ? 'translate-x-0 opacity-100' : `${!isEven ? '-translate-x-8' : 'translate-x-8'} opacity-0`
-                }`}
+                className={`${!isEven ? 'lg:col-start-1' : ''}`}
               >
                 <div className="space-y-6">
                   {/* Header */}
@@ -163,12 +132,7 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
                     {service.features.map((feature, featureIndex) => (
                       <div 
                         key={featureIndex}
-                        className={`p-4 bg-white rounded-lg border border-[var(--border)] hover:border-[var(--accent-teal)]/20 hover:shadow-md transition-all duration-300 transform ${
-                          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                        }`}
-                        style={{ 
-                          transitionDelay: `${(featureIndex + 1) * 100 + 500}ms`
-                        }}
+                        className="p-4 bg-white rounded-lg border border-[var(--border)] hover:border-[var(--accent-teal)]/20 hover:shadow-md transition-all duration-300"
                       >
                         <div className="flex items-start gap-3">
                           <div 
@@ -240,9 +204,7 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
             {service.subServices && (
               <div 
                 id={`${service.id}-details`}
-                className={`mt-16 transform transition-all duration-1000 delay-700 ${
-                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-                }`}
+                className="mt-16"
               >
                 <ServiceTabs 
                   serviceId={service.id}

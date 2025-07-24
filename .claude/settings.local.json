@@ -17,7 +17,8 @@
       "Bash(mv:*)",
       "Bash(cp:*)",
       "Bash(npm run lint:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(find:*)"
     ],
     "deny": []
   }

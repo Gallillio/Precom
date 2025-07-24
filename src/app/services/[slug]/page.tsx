@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: ServicePageProps) {
   }
 
   return {
-    title: `${service.title} | Precom Automotive Engineering`,
+    title: `${service.title} | Precom Industrial & Business Consultancy`,
     description: service.description,
   }
 }

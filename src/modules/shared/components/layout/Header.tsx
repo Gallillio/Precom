@@ -24,7 +24,6 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
     { name: 'About', href: ROUTES.about },
     { name: 'Services', href: ROUTES.services, hasDropdown: true },
     { name: 'Projects', href: ROUTES.projects },
-    { name: 'Blog', href: ROUTES.blog },
     { name: 'Contact', href: ROUTES.contact },
   ]
 

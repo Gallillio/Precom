@@ -32,7 +32,7 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ serviceSlu
 
         <div className="text-center">
           <p className="text-sm font-semibold tracking-wider text-[#003366] mb-8">
-            AUTOMOTIVE ENGINEERING SERVICES
+            INDUSTRIAL & BUSINESS SOLUTIONS
           </p>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-[#003366] leading-tight max-w-4xl mx-auto mb-8">

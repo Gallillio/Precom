@@ -20,19 +20,10 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
   onSectionClick,
   className = ''
 }) => {
-  const [isSticky, setIsSticky] = useState(false)
   const sidebarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      const sidebar = sidebarRef.current
-      if (!sidebar) return
-
-      const sidebarTop = sidebar.getBoundingClientRect().top
-      const shouldStick = sidebarTop <= 100
-
-      setIsSticky(shouldStick)
-
       // Simple and accurate section detection
       const sections = items.map(item => document.getElementById(item.id)).filter(Boolean)
       
@@ -84,11 +75,7 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
     <div className={`${className}`}>
       <div 
         ref={sidebarRef}
-        className={`transition-all duration-300 ${
-          isSticky 
-            ? 'fixed top-24 left-2 lg:left-4 z-40 transform-gpu' 
-            : 'relative'
-        }`}
+        className="fixed top-24 left-2 lg:left-4 z-40"
       >
         <div className="bg-white rounded-2xl shadow-lg border border-[var(--border)] p-2 sm:p-3 lg:p-4 w-56 sm:w-60 lg:w-64 xl:w-72">
           {/* Header */}

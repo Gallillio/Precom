@@ -67,7 +67,6 @@ export const MainNavigation: React.FC<{ className?: string }> = ({ className }) 
     { name: 'About', href: '/about', description: 'Learn about our company' },
     { name: 'Services', href: '/services', description: 'View our engineering services' },
     { name: 'Projects', href: '/projects', description: 'See our completed projects' },
-    { name: 'Blog', href: '/blog', description: 'Read our latest articles' },
     { name: 'Contact', href: '/contact', description: 'Get in touch with us' },
   ]
 
@@ -87,7 +86,6 @@ export const MobileNavigation: React.FC<{ className?: string }> = ({ className }
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ]
 
