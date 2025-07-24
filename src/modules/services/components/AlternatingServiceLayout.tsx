@@ -1,7 +1,20 @@
 'use client'
 import React from 'react'
+import Link from 'next/link'
 import { Card, Button } from '@/modules/shared/components/ui'
 import { ServiceTabs } from './ServiceTabs'
+
+// Map service IDs to URL slugs
+const serviceIdToSlug: Record<string, string> = {
+  'technology-operations': 'technologyOperations',
+  'supply-chain': 'supplyChainManagement', 
+  'feasibility-studies': 'feasibilityStudies',
+  'tender-services': 'tenderServices',
+  'training-development': 'trainingDevelopment',
+  'business-representation': 'businessRepresentation',
+  'project-management': 'projectManagement',
+  'strategic-consulting': 'strategicConsulting'
+}
 
 interface ServiceFeature {
   title: string
@@ -164,18 +177,14 @@ export const AlternatingServiceLayout: React.FC<AlternatingServiceLayoutProps> =
                     >
                       Get Quote
                     </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => {
-                        const element = document.getElementById(`${service.id}-details`)
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' })
-                        }
-                      }}
-                      className="flex-1 py-3 px-6 transform hover:scale-105 transition-all duration-300"
-                    >
-                      Learn More
-                    </Button>
+                    <Link href={`/services/${serviceIdToSlug[service.id]}`}>
+                      <Button
+                        variant="outline"
+                        className="flex-1 py-3 px-6 transform hover:scale-105 transition-all duration-300 w-full"
+                      >
+                        Learn More
+                      </Button>
+                    </Link>
                   </div>
 
                   {/* Stats Row */}

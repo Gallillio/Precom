@@ -4,7 +4,7 @@ import '@/styles/globals.css'
 import { Footer } from '@/modules/shared/components/layout'
 import { HeaderWrapper } from '@/modules/shared/components/layout/HeaderWrapper'
 import { ErrorBoundary } from '@/modules/shared/components/common'
-import { ScrollProgress } from '@/modules/shared/components/ui'
+import { ScrollProgress, FloatingChatButton } from '@/modules/shared/components/ui'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -53,6 +53,7 @@ export default function RootLayout({
             </main>
           </ErrorBoundary>
           <Footer />
+          <FloatingChatButton />
         </div>
       </body>
     </html>

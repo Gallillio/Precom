@@ -15,86 +15,111 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
   const projectsData = [
     {
       id: '1',
-      title: 'El Nasr Electric Vehicle Project',
-      category: 'Electric Vehicles',
-      image: '/images/projects/electric-sedan.jpg',
-      description: 'Revolutionary electric vehicle developed for Egyptian market featuring 400km range, solar charging integration, and desert-climate optimization.',
+      title: 'Suez Industrial Zone Optimization',
+      category: 'Technology Operations',
+      image: '/images/projects/factory-optimization.jpg',
+      description: 'Complete digital transformation of manufacturing facility with IoT integration, automated systems, and real-time monitoring for 40% efficiency improvement.',
       stats: [
-        { label: 'Range', value: '400km' },
-        { label: 'Solar Integration', value: '15% boost' },
-        { label: 'Development', value: '18 months' }
+        { label: 'Efficiency Gain', value: '+40%' },
+        { label: 'IoT Sensors', value: '500+' },
+        { label: 'ROI Timeline', value: '8 months' }
       ],
-      tags: ['Electric Drivetrain', 'Solar Power', 'Egyptian Design'],
+      tags: ['Digital Twin', 'IoT Integration', 'Process Automation'],
       featured: true
     },
     {
       id: '2',
-      title: 'Cairo Rally Championship Car',
-      category: 'Performance Vehicles',
-      image: '/images/projects/sports-car.jpg',
-      description: 'High-performance rally car engineered for Egyptian terrain, featuring sand-resistant systems and enhanced cooling for desert conditions.',
+      title: 'Egyptian Logistics Network',
+      category: 'Supply Chain Management',
+      image: '/images/projects/supply-chain-center.jpg',
+      description: 'Nationwide supply chain optimization covering 15 distribution centers with advanced WMS implementation and route optimization.',
       stats: [
-        { label: 'Power', value: '420hp' },
-        { label: 'Desert Rating', value: '50°C+' }
+        { label: 'Centers', value: '15' },
+        { label: 'Cost Reduction', value: '25%' }
       ],
-      tags: ['Desert Engineering', 'Rally Performance', 'Egyptian Terrain']
+      tags: ['WMS Implementation', 'Route Optimization', 'Inventory Management']
     },
     {
       id: '3',
-      title: 'Egyptian Postal Service Fleet',
-      category: 'Fleet Vehicles',
-      image: '/images/projects/fleet-vehicles.jpg',
-      description: 'Complete redesign of Egypt Post delivery vehicles optimized for Egyptian road conditions, fuel efficiency, and payload capacity.',
+      title: 'New Capital Infrastructure Study',
+      category: 'Feasibility Studies',
+      image: '/images/projects/feasibility-analysis.jpg',
+      description: 'Comprehensive feasibility analysis for New Administrative Capital industrial zone including technical, financial, and economic viability assessment.',
       stats: [
-        { label: 'Fleet Size', value: '5,000+' },
-        { label: 'Efficiency Gain', value: '+40%' }
+        { label: 'Investment', value: '$500M' },
+        { label: 'ROI Analysis', value: '7 years' }
       ],
-      tags: ['Egyptian Roads', 'Fuel Efficiency', 'Postal Service']
+      tags: ['Economic Analysis', 'Technical Assessment', 'Risk Evaluation']
     },
     {
       id: '4',
-      title: 'Uber Egypt Autonomous Pilot',
-      category: 'Autonomous Systems',
-      image: '/images/projects/autonomous-delivery.jpg',
-      description: 'Autonomous vehicle pilot program for Cairo traffic conditions, featuring advanced AI for Egyptian driving patterns and navigation.',
+      title: 'Government Procurement Success',
+      category: 'Tender Services',
+      image: '/images/projects/tender-documentation.jpg',
+      description: 'Strategic tender preparation and submission management resulting in 12 successful government contract awards worth $50M total value.',
       stats: [
-        { label: 'Pilot Vehicles', value: '50' },
-        { label: 'Cairo Routes', value: '25' }
+        { label: 'Contracts Won', value: '12' },
+        { label: 'Total Value', value: '$50M' }
       ],
-      tags: ['Cairo Traffic', 'AI Navigation', 'Egyptian Roads']
+      tags: ['Government Contracts', 'Compliance Management', 'Documentation']
     },
     {
       id: '5',
-      title: 'Ghabbour Auto Assembly Line',
-      category: 'Manufacturing',
-      image: '/images/projects/auto-manufacturing.jpg',
-      description: 'Modernization of automotive assembly line in 6th of October City with robotic systems and quality control for Egyptian automotive industry.',
+      title: 'Workforce Excellence Program',
+      category: 'Training & Development',
+      image: '/images/projects/training-facility.jpg',
+      description: 'Comprehensive training program for 2,000+ employees across multiple industries with certification and skills development initiatives.',
       stats: [
-        { label: 'Automation', value: '85%' },
-        { label: 'Production Increase', value: '+50%' }
+        { label: 'Employees Trained', value: '2,000+' },
+        { label: 'Certification Rate', value: '95%' }
       ],
-      tags: ['6th October City', 'Egyptian Manufacturing', 'Ghabbour Auto']
+      tags: ['Skills Development', 'Professional Certification', 'Workforce Planning']
     },
     {
       id: '6',
-      title: 'Cairo BRT Electric Buses',
-      category: 'Public Transport',
-      image: '/images/projects/electric-bus.jpg',
-      description: 'Electric bus system for Cairo BRT with charging stations and route optimization for Greater Cairo metropolitan area.',
+      title: 'International Partnership Development',
+      category: 'Business Representation',
+      image: '/images/projects/business-representation.jpg',
+      description: 'Facilitated strategic partnerships between Egyptian companies and 8 international firms across Europe and Asia for market expansion.',
       stats: [
-        { label: 'Fleet Size', value: '100 buses' },
-        { label: 'Daily Passengers', value: '50k+' }
+        { label: 'Partnerships', value: '8' },
+        { label: 'Market Entry', value: '3 countries' }
       ],
-      tags: ['Cairo BRT', 'Egyptian Public Transit', 'Greater Cairo']
+      tags: ['International Relations', 'Market Entry', 'Cultural Bridge']
+    },
+    {
+      id: '7',
+      title: 'Mega Project Coordination',
+      category: 'Project Management',
+      image: '/images/projects/project-management-office.jpg',
+      description: 'End-to-end project management for $200M industrial complex with 18-month timeline, coordinating 15 contractors and 500+ workers.',
+      stats: [
+        { label: 'Project Value', value: '$200M' },
+        { label: 'On-Time Delivery', value: '100%' }
+      ],
+      tags: ['PMO Setup', 'Multi-Contractor', 'Timeline Management']
+    },
+    {
+      id: '8',
+      title: 'Strategic Business Transformation',
+      category: 'Strategic Consulting',
+      image: '/images/projects/strategic-planning.jpg',
+      description: 'Complete business transformation strategy for manufacturing conglomerate including market analysis, organizational restructuring, and growth planning.',
+      stats: [
+        { label: 'Revenue Growth', value: '+60%' },
+        { label: 'Market Expansion', value: '4 regions' }
+      ],
+      tags: ['Business Strategy', 'Market Analysis', 'Organizational Design']
     }
   ]
 
   const filters = [
-    { id: 'all', label: 'All Vehicles' },
-    { id: 'Electric Vehicles', label: 'Electric Vehicles' },
-    { id: 'Performance Vehicles', label: 'Performance' },
-    { id: 'Autonomous Systems', label: 'Autonomous' },
-    { id: 'Manufacturing', label: 'Manufacturing' }
+    { id: 'all', label: 'All Projects' },
+    { id: 'Technology Operations', label: 'Technology' },
+    { id: 'Supply Chain Management', label: 'Supply Chain' },
+    { id: 'Feasibility Studies', label: 'Feasibility' },
+    { id: 'Strategic Consulting', label: 'Strategic' },
+    { id: 'Project Management', label: 'Project Mgmt' }
   ]
 
   const filteredProjects = activeFilter === 'all' 
@@ -158,16 +183,16 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
 
             {/* Title */}
             <h2 className="heading-1 text-[var(--text-primary)] mb-6 max-w-4xl mx-auto">
-              Vehicles That Shape{' '}
+              Projects That Drive{' '}
               <span className="bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] bg-clip-text text-transparent">
-                Tomorrow&apos;s Mobility
+                Industrial Excellence
               </span>
             </h2>
 
             {/* Subtitle */}
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed mb-10">
-              Explore our portfolio of groundbreaking automotive engineering projects that demonstrate 
-              our commitment to automotive innovation, sustainable mobility, and vehicle excellence.
+              Explore our portfolio of transformative industrial and business consulting projects that demonstrate 
+              our commitment to operational excellence, strategic innovation, and measurable business results.
             </p>
 
             {/* Filter Tabs */}
@@ -217,17 +242,17 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
 
             <div className="relative">
               <h3 className="text-3xl font-bold text-[var(--text-primary)] mb-4">
-                Have a Vehicle Project in Mind?
+                Have an Industrial Project in Mind?
               </h3>
               <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-                From concept to production, we&apos;re here to bring your automotive vision to life. 
-                Let&apos;s discuss how we can help develop your next vehicle.
+                From feasibility studies to full implementation, we&apos;re here to drive your business transformation. 
+                Let&apos;s discuss how we can optimize your operations and accelerate growth.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href={ROUTES.projects}>
                   <button className="group px-8 py-4 bg-[var(--primary-blue)] text-white rounded-xl font-semibold text-lg hover:bg-[var(--accent-teal)] transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    <span>View All Vehicles</span>
+                    <span>View All Projects</span>
                     <svg className="w-5 h-5 ml-2 inline group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -235,7 +260,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
                 </Link>
                 <Link href={ROUTES.contact}>
                   <button className="group px-8 py-4 border-2 border-[var(--border-secondary)] text-[var(--text-primary)] rounded-xl font-semibold text-lg hover:border-[var(--accent-teal)] hover:text-[var(--accent-teal)] transition-all duration-300 transform hover:scale-105">
-                    <span>Start Your Vehicle Project</span>
+                    <span>Start Your Business Project</span>
                     <svg className="w-5 h-5 ml-2 inline group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                     </svg>
@@ -246,16 +271,16 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
               {/* Stats Row */}
               <div className="flex items-center justify-center divide-x divide-[var(--border)] mt-8 pt-8">
                 <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">150+</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Vehicles Developed</div>
+                  <div className="text-2xl font-bold text-[var(--primary-blue)]">200+</div>
+                  <div className="text-sm text-[var(--text-secondary)]">Projects Completed</div>
                 </div>
                 <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">35+</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Egyptian Clients</div>
+                  <div className="text-2xl font-bold text-[var(--primary-blue)]">50+</div>
+                  <div className="text-sm text-[var(--text-secondary)]">Industrial Clients</div>
                 </div>
                 <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">500M</div>
-                  <div className="text-sm text-[var(--text-secondary)]">EGP Project Value</div>
+                  <div className="text-2xl font-bold text-[var(--primary-blue)]">$2B</div>
+                  <div className="text-sm text-[var(--text-secondary)]">Project Value Managed</div>
                 </div>
               </div>
             </div>

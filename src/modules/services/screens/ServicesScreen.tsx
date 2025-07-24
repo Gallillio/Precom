@@ -15,7 +15,7 @@ const servicesData = [
     title: 'Technology Operations',
     subtitle: 'Optimizing Industrial Operations',
     description: 'Complete factory operations optimization, manufacturing technology implementation, and industrial process management services to enhance productivity and efficiency.',
-    image: '/images/services/technology-operations.jpg',
+    image: '/images/services/Technology Operations Service.png',
     features: [
       {
         title: 'Factory Optimization',
@@ -65,7 +65,7 @@ const servicesData = [
     title: 'Supply Chain Management',
     subtitle: 'Streamlining Operations',
     description: 'End-to-end supply chain optimization, logistics planning, procurement strategies, and distribution management to ensure efficient operations and cost reduction.',
-    image: '/images/services/supply-chain.jpg',
+    image: '/images/services/Supply Chain Management Service.png',
     features: [
       {
         title: 'Logistics Planning',
@@ -115,7 +115,7 @@ const servicesData = [
     title: 'Feasibility Studies',
     subtitle: 'Strategic Project Assessment',
     description: 'Comprehensive technical, financial, and economic analysis to assess project viability, investment potential, and strategic decision-making support.',
-    image: '/images/services/feasibility-studies.jpg',
+    image: '/images/services/Feasibility Studies Service.png',
     features: [
       {
         title: 'Technical Analysis',
@@ -165,7 +165,7 @@ const servicesData = [
     title: 'Tender Services',
     subtitle: 'Professional Tender Management',
     description: 'Comprehensive tender preparation, documentation, and submission support services to maximize your chances of winning contracts and securing business opportunities.',
-    image: '/images/services/tender-services.jpg',
+    image: '/images/services/Tender Services.png',
     features: [
       {
         title: 'Tender Preparation',
@@ -215,7 +215,7 @@ const servicesData = [
     title: 'Training & Development',
     subtitle: 'Building Organizational Capacity',
     description: 'Comprehensive employee training programs, skills development initiatives, and technical capacity building to enhance workforce capabilities and organizational performance.',
-    image: '/images/services/training-development.jpg',
+    image: '/images/services/Training & Development Service.png',
     features: [
       {
         title: 'Technical Training',
@@ -265,7 +265,7 @@ const servicesData = [
     title: 'Business Representation',
     subtitle: 'Market Entry & Partnership',
     description: 'Professional representation services for local and foreign companies seeking market entry, business development, and strategic partnerships in Egypt and regional markets.',
-    image: '/images/services/business-representation.jpg',
+    image: '/images/services/Business Representation Service.png',
     features: [
       {
         title: 'Market Entry',
@@ -315,7 +315,7 @@ const servicesData = [
     title: 'Project Management',
     subtitle: 'Delivering Excellence On Time',
     description: 'Professional project planning, execution, and delivery management services ensuring projects are completed on schedule, within budget, and to the highest quality standards.',
-    image: '/images/services/project-management.jpg',
+    image: '/images/services/Project Management Service.png',
     features: [
       {
         title: 'Project Planning',
@@ -365,7 +365,7 @@ const servicesData = [
     title: 'Strategic Consulting',
     subtitle: 'Business Growth & Strategy',
     description: 'Comprehensive strategic consulting services including market studies, business development, strategic management, and human resources planning to drive sustainable growth.',
-    image: '/images/services/strategic-consulting.jpg',
+    image: '/images/services/Strategic Consulting Service.png',
     features: [
       {
         title: 'Market Studies',

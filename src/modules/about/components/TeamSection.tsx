@@ -153,8 +153,8 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ teamMembers, className
             Meet Our Expert Team
           </h2>
           <p className="text-large text-body-secondary max-w-3xl mx-auto">
-            Our experienced engineers and consultants bring decades of expertise 
-            to deliver exceptional results for your projects.
+            Our experienced industrial and business consultants bring decades of expertise 
+            to deliver exceptional results across all aspects of your business transformation.
           </p>
         </div>
         
@@ -264,20 +264,20 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ teamMembers, className
             <div className="p-8 sm:p-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--accent-teal)' }}>25+</div>
-                  <div className="text-body-secondary font-medium">Expert Engineers</div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--accent-teal)' }}>15+</div>
+                  <div className="text-body-secondary font-medium">Expert Consultants</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--primary-blue)' }}>200+</div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--primary-blue)' }}>150+</div>
                   <div className="text-body-secondary font-medium">Combined Years</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--success)' }}>50+</div>
-                  <div className="text-body-secondary font-medium">Certifications</div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--success)' }}>25+</div>
+                  <div className="text-body-secondary font-medium">Professional Certifications</div>
                 </div>
                 <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--warning)' }}>15+</div>
-                  <div className="text-body-secondary font-medium">Disciplines</div>
+                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--warning)' }}>8</div>
+                  <div className="text-body-secondary font-medium">Service Areas</div>
                 </div>
               </div>
             </div>

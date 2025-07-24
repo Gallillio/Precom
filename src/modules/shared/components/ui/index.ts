@@ -10,6 +10,7 @@ export { Parallax, BackgroundParallax } from './Parallax'
 export { AnimatedCounter, StatsCard } from './AnimatedCounter'
 export { MasonryGrid, ProjectCard } from './MasonryGrid'
 export { ServiceCard, ServiceGrid } from './ServiceCard'
+export { FloatingChatButton } from './FloatingChatButton'
 
 // Premium Animation System Components
 export { AnimatedLink } from './AnimatedLink'

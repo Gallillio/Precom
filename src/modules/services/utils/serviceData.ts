@@ -2,6 +2,7 @@ export interface ServiceDetail {
   title: string
   description: string
   icon: string
+  heroImage?: string
   overview: string
   keyBenefits: string[]
   features: {
@@ -30,6 +31,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Technology Operations',
     description: 'Optimizing industrial operations through advanced manufacturing technology and process management',
     icon: 'cog',
+    heroImage: '/images/services/Technology Operations Service.png',
     overview: 'Our comprehensive technology operations services transform industrial facilities through cutting-edge manufacturing technology, process optimization, and industrial automation. We specialize in factory operations enhancement, leveraging advanced IoT solutions, ERP systems, and performance monitoring to maximize efficiency, reduce costs, and improve overall operational excellence across diverse industrial sectors.',
     keyBenefits: [
       'Increased operational efficiency by up to 35%',
@@ -116,6 +118,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Supply Chain Management',
     description: 'End-to-end supply chain optimization, logistics planning, and procurement strategy',
     icon: 'truck',
+    heroImage: '/images/services/Supply Chain Management Service.png',
     overview: 'Our supply chain management services deliver comprehensive optimization across your entire value chain. From strategic procurement and inventory management to logistics optimization and distribution network design, we leverage advanced analytics, AI-driven forecasting, and proven methodologies to reduce costs, improve delivery times, and enhance overall supply chain resilience and efficiency.',
     keyBenefits: [
       'Reduced logistics costs by up to 25%',
@@ -202,6 +205,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Feasibility Studies',
     description: 'Comprehensive technical, financial, and economic analysis for project viability assessment',
     icon: 'chart-pie',
+    heroImage: '/images/services/Feasibility Studies Service.png',
     overview: 'Our feasibility study services provide thorough, data-driven analysis to assess project viability and investment potential. Combining technical expertise, financial modeling, and market intelligence, we deliver comprehensive reports covering technical feasibility, economic impact, financial projections, and risk assessment to support informed decision-making and successful project outcomes.',
     keyBenefits: [
       'Risk mitigation through comprehensive analysis',
@@ -288,6 +292,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Tender Services',
     description: 'Professional tender preparation, documentation, and submission management services',
     icon: 'document-text',
+    heroImage: '/images/services/Tender Services.png',
     overview: 'Our tender services provide end-to-end support for complex procurement processes, ensuring your proposals stand out in competitive bidding environments. From tender analysis and documentation preparation to compliance verification and submission management, we combine industry expertise with proven methodologies to maximize your success rates and streamline the entire tender process.',
     keyBenefits: [
       'Higher success rates in competitive tenders',
@@ -374,6 +379,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Training & Development',
     description: 'Comprehensive workforce development and professional training programs',
     icon: 'academic-cap',
+    heroImage: '/images/services/Training & Development Service.png',
     overview: 'Our training and development services enhance organizational capabilities through customized learning solutions, skills assessment, and professional development programs. We combine industry expertise with modern learning methodologies to deliver effective training that improves productivity, reduces costs, enhances employee satisfaction, and builds sustainable competitive advantages through human capital development.',
     keyBenefits: [
       'Enhanced employee skills and competencies',
@@ -460,6 +466,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Business Representation',
     description: 'Professional market entry, partnerships, and local/foreign company representation services',
     icon: 'handshake',
+    heroImage: '/images/services/Business Representation Service.png',
     overview: 'Our business representation services facilitate successful market entry and expansion through local expertise, regulatory guidance, and strategic partnerships. We serve as your trusted local partner, providing cultural bridge services, regulatory compliance support, and access to established networks to accelerate market penetration and ensure sustainable business growth in new markets.',
     keyBenefits: [
       'Local market expertise and cultural understanding',
@@ -546,6 +553,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Project Management',
     description: 'Professional project planning, execution, and delivery management for industrial projects',
     icon: 'clipboard-list',
+    heroImage: '/images/services/Project Management Service.png',
     overview: 'Our project management services ensure successful project delivery through proven methodologies, expert planning, and comprehensive execution management. We combine traditional project management principles with modern tools and techniques to deliver projects on time, within budget, and to the highest quality standards while managing risks and maintaining stakeholder satisfaction throughout the project lifecycle.',
     keyBenefits: [
       'On-time delivery with 95% success rate',
@@ -632,6 +640,7 @@ export const DETAILED_SERVICES: Record<string, ServiceDetail> = {
     title: 'Strategic Consulting',
     description: 'Comprehensive strategic consulting for business growth, market studies, and organizational development',
     icon: 'lightbulb',
+    heroImage: '/images/services/Strategic Consulting Service.png',
     overview: 'Our strategic consulting services provide comprehensive business guidance to accelerate growth, enhance competitiveness, and achieve sustainable success. Through market analysis, strategic planning, organizational development, and performance optimization, we help organizations navigate complex challenges, identify opportunities, and implement strategies that drive measurable results and long-term value creation.',
     keyBenefits: [
       'Strategic clarity and focused direction',
