@@ -1,218 +1,110 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { Button } from '@/modules/shared/components/ui'
-import { VideoBackground } from '@/modules/shared/components/ui/VideoBackground'
-import { ScrollIndicator } from '@/modules/shared/components/ui/ScrollIndicator'
-import { Parallax } from '@/modules/shared/components/ui/Parallax'
-import { COMPANY_INFO, ROUTES } from '@/modules/shared/utils/constants'
+import React from 'react'
+import Image from 'next/image'
 
 interface HeroSectionProps {
   className?: string
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  const heroContent = {
-    headline: "Engineering Tomorrow's Vehicles",
-    subheadline: "Leading automotive engineering solutions in Egypt that drive the future of vehicle development and automotive technology.",
-    description: "We combine decades of automotive expertise with cutting-edge technology to deliver exceptional vehicle engineering results for our Egyptian automotive clients and partners across the Middle East."
-  }
-
-  const stats = [
-    { 
-      number: "150+", 
-      label: "Vehicles Developed", 
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
-      )
+  const heroImages = [
+    {
+      src: '/images/hero/hero-1-manufacturing.png',
+      alt: 'Advanced Manufacturing',
+      size: 'large',
+      hasOverlay: false
     },
-    { 
-      number: "35+", 
-      label: "Egyptian Clients", 
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      )
+    {
+      src: '/images/hero/hero-2-engineering-team.png',
+      alt: 'Engineering Excellence',
+      size: 'small',
+      hasOverlay: false
     },
-    { 
-      number: "12+", 
-      label: "Years in Egypt", 
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      )
+    {
+      src: '/images/hero/hero-3-testing-facility.png',
+      alt: 'Testing Innovation',
+      size: 'large',
+      hasOverlay: true,
+      overlayContent: {
+        tag: 'CASE STUDY',
+        date: 'JULY 23, 2025',
+        title: 'Revolutionary Engine Design Delivers 40% Efficiency Boost'
+      }
     },
-    { 
-      number: "98%", 
-      label: "Client Satisfaction", 
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-        </svg>
-      )
+    {
+      src: '/images/hero/hero-4-engineering-tools.png',
+      alt: 'Precision Tools',
+      size: 'small',
+      hasOverlay: false
+    },
+    {
+      src: '/images/hero/hero-5-research-facility.png',
+      alt: 'Research Excellence',
+      size: 'large',
+      hasOverlay: false
     }
   ]
 
-  const fallbackImages = [
-    '/images/hero/hero-1-manufacturing.png',
-    '/images/hero/hero-2-engineering-team.png',
-    '/images/hero/hero-3-testing-facility.png',
-    '/images/hero/hero-4-engineering-tools.png',
-    '/images/hero/hero-5-research-facility.png'
-  ]
-
-  useEffect(() => {
-    setIsLoaded(true)
-    
-    // Debug log
-    console.log('Hero images paths:', fallbackImages)
-    console.log('Current slide:', currentSlide, 'Image:', fallbackImages[currentSlide])
-    
-    // Auto-rotate hero images (Ken Burns effect)
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => {
-        const newSlide = (prev + 1) % fallbackImages.length
-        console.log('Switching to slide:', newSlide, 'Image:', fallbackImages[newSlide])
-        return newSlide
-      })
-    }, 6000) // Slightly faster rotation to showcase all 5 images
-
-    return () => clearInterval(interval)
-  }, [])
-
-  const handleGetStarted = () => {
-    // Smooth scroll to next section or navigate to contact
-    const nextSection = document.querySelector('#services')
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
   return (
-    <section className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}>
-      {/* Hero Background Images */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
-        style={{
-          backgroundImage: `url(${fallbackImages[currentSlide]})`
-        }}
-      />
-      
-      {/* Overlay */}
-      <div 
-        className="absolute inset-0 z-10"
-        style={{
-          background: `linear-gradient(
-            135deg,
-            rgba(0, 51, 102, 0.4) 0%,
-            rgba(0, 180, 166, 0.28) 50%,
-            rgba(0, 51, 102, 0.36) 100%
-          )`
-        }}
-      />
-
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-[var(--accent-teal)]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[var(--primary-blue)]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }} />
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className={`transform transition-all duration-1000 delay-500 ${
-          isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-        }`}>
-
+    <section className={`bg-white py-20 ${className}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Welcome Text */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-semibold tracking-wider text-[#003366] mb-8">
+            WELCOME TO PRECOM
+          </p>
+          
           {/* Main Headline */}
-          <h1 className="heading-hero text-white mb-6 max-w-5xl mx-auto leading-tight">
-            <span className="block">{heroContent.headline.split(' ').slice(0, 2).join(' ')}</span>
-            <span className="block bg-gradient-to-r from-[var(--accent-teal)] to-white bg-clip-text text-transparent">
-              {heroContent.headline.split(' ').slice(2).join(' ')}
-            </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-[#003366] leading-tight max-w-5xl mx-auto">
+            Engineering Excellence That Drives the Future of 
+            <span className="text-[#00B4A6]"> Automotive Innovation</span>
           </h1>
-
-          {/* Subheadline */}
-          <p className="text-xl sm:text-2xl text-white/90 mb-4 max-w-4xl mx-auto font-light leading-relaxed">
-            {heroContent.subheadline}
-          </p>
-
-          {/* Description */}
-          <p className="text-lg text-white/80 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {heroContent.description}
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Button 
-              variant="teal" 
-              size="xl"
-              className="group w-full sm:w-auto px-12 py-4 text-lg font-semibold shadow-2xl hover:shadow-[var(--accent-teal)]/25 transform hover:scale-105 transition-all duration-300"
-              onClick={handleGetStarted}
-            >
-              <span>Get Started</span>
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Button>
-            <Link href={ROUTES.projects}>
-              <Button 
-                variant="teal" 
-                size="xl"
-                className="group w-full sm:w-auto"
-              >
-                <svg className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                <span>View Our Work</span>
-              </Button>
-            </Link>
-          </div>
-
-          {/* Stats Section */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {stats.map((stat, index) => (
-              <div 
-                key={index}
-                className={`transform transition-all duration-700 delay-${(index + 1) * 200} ${
-                  isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-                }`}
-              >
-                <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-black/40 transition-all duration-300 group">
-                  <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {stat.icon}
-                  </div>
-                  <div className="text-3xl sm:text-4xl font-bold text-white mb-2 group-hover:text-[var(--accent-teal)] transition-colors duration-300">
-                    {stat.number}
-                  </div>
-                  <div className="text-white/80 text-sm font-medium uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
+
+        {/* Image Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+          {heroImages.map((image, index) => (
+            <div 
+              key={index} 
+              className={`relative ${
+                image.size === 'large' 
+                  ? 'lg:col-span-1 h-96 lg:h-[500px]' 
+                  : 'lg:col-span-1 h-96 lg:h-[350px] lg:mt-16'
+              } ${index < 2 ? 'md:col-span-1' : index === 2 ? 'md:col-span-2 lg:col-span-1' : 'md:col-span-1'}`}
+            >
+              <div className="relative w-full h-full overflow-hidden rounded-lg shadow-lg group">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                {/* Overlay for featured content */}
+                {image.hasOverlay && image.overlayContent && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4 border border-white/30">
+                        <p className="text-xs font-semibold tracking-wider text-[#00B4A6] mb-1">
+                          {image.overlayContent.tag}
+                        </p>
+                        <p className="text-xs text-white/80 mb-2">
+                          {image.overlayContent.date}
+                        </p>
+                        <h3 className="text-lg font-semibold leading-tight">
+                          {image.overlayContent.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator 
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
-        targetId="services"
-        text="Explore Services"
-        variant="arrow"
-      />
-
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/5 to-transparent z-10" />
-      
     </section>
   )
 }

@@ -94,23 +94,17 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
 
   const logoClasses = `
     text-2xl font-bold transition-colors duration-300
-    ${
-      isScrolled || !isHomePage
-        ? 'text-[var(--primary-blue)]'
-        : 'text-white'
-    }
+    text-[var(--primary-blue)]
   `.replace(/\s+/g, ' ').trim()
 
   const navLinkClasses = (isActive: boolean) => `
     relative px-4 py-2 rounded-lg font-medium transition-all duration-300 ease-in-out
     ${
       isActive
-        ? isScrolled || !isHomePage
-          ? 'text-[var(--primary-blue)] bg-[var(--primary-blue)]/10'
-          : 'text-[var(--accent-teal)] bg-white/20'
+        ? 'text-[var(--primary-blue)] bg-[var(--primary-blue)]/10'
         : isScrolled || !isHomePage
         ? 'text-[var(--text-primary)] hover:text-[var(--primary-blue)] hover:bg-[var(--background-secondary)]'
-        : 'text-white/90 hover:text-white hover:bg-white/20'
+        : 'text-[var(--text-primary)]/80 hover:text-[var(--primary-blue)] hover:bg-[var(--background-secondary)]/50'
     }
   `.replace(/\s+/g, ' ').trim()
 
@@ -283,18 +277,14 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
               <CompactSearch
                 onSearch={handleSearch}
                 placeholder="Search..."
-                className={`transition-colors duration-300 ${
-                  isScrolled || !isHomePage
-                    ? 'text-[var(--text-secondary)]'
-                    : 'text-white/80'
-                }`}
+                className="transition-colors duration-300 text-[var(--text-secondary)]"
               />
               <Button
                 variant={isScrolled || !isHomePage ? 'primary' : 'outline'}
                 size="sm"
                 className={`transition-all duration-300 ${
                   !isScrolled && isHomePage
-                    ? 'border-white text-white hover:bg-white hover:text-[var(--primary-blue)]'
+                    ? 'border-[var(--primary-blue)] text-[var(--primary-blue)] hover:bg-[var(--primary-blue)] hover:text-white'
                     : ''
                 }`}
               >
@@ -309,7 +299,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
                 className={`p-2 rounded-lg transition-colors duration-300 ${
                   isScrolled || !isHomePage
                     ? 'text-[var(--text-primary)] hover:bg-[var(--background-secondary)]'
-                    : 'text-white hover:bg-white/20'
+                    : 'text-[var(--text-primary)] hover:bg-[var(--background-secondary)]/50'
                 }`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-expanded={isMenuOpen}
