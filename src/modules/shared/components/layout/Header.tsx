@@ -202,8 +202,8 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
                       {/* Mega Menu */}
                       <div className={`
                         absolute top-full left-1/2 transform -translate-x-1/2 mt-2
-                        w-96 bg-white rounded-xl shadow-xl border border-[var(--border)]
-                        transition-all duration-300 ease-out
+                        w-[800px] max-w-[90vw] bg-white rounded-xl shadow-xl border border-[var(--border)]
+                        transition-all duration-300 ease-out max-h-[80vh] overflow-hidden
                         ${
                           isServicesOpen
                             ? 'opacity-100 translate-y-0 visible'
@@ -211,30 +211,32 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
                         }
                       `}>
                         <div className="p-6">
-                          <div className="mb-4">
+                          <div className="mb-6">
                             <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
                               Our Services
                             </h3>
                             <p className="text-sm text-[var(--text-secondary)]">
-                              Professional engineering solutions for your projects
+                              Comprehensive industrial and business consultancy solutions
                             </p>
                           </div>
-                          <div className="grid grid-cols-1 gap-3">
+                          
+                          {/* Services Grid - Responsive columns */}
+                          <div className="grid grid-cols-2 gap-4 max-h-[50vh] overflow-y-auto custom-scrollbar">
                             {servicesData.map((service) => (
                               <Link
                                 key={service.id}
                                 href={service.href}
-                                className="group p-4 rounded-lg hover:bg-[var(--background-secondary)] transition-colors duration-200"
+                                className="group p-4 rounded-lg hover:bg-[var(--background-secondary)] transition-all duration-200 border border-transparent hover:border-[var(--border)] hover:shadow-sm"
                               >
                                 <div className="flex items-start space-x-3">
-                                  <div className="text-[var(--accent-teal)] group-hover:scale-110 transition-transform duration-200">
+                                  <div className="text-[var(--accent-teal)] group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                                     {getServiceIcon(service.icon)}
                                   </div>
-                                  <div className="flex-1">
-                                    <h4 className="font-medium text-[var(--text-primary)] group-hover:text-[var(--primary-blue)] transition-colors duration-200">
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-medium text-[var(--text-primary)] group-hover:text-[var(--primary-blue)] transition-colors duration-200 text-sm leading-tight mb-1">
                                       {service.title}
                                     </h4>
-                                    <p className="text-sm text-[var(--text-secondary)] mt-1">
+                                    <p className="text-xs text-[var(--text-secondary)] line-clamp-2 leading-tight">
                                       {service.description}
                                     </p>
                                   </div>
@@ -242,7 +244,8 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
                               </Link>
                             ))}
                           </div>
-                          <div className="mt-4 pt-4 border-t border-[var(--border)]">
+                          
+                          <div className="mt-6 pt-4 border-t border-[var(--border)] flex justify-between items-center">
                             <Link
                               href={ROUTES.services}
                               className="inline-flex items-center text-sm font-medium text-[var(--accent-teal)] hover:text-[var(--primary-blue)] transition-colors duration-200"
@@ -251,6 +254,12 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
                               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>
+                            </Link>
+                            <Link
+                              href={ROUTES.contact}
+                              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[var(--accent-teal)] hover:bg-[var(--primary-blue)] rounded-lg transition-colors duration-200"
+                            >
+                              Get Consultation
                             </Link>
                           </div>
                         </div>

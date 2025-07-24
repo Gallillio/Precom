@@ -135,10 +135,6 @@ export const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
                     </div>
                   </div>
 
-                  {/* Active Indicator */}
-                  {isActive && (
-                    <div className="w-2 h-2 rounded-full bg-[var(--accent-teal)] animate-pulse" />
-                  )}
                   
                   {/* Arrow */}
                   <svg 
