@@ -34,6 +34,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
   description = 'Tell us about your project needs and we\'ll provide a comprehensive proposal.'
 }) => {
   const [currentStep, setCurrentStep] = useState(1)
+  const [maxStepReached, setMaxStepReached] = useState(1)
   const [formData, setFormData] = useState<ExtendedContactInfo>({
     name: '',
     email: '',
@@ -140,12 +141,38 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
 
   const nextStep = () => {
     if (validateStep(currentStep)) {
-      setCurrentStep(prev => Math.min(prev + 1, STEPS.length))
+      const newStep = Math.min(currentStep + 1, STEPS.length)
+      setCurrentStep(newStep)
+      setMaxStepReached(prev => Math.max(prev, newStep))
     }
   }
 
   const prevStep = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1))
+  }
+
+  const goToStep = (stepId: number) => {
+    // Allow navigation to any previously reached step, but validate data first
+    if (stepId <= maxStepReached) {
+      // If going backward, allow it without validation
+      if (stepId < currentStep) {
+        setCurrentStep(stepId)
+        return
+      }
+      
+      // If going forward to a previously reached step, validate all steps in between
+      let canNavigate = true
+      for (let step = currentStep; step < stepId; step++) {
+        if (!validateStep(step)) {
+          canNavigate = false
+          break
+        }
+      }
+      
+      if (canNavigate) {
+        setCurrentStep(stepId)
+      }
+    }
   }
 
   const handleSubmit = async () => {
@@ -185,6 +212,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
       preferredContact: 'email',
     })
     setCurrentStep(1)
+    setMaxStepReached(1)
     setIsSubmitted(false)
     setErrors({})
   }
@@ -292,28 +320,35 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
             <div className="flex items-center justify-between mb-6 relative">
               {STEPS.map((step, index) => (
                 <div key={step.id} className="flex flex-col items-center">
-                  <div className={`
-                    w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shadow-lg transition-all duration-300 transform
-                    ${currentStep >= step.id 
-                      ? 'bg-gradient-to-br from-[#003366] to-[#00B4A6] text-white scale-110 shadow-[#003366]/30' 
-                      : currentStep === step.id
-                        ? 'bg-white border-2 border-[#00B4A6] text-[#00B4A6] shadow-[#00B4A6]/20 scale-105'
-                        : 'bg-gray-200 text-gray-500 border-2 border-gray-300'
-                    }
-                  `}>
-                    {currentStep > step.id ? (
+                  <button
+                    type="button"
+                    onClick={() => goToStep(step.id)}
+                    disabled={step.id > maxStepReached}
+                    className={`
+                      w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shadow-lg transition-all duration-300 transform
+                      ${step.id < currentStep 
+                        ? 'bg-gradient-to-br from-[#003366] to-[#00B4A6] text-white scale-110 shadow-[#003366]/30 hover:scale-115 cursor-pointer hover:shadow-[#003366]/50' 
+                        : step.id === currentStep
+                          ? 'bg-white border-2 border-[#00B4A6] text-[#00B4A6] shadow-[#00B4A6]/20 scale-105 cursor-default'
+                          : step.id <= maxStepReached
+                            ? 'bg-gradient-to-br from-[#003366] to-[#00B4A6] text-white scale-110 shadow-[#003366]/30 hover:scale-115 cursor-pointer hover:shadow-[#003366]/50'
+                            : 'bg-gray-200 text-gray-500 border-2 border-gray-300 cursor-not-allowed'
+                      }
+                    `}
+                  >
+                    {step.id < currentStep || (step.id <= maxStepReached && step.id !== currentStep) ? (
                       <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                     ) : (
                       step.id
                     )}
-                  </div>
+                  </button>
                   
                   {/* Step Labels */}
                   <div className="mt-3 text-center max-w-20">
                     <div className={`text-xs font-semibold leading-tight ${
-                      currentStep >= step.id ? 'text-[#003366]' : 'text-gray-400'
+                      step.id <= maxStepReached ? 'text-[#003366]' : 'text-gray-400'
                     }`}>
                       {step.title}
                     </div>
@@ -615,12 +650,12 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {[
-                    'Under $10,000',
-                    '$10,000 - $50,000',
-                    '$50,000 - $100,000',
-                    '$100,000 - $500,000',
-                    '$500,000 - $1,000,000',
-                    'Over $1,000,000'
+                    'Under 10,000 EGP',
+                    '10,000 - 50,000 EGP',
+                    '50,000 - 100,000 EGP',
+                    '100,000 - 500,000 EGP',
+                    '500,000 - 1,000,000 EGP',
+                    'Over 1,000,000 EGP'
                   ].map((budget) => (
                     <button
                       key={budget}
