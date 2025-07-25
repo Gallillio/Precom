@@ -488,21 +488,22 @@ const sidebarItems = [
   }
 ]
 
-// Before/After comparison data - Updated for industrial context
+// Before/After comparison data - Updated for available assets only
 const beforeAfterData = [
   {
-    id: 'factory-optimization',
-    title: 'Manufacturing Efficiency Improvement',
+    id: 'operations-optimization',
+    title: 'Manufacturing Operations Improvement',
     category: 'Technology Operations',
-    beforeImage: '/images/services/before-after/factory-before.jpg',
-    afterImage: '/images/services/before-after/factory-after.jpg',
-    beforeDescription: 'Traditional factory setup with manual processes',
-    afterDescription: 'Optimized automated manufacturing system',
+    beforeImage: '/images/services/before-after/Before Operations Optimization.png',
+    afterImage: '/images/services/before-after/After Operations Optimization.png',
+    beforeDescription: 'Traditional factory setup with manual processes and limited automation',
+    afterDescription: 'Optimized automated manufacturing system with IoT integration',
     improvements: [
       'Increased production efficiency by 45%',
       'Reduced operational costs by 30%',
       'Improved quality control systems',
-      'Enhanced worker safety standards'
+      'Enhanced worker safety standards',
+      'Implemented real-time monitoring systems'
     ],
     projectDetails: {
       location: 'Cairo Industrial Zone',
@@ -511,63 +512,24 @@ const beforeAfterData = [
     }
   },
   {
-    id: 'supply-chain-optimization',
-    title: 'Supply Chain Transformation',
-    category: 'Supply Chain Management',
-    beforeImage: '/images/services/before-after/supply-before.jpg',
-    afterImage: '/images/services/before-after/supply-after.jpg',
-    beforeDescription: 'Fragmented supply chain with multiple inefficiencies',
-    afterDescription: 'Integrated supply chain management system',
-    improvements: [
-      'Reduced delivery times by 50%',
-      'Lowered inventory costs by 35%',
-      'Improved supplier relationships',
-      'Enhanced demand forecasting accuracy'
-    ],
-    projectDetails: {
-      location: 'Alexandria Manufacturing Hub',
-      timeline: '12 months',
-      budget: '$2.8M'
-    }
-  },
-  {
     id: 'training-transformation',
     title: 'Workforce Development Program',
     category: 'Training & Development',
-    beforeImage: '/images/services/before-after/training-before.jpg',
-    afterImage: '/images/services/before-after/training-after.jpg',
-    beforeDescription: 'Limited skill development with outdated training methods',
-    afterDescription: 'Comprehensive digital training ecosystem with certified programs',
+    beforeImage: '/images/services/before-after/Before Training Optimization.png',
+    afterImage: '/images/services/before-after/After Training Optimization.png',
+    beforeDescription: 'Traditional classroom setup with limited interactive learning methods',
+    afterDescription: 'Modern interactive training facility with digital learning platforms',
     improvements: [
       'Increased employee competency scores by 60%',
       'Reduced training time by 40%',
       'Achieved 95% certification completion rate',
-      'Improved employee retention by 25%'
+      'Improved employee retention by 25%',
+      'Enhanced learning engagement through technology'
     ],
     projectDetails: {
       location: 'Giza Manufacturing Complex',
       timeline: '6 months',
       budget: '$450K'
-    }
-  },
-  {
-    id: 'market-entry-success',
-    title: 'International Market Entry',
-    category: 'Business Representation',
-    beforeImage: '/images/services/before-after/market-before.jpg',
-    afterImage: '/images/services/before-after/market-after.jpg',
-    beforeDescription: 'Foreign company struggling with local market understanding',
-    afterDescription: 'Successful market penetration with established local partnerships',
-    improvements: [
-      'Achieved 25% market share within 18 months',
-      'Established partnerships with 15 local distributors',
-      'Reduced market entry costs by 40%',
-      'Accelerated go-to-market timeline by 8 months'
-    ],
-    projectDetails: {
-      location: 'Cairo & Alexandria Markets',
-      timeline: '18 months',
-      budget: '$680K'
     }
   }
 ]

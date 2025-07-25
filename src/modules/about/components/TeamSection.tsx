@@ -3,6 +3,75 @@ import React, { useState, useEffect, useRef } from 'react'
 import { TeamMember } from '@/modules/shared/utils/types'
 import { Card, Modal, Button } from '@/modules/shared/components/ui'
 
+const useCountAnimation = (endValue: number, duration: number = 2000, startAnimation: boolean = false) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!startAnimation) return
+
+    let startTime: number
+    const startValue = 0
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+      const currentCount = Math.floor(startValue + (endValue - startValue) * easeOut)
+      
+      setCount(currentCount)
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [endValue, duration, startAnimation])
+
+  return count
+}
+
+const AnimatedStat: React.FC<{
+  value: number
+  suffix?: string
+  prefix?: string
+  label: string
+  color: string
+}> = ({ value, suffix = '', prefix = '', label, color }) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const statRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (statRef.current) {
+      observer.observe(statRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  const animatedValue = useCountAnimation(value, 2000, isVisible)
+  const displayValue = isVisible ? animatedValue : 0
+
+  return (
+    <div ref={statRef}>
+      <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color }}>
+        {prefix}{displayValue.toLocaleString()}{suffix}
+      </div>
+      <div className="text-body-secondary font-medium">{label}</div>
+    </div>
+  )
+}
+
 interface TeamSectionProps {
   teamMembers: TeamMember[]
   className?: string
@@ -263,22 +332,29 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ teamMembers, className
           <Card className="card-elevated bg-gradient-to-r from-[var(--primary-blue)]/5 to-[var(--accent-teal)]/5 border-[var(--accent-teal)]/20">
             <div className="p-8 sm:p-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--accent-teal)' }}>15+</div>
-                  <div className="text-body-secondary font-medium">Expert Consultants</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--primary-blue)' }}>150+</div>
-                  <div className="text-body-secondary font-medium">Combined Years</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--success)' }}>25+</div>
-                  <div className="text-body-secondary font-medium">Professional Certifications</div>
-                </div>
-                <div>
-                  <div className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: 'var(--warning)' }}>8</div>
-                  <div className="text-body-secondary font-medium">Service Areas</div>
-                </div>
+                <AnimatedStat 
+                  value={15} 
+                  suffix="+" 
+                  label="Expert Consultants" 
+                  color="var(--accent-teal)" 
+                />
+                <AnimatedStat 
+                  value={150} 
+                  suffix="+" 
+                  label="Combined Years" 
+                  color="var(--primary-blue)" 
+                />
+                <AnimatedStat 
+                  value={25} 
+                  suffix="+" 
+                  label="Professional Certifications" 
+                  color="var(--success)" 
+                />
+                <AnimatedStat 
+                  value={8} 
+                  label="Service Areas" 
+                  color="var(--warning)" 
+                />
               </div>
             </div>
           </Card>

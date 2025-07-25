@@ -17,8 +17,8 @@
 
 ## 📊 Asset Status Overview
 
-- **✅ Available:** 17 assets (33%)
-- **❌ Missing:** 34 assets (67%)
+- **✅ Available:** 21 assets (41%)
+- **❌ Missing:** 30 assets (59%)
 - **📁 Total Referenced:** 51 assets
 
 ---
@@ -160,29 +160,17 @@
 #### Before/After Comparison Images (8 files needed)
 **Purpose:** Demonstration sliders showing transformation results across service areas
 
-**☐ `/images/services/before-after/operations-before.jpg` - Before Operations Optimization**
+**☑ `/images/services/before-after/Before Operations Optimization.png` - Before Operations Optimization** ✅
 > **AI Generation Prompt:** Create a professional image showing an industrial facility before technology operations optimization. Feature: Traditional manufacturing setup with basic equipment, manual processes, limited connectivity, and standard operational procedures. Include: Basic manufacturing equipment, paper-based tracking, manual quality control, and minimal automation. Workers using traditional methods with visible inefficiencies in workflow and organization. Colors: Standard industrial colors without brand integration. Background: Typical manufacturing environment showing clear opportunities for technological improvement.
 
-**☐ `/images/services/before-after/operations-after.jpg` - After Operations Optimization**
+**☑ `/images/services/before-after/After Operations Optimization.png` - After Operations Optimization** ✅
 > **AI Generation Prompt:** Generate the transformed version showing the same industrial facility after technology operations optimization. Feature: Advanced manufacturing setup with IoT integration, automated systems, digital monitoring, and optimized workflows. Include: Connected equipment with deep blue (#003366) and teal (#00B4A6) technology accents, digital displays, automated quality control, and efficient processes. Workers using tablets and advanced systems in a clearly optimized environment. Background: Same facility but with enhanced organization, digital integration, and professional lighting showing dramatic operational improvement.
 
-**☐ `/images/services/before-after/supply-before.jpg` - Before Supply Chain Optimization**
-> **AI Generation Prompt:** Create a professional warehouse image showing disorganized supply chain operations before optimization. Feature: Cluttered warehouse with inefficient inventory placement, manual tracking systems, paper-based logistics, and suboptimal workflow organization. Include: Basic storage systems, manual inventory counts, paper documentation, and inefficient loading/unloading processes. Workers managing logistics with traditional methods showing clear inefficiencies. Colors: Standard warehouse environment without systematic organization or brand color integration.
-
-**☐ `/images/services/before-after/supply-after.jpg` - After Supply Chain Optimization**
-> **AI Generation Prompt:** Generate the optimized version showing the same warehouse after comprehensive supply chain management implementation. Feature: Systematically organized warehouse with digital inventory management, automated tracking, optimized workflows, and efficient logistics processes. Include: Organized inventory zones with deep blue (#003366) organizational systems, teal (#00B4A6) digital tracking elements, WMS interfaces, and streamlined processes. Workers using advanced technology in a clearly optimized environment. Background: Same warehouse but with systematic organization, digital integration, and professional lighting.
-
-**☐ `/images/services/before-after/training-before.jpg` - Before Training Optimization**
+**☑ `/images/services/before-after/Before Training Optimization.png` - Before Training Optimization** ✅
 > **AI Generation Prompt:** Create a professional training environment showing traditional, less effective training methods. Feature: Basic classroom setup with minimal technology, traditional presentation methods, limited interactive elements, and conventional learning approaches. Include: Basic projector setup, printed materials, traditional whiteboards, and standard classroom furniture. Participants in a conventional learning environment with limited engagement tools. Colors: Standard training room without modern learning technology integration.
 
-**☐ `/images/services/before-after/training-after.jpg` - After Training Optimization**
+**☑ `/images/services/before-after/After Training Optimization.png` - After Training Optimization** ✅
 > **AI Generation Prompt:** Generate the enhanced version showing the same training environment after comprehensive training and development optimization. Feature: Modern interactive training facility with digital learning platforms, interactive displays, collaborative learning zones, and advanced training technology. Include: Interactive whiteboards, digital learning management systems, modern furniture with deep blue (#003366) and teal (#00B4A6) accents, and engaging learning environments. Participants actively engaged with modern learning tools and methods. Background: Same space but with modern learning technology integration and professional design.
-
-**☐ `/images/services/before-after/consulting-before.jpg` - Before Strategic Optimization**
-> **AI Generation Prompt:** Create a professional business environment showing basic strategic planning methods before consulting optimization. Feature: Traditional conference room with basic presentation setup, printed charts, manual planning processes, and conventional business analysis tools. Include: Basic flip charts, printed reports, traditional planning materials, and standard meeting room setup. Business team using conventional strategic planning methods with limited analytical tools. Colors: Standard business environment without advanced strategic planning integration.
-
-**☐ `/images/services/before-after/consulting-after.jpg` - After Strategic Optimization**
-> **AI Generation Prompt:** Generate the enhanced version showing the same business environment after comprehensive strategic consulting implementation. Feature: Advanced strategic planning facility with digital analysis displays, interactive planning tools, sophisticated business intelligence systems, and modern strategic frameworks. Include: Digital strategic planning platforms, interactive displays with deep blue (#003366) strategic frameworks and teal (#00B4A6) growth indicators, advanced analytical tools, and systematic planning processes. Business team using advanced strategic planning technology and methodologies. Background: Same space but with sophisticated strategic planning technology and professional design.
 
 **Specifications:**
 - Format: JPG
@@ -340,11 +328,11 @@
 - [ ] Business Representation service image
 - [ ] Project Management service image
 - [ ] Strategic Consulting service image
-- [ ] Operations before/after comparison (2 images)
-- [ ] Supply chain before/after comparison (2 images)
-- [ ] Training before/after comparison (2 images)
-- [ ] Strategic consulting before/after comparison (2 images)
-**Status:** 0/16 service-related images completed
+- [x] Operations before/after comparison (2 images) ✅
+- [ ] Supply chain before/after comparison (2 images) - REMOVED (assets not available)
+- [x] Training before/after comparison (2 images) ✅
+- [ ] Strategic consulting before/after comparison (2 images) - REMOVED (assets not available)
+**Status:** 4/16 service-related images completed (4 available, 12 removed/pending)
 
 ### 📞 Contact Page Assets
 - [ ] Industrial consultancy exterior photo
@@ -368,7 +356,7 @@
 - [ ] Updated Open Graph social sharing image
 **Status:** 0/1 SEO image completed
 
-**Total Completion:** 17/51 assets (33%) | **Remaining:** 34 assets needed
+**Total Completion:** 21/51 assets (41%) | **Remaining:** 30 assets needed
 
 ---
 

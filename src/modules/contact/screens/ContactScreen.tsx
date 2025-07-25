@@ -8,6 +8,74 @@ import { ContactInfo } from '../components/ContactInfo'
 import { LocationMap } from '../components/LocationMap'
 import { ContentLoader, CardLoader } from '@/modules/shared/components/common'
 
+const useCountAnimation = (endValue: number, duration: number = 2000, startAnimation: boolean = false) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!startAnimation) return
+
+    let startTime: number
+    const startValue = 0
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+      const currentCount = Math.floor(startValue + (endValue - startValue) * easeOut)
+      
+      setCount(currentCount)
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [endValue, duration, startAnimation])
+
+  return count
+}
+
+const AnimatedContactStat: React.FC<{
+  value: number
+  suffix?: string
+  prefix?: string
+  label: string
+}> = ({ value, suffix = '', prefix = '', label }) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const statRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (statRef.current) {
+      observer.observe(statRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  const animatedValue = useCountAnimation(value, 2000, isVisible)
+  const displayValue = isVisible ? animatedValue : 0
+
+  return (
+    <div ref={statRef}>
+      <div className="text-2xl font-bold text-white mb-1">
+        {prefix}{displayValue.toLocaleString()}{suffix}
+      </div>
+      <div className="text-xs text-blue-200 font-medium">{label}</div>
+    </div>
+  )
+}
+
 export const ContactScreen: React.FC = () => {
   const [loading, setLoading] = useState(true)
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
@@ -453,18 +521,21 @@ export const ContactScreen: React.FC = () => {
               {/* Stats Preview */}
               <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-lg">
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-2xl font-bold text-white mb-1">24h</div>
-                    <div className="text-xs text-blue-200 font-medium">Response Time</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-white mb-1">500+</div>
-                    <div className="text-xs text-blue-200 font-medium">Projects Delivered</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-white mb-1">15+</div>
-                    <div className="text-xs text-blue-200 font-medium">Years Experience</div>
-                  </div>
+                  <AnimatedContactStat 
+                    value={24} 
+                    suffix="h" 
+                    label="Response Time" 
+                  />
+                  <AnimatedContactStat 
+                    value={500} 
+                    suffix="+" 
+                    label="Projects Delivered" 
+                  />
+                  <AnimatedContactStat 
+                    value={15} 
+                    suffix="+" 
+                    label="Years Experience" 
+                  />
                 </div>
               </div>
             </div>
