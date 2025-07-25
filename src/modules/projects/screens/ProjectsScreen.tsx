@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useMemo, useEffect, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Project } from '@/modules/shared/utils/types'
 import { 
   ProjectHero, 
@@ -38,6 +39,27 @@ const sampleProjects: Project[] = [
         alt: 'Automated production line',
         isPrimary: false,
         caption: 'Automated production line with real-time monitoring'
+      },
+      {
+        id: '3',
+        url: 'https://images.unsplash.com/photo-1586983931288-3b7d28fb8d58?w=600&h=400&fit=crop',
+        alt: 'Industrial IoT sensors and control systems',
+        isPrimary: false,
+        caption: 'IoT sensors and real-time data collection systems'
+      },
+      {
+        id: '4',
+        url: 'https://images.unsplash.com/photo-1562813733-b31f71025d54?w=600&h=400&fit=crop',
+        alt: 'Quality control and testing station',
+        isPrimary: false,
+        caption: 'Advanced quality control and testing procedures'
+      },
+      {
+        id: '5',
+        url: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop',
+        alt: 'Control room with monitoring dashboards',
+        isPrimary: false,
+        caption: 'Central control room with real-time dashboards'
       }
     ],
     client: 'TechManufacturing Inc.',
@@ -62,6 +84,27 @@ const sampleProjects: Project[] = [
         alt: 'Global logistics and supply chain visualization',
         isPrimary: true,
         caption: 'Global supply chain network optimization'
+      },
+      {
+        id: '6',
+        url: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&h=400&fit=crop',
+        alt: 'Warehouse automation and robotics',
+        isPrimary: false,
+        caption: 'Automated warehouse management systems'
+      },
+      {
+        id: '7',
+        url: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
+        alt: 'Logistics tracking and monitoring',
+        isPrimary: false,
+        caption: 'Real-time logistics tracking and monitoring'
+      },
+      {
+        id: '8',
+        url: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0?w=600&h=400&fit=crop',
+        alt: 'Supply chain analytics dashboard',
+        isPrimary: false,
+        caption: 'Advanced supply chain analytics and reporting'
       }
     ],
     client: 'GlobalRetail Corp',
@@ -85,6 +128,34 @@ const sampleProjects: Project[] = [
         alt: 'Wind and solar energy park',
         isPrimary: true,
         caption: 'Renewable energy park with solar and wind integration'
+      },
+      {
+        id: '9',
+        url: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&h=400&fit=crop',
+        alt: 'Solar panel installation',
+        isPrimary: false,
+        caption: 'Large-scale solar panel installation and maintenance'
+      },
+      {
+        id: '10',
+        url: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&h=400&fit=crop',
+        alt: 'Wind turbine construction',
+        isPrimary: false,
+        caption: 'Wind turbine construction and assembly process'
+      },
+      {
+        id: '11',
+        url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
+        alt: 'Energy monitoring control center',
+        isPrimary: false,
+        caption: 'Renewable energy monitoring and control systems'
+      },
+      {
+        id: '12',
+        url: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop',
+        alt: 'Environmental impact assessment',
+        isPrimary: false,
+        caption: 'Environmental impact studies and site assessment'
       }
     ],
     client: 'GreenEnergy Ventures',
@@ -154,6 +225,27 @@ const sampleProjects: Project[] = [
         alt: 'International business meeting',
         isPrimary: true,
         caption: 'International business representation and market entry consulting'
+      },
+      {
+        id: '13',
+        url: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop',
+        alt: 'Global market analysis',
+        isPrimary: false,
+        caption: 'Market research and analysis for emerging markets'
+      },
+      {
+        id: '14',
+        url: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
+        alt: 'Strategic partnerships and negotiations',
+        isPrimary: false,
+        caption: 'Strategic partnership development and negotiations'
+      },
+      {
+        id: '15',
+        url: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=600&h=400&fit=crop',
+        alt: 'Regulatory compliance documentation',
+        isPrimary: false,
+        caption: 'Regulatory compliance and documentation processes'
       }
     ],
     client: 'European Business Consortium',
@@ -191,6 +283,7 @@ const sampleProjects: Project[] = [
 const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
   projects = sampleProjects
 }) => {
+  const searchParams = useSearchParams()
   const [filters, setFilters] = useState<FilterState>({
     category: '',
     tags: [],
@@ -221,6 +314,18 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
     }, 1000)
     return () => clearTimeout(timer)
   }, [])
+
+  // Handle URL parameter for auto-opening project details
+  useEffect(() => {
+    const projectId = searchParams.get('project')
+    if (projectId && !loading) {
+      const project = projects.find(p => p.id === projectId)
+      if (project) {
+        setSelectedProject(project)
+        setIsModalOpen(true)
+      }
+    }
+  }, [searchParams, projects, loading])
   
   // Scroll-triggered animations
   useEffect(() => {
@@ -451,7 +556,8 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                 {featuredProjects.map((project, index) => (
                   <div
                     key={project.id}
-                    className="group bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 overflow-hidden"
+                    onClick={() => handleProjectClick(project)}
+                    className="group bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-white/50 hover:shadow-2xl hover:scale-[1.02] transition-all duration-500 overflow-hidden cursor-pointer"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="relative overflow-hidden">
@@ -509,19 +615,6 @@ const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
                           {project.client}
                         </div>
                       </div>
-                      
-                      {/* Action Button */}
-                      <button
-                        onClick={() => handleProjectClick(project)}
-                        className="w-full bg-gradient-to-r from-[#003366] to-[#00B4A6] text-white py-3 px-6 rounded-2xl font-semibold hover:shadow-xl hover:scale-[1.02] transition-all duration-300 group-hover:from-[#00B4A6] group-hover:to-[#003366]"
-                      >
-                        <span className="flex items-center justify-center">
-                          View Project Details
-                          <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </span>
-                      </button>
                     </div>
                   </div>
                 ))}

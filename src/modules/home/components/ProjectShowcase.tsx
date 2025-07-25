@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ProjectCard, MasonryGrid } from '@/modules/shared/components/ui/MasonryGrid'
 import { ROUTES } from '@/modules/shared/utils/constants'
 
@@ -78,121 +79,54 @@ interface ProjectShowcaseProps {
 
 export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = '' }) => {
   const [isVisible, setIsVisible] = useState(false)
-  const [activeFilter, setActiveFilter] = useState('all')
+  const router = useRouter()
 
+  // Featured projects from /projects page - only showing the 3 featured ones
   const projectsData = [
     {
       id: '1',
-      title: 'Suez Industrial Zone Optimization',
+      title: 'Digital Manufacturing Implementation',
       category: 'Technology Operations',
-      image: '/images/projects/factory-optimization.jpg',
-      description: 'Complete digital transformation of manufacturing facility with IoT integration, automated systems, and real-time monitoring for 40% efficiency improvement.',
+      image: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&h=600&fit=crop',
+      description: 'Comprehensive technology operations consulting for a major manufacturing company to implement Industry 4.0 solutions, including IoT integration, automated production lines, and real-time monitoring systems.',
       stats: [
-        { label: 'Efficiency Gain', value: '+40%' },
-        { label: 'IoT Sensors', value: '500+' },
-        { label: 'ROI Timeline', value: '8 months' }
+        { label: 'Duration', value: '18 months' },
+        { label: 'Budget', value: '$3.2M' },
+        { label: 'Status', value: 'Completed' }
       ],
-      tags: ['Digital Twin', 'IoT Integration', 'Process Automation'],
+      tags: ['Industry 4.0', 'IoT Integration', 'Automation', 'Manufacturing'],
       featured: true
     },
     {
-      id: '2',
-      title: 'Egyptian Logistics Network',
-      category: 'Supply Chain Management',
-      image: '/images/projects/supply-chain-center.jpg',
-      description: 'Nationwide supply chain optimization covering 15 distribution centers with advanced WMS implementation and route optimization.',
-      stats: [
-        { label: 'Centers', value: '15' },
-        { label: 'Cost Reduction', value: '25%' }
-      ],
-      tags: ['WMS Implementation', 'Route Optimization', 'Inventory Management']
-    },
-    {
       id: '3',
-      title: 'New Capital Infrastructure Study',
+      title: 'Renewable Energy Park Feasibility Study',
       category: 'Feasibility Studies',
-      image: '/images/projects/feasibility-analysis.jpg',
-      description: 'Comprehensive feasibility analysis for New Administrative Capital industrial zone including technical, financial, and economic viability assessment.',
+      image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&h=600&fit=crop',
+      description: 'Comprehensive feasibility analysis for a 500MW solar and wind energy park, including technical assessments, financial modeling, environmental impact studies, and regulatory compliance evaluation.',
       stats: [
-        { label: 'Investment', value: '$500M' },
-        { label: 'ROI Analysis', value: '7 years' }
+        { label: 'Duration', value: '8 months' },
+        { label: 'Capacity', value: '500MW' },
+        { label: 'Status', value: 'In Progress' }
       ],
-      tags: ['Economic Analysis', 'Technical Assessment', 'Risk Evaluation']
-    },
-    {
-      id: '4',
-      title: 'Government Procurement Success',
-      category: 'Tender Services',
-      image: '/images/projects/tender-documentation.jpg',
-      description: 'Strategic tender preparation and submission management resulting in 12 successful government contract awards worth $50M total value.',
-      stats: [
-        { label: 'Contracts Won', value: '12' },
-        { label: 'Total Value', value: '$50M' }
-      ],
-      tags: ['Government Contracts', 'Compliance Management', 'Documentation']
-    },
-    {
-      id: '5',
-      title: 'Workforce Excellence Program',
-      category: 'Training & Development',
-      image: '/images/projects/training-facility.jpg',
-      description: 'Comprehensive training program for 2,000+ employees across multiple industries with certification and skills development initiatives.',
-      stats: [
-        { label: 'Employees Trained', value: '2,000+' },
-        { label: 'Certification Rate', value: '95%' }
-      ],
-      tags: ['Skills Development', 'Professional Certification', 'Workforce Planning']
+      tags: ['Renewable Energy', 'Financial Modeling', 'Environmental Impact', 'Regulatory Compliance']
     },
     {
       id: '6',
-      title: 'International Partnership Development',
+      title: 'International Market Entry Strategy',
       category: 'Business Representation',
-      image: '/images/projects/business-representation.jpg',
-      description: 'Facilitated strategic partnerships between Egyptian companies and 8 international firms across Europe and Asia for market expansion.',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
+      description: 'Business representation and market entry consulting for European companies expanding into emerging markets, including regulatory compliance, local partnerships, and strategic positioning.',
       stats: [
-        { label: 'Partnerships', value: '8' },
-        { label: 'Market Entry', value: '3 countries' }
+        { label: 'Duration', value: '10 months' },
+        { label: 'Markets', value: 'Emerging' },
+        { label: 'Status', value: 'In Progress' }
       ],
-      tags: ['International Relations', 'Market Entry', 'Cultural Bridge']
-    },
-    {
-      id: '7',
-      title: 'Mega Project Coordination',
-      category: 'Project Management',
-      image: '/images/projects/project-management-office.jpg',
-      description: 'End-to-end project management for $200M industrial complex with 18-month timeline, coordinating 15 contractors and 500+ workers.',
-      stats: [
-        { label: 'Project Value', value: '$200M' },
-        { label: 'On-Time Delivery', value: '100%' }
-      ],
-      tags: ['PMO Setup', 'Multi-Contractor', 'Timeline Management']
-    },
-    {
-      id: '8',
-      title: 'Strategic Business Transformation',
-      category: 'Strategic Consulting',
-      image: '/images/projects/strategic-planning.jpg',
-      description: 'Complete business transformation strategy for manufacturing conglomerate including market analysis, organizational restructuring, and growth planning.',
-      stats: [
-        { label: 'Revenue Growth', value: '+60%' },
-        { label: 'Market Expansion', value: '4 regions' }
-      ],
-      tags: ['Business Strategy', 'Market Analysis', 'Organizational Design']
+      tags: ['Market Entry', 'International Business', 'Regulatory Compliance', 'Strategic Partnerships']
     }
   ]
 
-  const filters = [
-    { id: 'all', label: 'All Projects' },
-    { id: 'Technology Operations', label: 'Technology' },
-    { id: 'Supply Chain Management', label: 'Supply Chain' },
-    { id: 'Feasibility Studies', label: 'Feasibility' },
-    { id: 'Strategic Consulting', label: 'Strategic' },
-    { id: 'Project Management', label: 'Project Mgmt' }
-  ]
-
-  const filteredProjects = activeFilter === 'all' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === activeFilter)
+  // Show all featured projects (no filtering needed)
+  const filteredProjects = projectsData
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -218,8 +152,8 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
       <ProjectCard
         {...project}
         onClick={() => {
-          // Handle project detail modal or navigation
-          console.log('Open project:', project.id)
+          // Navigate to projects page and open the project details
+          router.push(`/projects?project=${project.id}`)
         }}
       />
     ),
@@ -228,6 +162,25 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
 
   return (
     <section id="projects" className={`relative py-24 overflow-hidden ${className}`}>
+      {/* Floating Animation Styles */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes float-delayed {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+          animation: float-delayed 3s ease-in-out infinite;
+          animation-delay: 1.5s;
+        }
+      `}</style>
+      
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-[var(--background-tertiary)] to-[var(--secondary-gray)]" />
@@ -263,23 +216,106 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
               our commitment to operational excellence, strategic innovation, and measurable business results.
             </p>
 
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {filters.map((filter) => (
-                <button
-                  key={filter.id}
-                  onClick={() => setActiveFilter(filter.id)}
-                  className={`
-                    px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105
-                    ${activeFilter === filter.id
-                      ? 'bg-[var(--primary-blue)] text-white shadow-lg'
-                      : 'bg-white text-[var(--text-secondary)] border border-[var(--border)] hover:border-[var(--accent-teal)] hover:text-[var(--accent-teal)]'
-                    }
-                  `}
-                >
-                  {filter.label}
-                </button>
-              ))}
+            {/* Service Areas Showcase */}
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <p className="text-lg text-[var(--text-secondary)] mb-6">
+                  Our expertise spans across diverse industrial and business consulting areas
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 max-w-5xl mx-auto">
+                {[
+                  { 
+                    name: 'Technology Operations', 
+                    color: 'from-blue-500 to-blue-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Supply Chain', 
+                    color: 'from-green-500 to-green-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Feasibility Studies', 
+                    color: 'from-purple-500 to-purple-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Tender Services', 
+                    color: 'from-orange-500 to-orange-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Training & Development', 
+                    color: 'from-teal-500 to-teal-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Business Representation', 
+                    color: 'from-indigo-500 to-indigo-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Project Management', 
+                    color: 'from-red-500 to-red-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                      </svg>
+                    )
+                  },
+                  { 
+                    name: 'Strategic Consulting', 
+                    color: 'from-yellow-500 to-yellow-600',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                    )
+                  }
+                ].map((service, index) => (
+                  <div
+                    key={service.name}
+                    className={`group relative bg-white rounded-xl p-4 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${
+                      index % 2 === 0 ? 'animate-float' : 'animate-float-delayed'
+                    }`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white mb-3 mx-auto group-hover:scale-110 transition-transform duration-300`}>
+                      {service.icon}
+                    </div>
+                    <h4 className="text-xs font-semibold text-[var(--text-primary)] text-center leading-tight">
+                      {service.name}
+                    </h4>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

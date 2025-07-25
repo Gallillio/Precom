@@ -140,121 +140,105 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div 
       className={`
-        group relative overflow-hidden rounded-2xl cursor-pointer
+        group relative overflow-hidden rounded-3xl cursor-pointer
         transition-all duration-500 ease-out hover:scale-[1.02]
         ${featured ? 'lg:col-span-2 lg:row-span-2' : ''}
-        bg-white border border-[var(--border)] hover:border-[var(--accent-teal)]/50
-        hover:shadow-2xl hover:shadow-[var(--accent-teal)]/10
+        bg-white shadow-lg hover:shadow-2xl border border-gray-100
       `}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Image Container */}
-      <div className="relative overflow-hidden">
-        <div
-          className="w-full bg-[var(--background-secondary)] transition-all duration-700 ease-out"
-          style={{
-            paddingBottom: featured ? '50%' : '60%',
-            backgroundImage: imageLoaded ? `url(${image})` : undefined,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transform: isHovered ? 'scale(1.1)' : 'scale(1)'
-          }}
-        >
-          <img
-            src={image}
-            alt={title}
-            className="absolute inset-0 w-full h-full object-cover opacity-0"
-            onLoad={() => setImageLoaded(true)}
-            loading="lazy"
-          />
-        </div>
-
-        {/* Overlay */}
-        <div className={`
-          absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
-          transition-opacity duration-300
-          ${isHovered ? 'opacity-100' : 'opacity-60'}
-        `} />
-
-        {/* Category Badge */}
+      {/* Image Section */}
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className={`w-full h-full object-cover transition-all duration-500 ${
+            isHovered ? 'scale-110' : 'scale-100'
+          }`}
+          onLoad={() => setImageLoaded(true)}
+          loading="lazy"
+        />
+        
+        {/* Subtle overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+        
+        {/* Category badge */}
         <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[var(--accent-teal)] text-white">
+          <span className="px-3 py-1 bg-[var(--primary-blue)] text-white text-xs font-semibold rounded-full">
             {category}
           </span>
         </div>
+        
+        {/* View project button */}
+        <div className={`absolute top-4 right-4 transition-all duration-300 ${
+          isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
+        }`}>
+          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+            <svg className="w-4 h-4 text-[var(--primary-blue)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </div>
 
-        {/* Featured Badge */}
-        {featured && (
-          <div className="absolute top-4 right-4">
-            <div className="flex items-center space-x-1 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
-              <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span className="text-white text-xs font-medium">Featured</span>
-            </div>
+      {/* Content Section */}
+      <div className="p-6">
+        <h3 className="text-lg font-bold text-[var(--text-primary)] mb-3 line-clamp-2 group-hover:text-[var(--accent-teal)] transition-colors duration-300">
+          {title}
+        </h3>
+        
+        {description && (
+          <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 leading-relaxed">
+            {description}
+          </p>
+        )}
+
+        {/* Stats Row */}
+        {stats && stats.length > 0 && (
+          <div className="flex items-center justify-between mb-4 p-3 bg-gray-50 rounded-xl">
+            {stats.slice(0, 3).map((stat, index) => (
+              <div key={index} className="text-center flex-1">
+                <div className="text-lg font-bold text-[var(--primary-blue)]">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-[var(--text-secondary)] font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
-        {/* Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <h3 className="text-xl font-bold mb-2 group-hover:text-[var(--accent-teal)] transition-colors duration-300">
-            {title}
-          </h3>
-          
-          {description && (
-            <p className={`text-sm text-white/80 mb-4 transition-all duration-300 ${
-              isHovered ? 'opacity-100 max-h-32' : 'opacity-0 max-h-0 overflow-hidden'
-            }`}>
-              {description}
-            </p>
-          )}
+        {/* Tags */}
+        {tags && tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {tags.slice(0, 4).map((tag, index) => (
+              <span
+                key={index}
+                className="px-2 py-1 bg-[var(--accent-teal)]/10 text-[var(--accent-teal)] text-xs font-medium rounded-md"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
-          {/* Stats */}
-          {stats && (
-            <div className={`flex flex-wrap gap-4 mb-4 transition-all duration-300 ${
-              isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}>
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-lg font-bold text-[var(--accent-teal)]">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-white/70">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Tags */}
-          {tags && (
-            <div className={`flex flex-wrap gap-2 transition-all duration-300 delay-100 ${
-              isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}>
-              {tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-2 py-1 bg-black/50 backdrop-blur-sm rounded-full text-xs text-white"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Hover Arrow */}
-        <div className={`
-          absolute top-4 right-4 w-10 h-10 bg-[var(--accent-teal)] rounded-full
-          flex items-center justify-center text-white transition-all duration-300
-          ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}
-        `}>
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
+        {/* Call to Action */}
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+          <span className="text-sm font-medium text-[var(--text-secondary)]">
+            View Details
+          </span>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+            isHovered 
+              ? 'bg-[var(--accent-teal)] text-white transform translate-x-1' 
+              : 'bg-gray-100 text-[var(--text-secondary)]'
+          }`}>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
