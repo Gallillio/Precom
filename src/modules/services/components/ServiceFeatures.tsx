@@ -1,5 +1,54 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Card } from '@/modules/shared/components/ui'
+
+const useCountAnimation = (endValue: number, duration: number = 2000, startAnimation: boolean = false) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!startAnimation) return
+
+    let startTime: number
+    const startValue = 0
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+      const currentCount = Math.floor(startValue + (endValue - startValue) * easeOut)
+      
+      setCount(currentCount)
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [endValue, duration, startAnimation])
+
+  return count
+}
+
+const AnimatedCommitmentStat: React.FC<{
+  value: number
+  suffix?: string
+  prefix?: string
+  label: string
+  startAnimation: boolean
+}> = ({ value, suffix = '', prefix = '', label, startAnimation }) => {
+  const animatedValue = useCountAnimation(value, 2000, startAnimation)
+  const displayValue = startAnimation ? animatedValue : 0
+
+  return (
+    <div>
+      <div className="text-2xl font-bold text-blue-600 mb-1">
+        {prefix}{displayValue.toLocaleString()}{suffix}
+      </div>
+      <div className="text-sm text-gray-600">{label}</div>
+    </div>
+  )
+}
 
 interface Feature {
   icon: string
@@ -53,6 +102,25 @@ export const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({
   subtitle = "Delivering excellence through expertise and innovation",
   className = ''
 }) => {
+  const [isCommitmentVisible, setIsCommitmentVisible] = useState(false)
+  const commitmentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCommitmentVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (commitmentRef.current) {
+      observer.observe(commitmentRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
   const getIconComponent = (iconName: string) => {
     switch (iconName) {
       case 'expertise':
@@ -185,22 +253,25 @@ export const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({
                     Our Commitment
                   </h4>
                   <div className="grid grid-cols-2 gap-4 text-center">
-                    <div>
-                      <div className="text-2xl font-bold text-blue-600 mb-1">100%</div>
-                      <div className="text-sm text-gray-600">Client Satisfaction</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-blue-600 mb-1">0</div>
-                      <div className="text-sm text-gray-600">Safety Incidents</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-blue-600 mb-1">98%</div>
-                      <div className="text-sm text-gray-600">On-Time Delivery</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-blue-600 mb-1">15+</div>
-                      <div className="text-sm text-gray-600">Years Experience</div>
-                    </div>
+                    <AnimatedCommitmentStat 
+                      value={100} 
+                      suffix="%" 
+                      label="Client Satisfaction" 
+                    />
+                    <AnimatedCommitmentStat 
+                      value={0} 
+                      label="Safety Incidents" 
+                    />
+                    <AnimatedCommitmentStat 
+                      value={98} 
+                      suffix="%" 
+                      label="On-Time Delivery" 
+                    />
+                    <AnimatedCommitmentStat 
+                      value={15} 
+                      suffix="+" 
+                      label="Years Experience" 
+                    />
                   </div>
                 </div>
               </div>

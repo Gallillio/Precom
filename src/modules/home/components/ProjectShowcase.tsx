@@ -1,8 +1,76 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { ProjectCard, MasonryGrid } from '@/modules/shared/components/ui/MasonryGrid'
 import { ROUTES } from '@/modules/shared/utils/constants'
+
+const useCountAnimation = (endValue: number, duration: number = 2000, startAnimation: boolean = false) => {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!startAnimation) return
+
+    let startTime: number
+    const startValue = 0
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+      const currentCount = Math.floor(startValue + (endValue - startValue) * easeOut)
+      
+      setCount(currentCount)
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [endValue, duration, startAnimation])
+
+  return count
+}
+
+const AnimatedCTAStat: React.FC<{
+  value: number
+  suffix?: string
+  prefix?: string
+  label: string
+}> = ({ value, suffix = '', prefix = '', label }) => {
+  const [isVisible, setIsVisible] = useState(false)
+  const statRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (statRef.current) {
+      observer.observe(statRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  const animatedValue = useCountAnimation(value, 2000, isVisible)
+  const displayValue = isVisible ? animatedValue : 0
+
+  return (
+    <div ref={statRef} className="px-6 text-center">
+      <div className="text-2xl font-bold text-[var(--primary-blue)]">
+        {prefix}{displayValue.toLocaleString()}{suffix}
+      </div>
+      <div className="text-sm text-[var(--text-secondary)]">{label}</div>
+    </div>
+  )
+}
 
 interface ProjectShowcaseProps {
   className?: string
@@ -270,18 +338,22 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ className = ''
 
               {/* Stats Row */}
               <div className="flex items-center justify-center divide-x divide-[var(--border)] mt-8 pt-8">
-                <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">200+</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Projects Completed</div>
-                </div>
-                <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">50+</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Industrial Clients</div>
-                </div>
-                <div className="px-6 text-center">
-                  <div className="text-2xl font-bold text-[var(--primary-blue)]">$2B</div>
-                  <div className="text-sm text-[var(--text-secondary)]">Project Value Managed</div>
-                </div>
+                <AnimatedCTAStat 
+                  value={200} 
+                  suffix="+" 
+                  label="Projects Completed" 
+                />
+                <AnimatedCTAStat 
+                  value={50} 
+                  suffix="+" 
+                  label="Industrial Clients" 
+                />
+                <AnimatedCTAStat 
+                  value={2} 
+                  prefix="$" 
+                  suffix="B" 
+                  label="Project Value Managed" 
+                />
               </div>
             </div>
           </div>
