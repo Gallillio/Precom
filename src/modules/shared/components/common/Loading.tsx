@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface LoadingProps {
   className?: string
@@ -8,6 +8,29 @@ interface LoadingProps {
   text?: string
   fullScreen?: boolean
   overlay?: boolean
+  smartLoading?: boolean
+  minDuration?: number
+  error?: boolean
+  errorMessage?: string
+  onRetry?: () => void
+}
+
+// Performance optimization: Check connection speed
+const useConnectionSpeed = () => {
+  const [connectionSpeed, setConnectionSpeed] = useState<'slow' | 'fast'>('fast')
+  
+  useEffect(() => {
+    // Check connection speed using Navigator API
+    if ('connection' in navigator) {
+      const connection = (navigator as any).connection
+      if (connection) {
+        const effectiveType = connection.effectiveType
+        setConnectionSpeed(['slow-2g', '2g', '3g'].includes(effectiveType) ? 'slow' : 'fast')
+      }
+    }
+  }, [])
+  
+  return connectionSpeed
 }
 
 export const Loading: React.FC<LoadingProps> = ({
@@ -16,8 +39,32 @@ export const Loading: React.FC<LoadingProps> = ({
   variant = 'spinner',
   text,
   fullScreen = false,
-  overlay = false
+  overlay = false,
+  smartLoading = false,
+  minDuration = 300,
+  error = false,
+  errorMessage = 'Something went wrong. Please try again.',
+  onRetry
 }) => {
+  const connectionSpeed = useConnectionSpeed()
+  const [shouldShow, setShouldShow] = useState(!smartLoading)
+  
+  useEffect(() => {
+    if (smartLoading) {
+      // For fast connections, show loading only after a delay to prevent flashing
+      if (connectionSpeed === 'fast') {
+        const timer = setTimeout(() => setShouldShow(true), minDuration)
+        return () => clearTimeout(timer)
+      } else {
+        // For slow connections, show immediately
+        setShouldShow(true)
+      }
+    }
+  }, [smartLoading, connectionSpeed, minDuration])
+  
+  if (smartLoading && !shouldShow) {
+    return null
+  }
   const sizeClasses = {
     sm: 'w-4 h-4',
     md: 'w-8 h-8',
@@ -26,14 +73,17 @@ export const Loading: React.FC<LoadingProps> = ({
   }
 
   const renderSpinner = () => (
-    <div className={`animate-spin rounded-full border-2 border-gray-200 border-t-blue-600 ${sizeClasses[size]}`} />
+    <div 
+      className={`animate-spin rounded-full border-2 border-gray-200 border-t-blue-600 ${sizeClasses[size]}`}
+      style={{ willChange: 'transform' }}
+    />
   )
 
   const renderDots = () => (
     <div className="flex space-x-1">
-      <div className={`bg-blue-600 rounded-full animate-bounce ${size === 'sm' ? 'w-2 h-2' : size === 'md' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-5 h-5'}`} style={{ animationDelay: '0ms' }} />
-      <div className={`bg-blue-600 rounded-full animate-bounce ${size === 'sm' ? 'w-2 h-2' : size === 'md' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-5 h-5'}`} style={{ animationDelay: '150ms' }} />
-      <div className={`bg-blue-600 rounded-full animate-bounce ${size === 'sm' ? 'w-2 h-2' : size === 'md' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-5 h-5'}`} style={{ animationDelay: '300ms' }} />
+      <div className={`bg-blue-600 rounded-full animate-bounce ${size === 'sm' ? 'w-2 h-2' : size === 'md' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-5 h-5'}`} style={{ animationDelay: '0ms', willChange: 'transform' }} />
+      <div className={`bg-blue-600 rounded-full animate-bounce ${size === 'sm' ? 'w-2 h-2' : size === 'md' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-5 h-5'}`} style={{ animationDelay: '150ms', willChange: 'transform' }} />
+      <div className={`bg-blue-600 rounded-full animate-bounce ${size === 'sm' ? 'w-2 h-2' : size === 'md' ? 'w-3 h-3' : size === 'lg' ? 'w-4 h-4' : 'w-5 h-5'}`} style={{ animationDelay: '300ms', willChange: 'transform' }} />
     </div>
   )
 
@@ -63,9 +113,35 @@ export const Loading: React.FC<LoadingProps> = ({
     }
   }
 
+  // Error state
+  if (error) {
+    return (
+      <div className={`flex flex-col items-center justify-center space-y-4 p-8 ${fullScreen ? 'fixed inset-0 bg-white z-50' : ''} ${className}`}>
+        <div className="text-red-500 text-4xl mb-2">⚠️</div>
+        <p className="text-red-600 text-center font-medium">{errorMessage}</p>
+        {onRetry && (
+          <button
+            onClick={onRetry}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            aria-label="Retry loading"
+          >
+            Try Again
+          </button>
+        )}
+      </div>
+    )
+  }
+
   const content = (
-    <div className="flex flex-col items-center justify-center space-y-4">
-      {renderLoader()}
+    <div 
+      className="flex flex-col items-center justify-center space-y-4"
+      role="status"
+      aria-live="polite"
+      aria-label={text || 'Loading content'}
+    >
+      <div aria-hidden="true">
+        {renderLoader()}
+      </div>
       {text && (
         <p className="text-gray-600 text-sm font-medium animate-pulse">
           {text}

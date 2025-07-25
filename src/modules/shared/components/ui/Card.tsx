@@ -8,6 +8,7 @@ interface CardProps {
   onClick?: () => void
   header?: React.ReactNode
   footer?: React.ReactNode
+  style?: React.CSSProperties
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,6 +19,7 @@ export const Card: React.FC<CardProps> = ({
   onClick,
   header,
   footer,
+  style,
 }) => {
   const baseClasses = `
     bg-white rounded-lg border border-[var(--border)]
@@ -64,6 +66,7 @@ export const Card: React.FC<CardProps> = ({
         ${className}
       `.replace(/\s+/g, ' ').trim()}
       onClick={onClick}
+      style={style}
     >
       {header && (
         <div className={`

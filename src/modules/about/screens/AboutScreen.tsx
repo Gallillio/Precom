@@ -7,6 +7,7 @@ import { CompanyTimeline } from '../components/CompanyTimeline'
 import { ValuesSection } from '../components/ValuesSection'
 import { AboutHero } from '../components/AboutHero'
 import { TeamMember } from '@/modules/shared/utils/types'
+import { ContentLoader, CardLoader } from '@/modules/shared/components/common'
 
 const useCountAnimation = (endValue: number, duration: number = 2000, startAnimation: boolean = false) => {
   const [count, setCount] = useState(0)
@@ -119,6 +120,73 @@ const teamMembers: TeamMember[] = [
 ]
 
 export const AboutScreen: React.FC = () => {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    // Allow time for animations and content to initialize
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 800)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        {/* Hero Section Skeleton */}
+        <section className="bg-gradient-to-br from-[var(--primary-blue)] to-[var(--accent-teal)] py-20">
+          <div className="container mx-auto px-4 text-center">
+            <div className="animate-pulse max-w-4xl mx-auto">
+              <div className="h-16 bg-white/20 rounded-lg mb-6"></div>
+              <div className="h-6 bg-white/20 rounded-lg mb-4 max-w-3xl mx-auto"></div>
+              <div className="h-6 bg-white/20 rounded-lg mb-8 max-w-2xl mx-auto"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Timeline Section Skeleton */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16 animate-pulse">
+              <div className="h-12 bg-gray-200 rounded-lg mb-4 max-w-2xl mx-auto"></div>
+              <div className="h-6 bg-gray-200 rounded-lg max-w-3xl mx-auto"></div>
+            </div>
+            
+            <div className="space-y-8">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="flex items-center space-x-8 animate-pulse">
+                  <div className="w-16 h-16 bg-gray-200 rounded-full"></div>
+                  <div className="flex-1">
+                    <div className="h-6 bg-gray-200 rounded mb-2 max-w-xs"></div>
+                    <div className="h-4 bg-gray-200 rounded max-w-md"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section Skeleton */}
+        <section className="py-20 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16 animate-pulse">
+              <div className="h-12 bg-gray-200 rounded-lg mb-4 max-w-lg mx-auto"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <CardLoader key={i} className="h-80" />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <ContentLoader text="Loading about content..." />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen">
       <AboutHero />

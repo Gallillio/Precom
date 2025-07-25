@@ -6,6 +6,7 @@ import { AlternatingServiceLayout } from '../components/AlternatingServiceLayout
 import { BeforeAfterSlider } from '../components/BeforeAfterSlider'
 import { ServiceFeatures } from '../components/ServiceFeatures'
 import { Card, Button } from '@/modules/shared/components/ui'
+import { ContentLoader, CardLoader } from '@/modules/shared/components/common'
 import Link from 'next/link'
 
 // Comprehensive industrial and business services data
@@ -536,8 +537,20 @@ const beforeAfterData = [
 
 export const ServicesScreen: React.FC = () => {
   const [activeSection, setActiveSection] = useState('technology-operations')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Allow time for content to initialize
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 800)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    if (loading) return // Don't set up observers while loading
+
     // Set up intersection observer for automatic section detection
     const observerOptions = {
       rootMargin: '-20% 0px -70% 0px',
@@ -559,7 +572,37 @@ export const ServicesScreen: React.FC = () => {
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [loading])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white">
+        {/* Hero Section Skeleton */}
+        <section className="bg-gradient-to-br from-[var(--primary-blue)] to-[var(--accent-teal)] py-20">
+          <div className="container mx-auto px-4 text-center">
+            <div className="animate-pulse max-w-4xl mx-auto">
+              <div className="h-16 bg-white/20 rounded-lg mb-6"></div>
+              <div className="h-6 bg-white/20 rounded-lg mb-4 max-w-3xl mx-auto"></div>
+              <div className="h-6 bg-white/20 rounded-lg mb-8 max-w-2xl mx-auto"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Grid Skeleton */}
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <CardLoader key={i} className="h-96" />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <ContentLoader text="Loading services content..." />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen">
