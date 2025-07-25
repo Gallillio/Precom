@@ -185,16 +185,16 @@
 #### Office Location Photos (4 files needed)
 **Purpose:** Background images for LocationMap component with Ken Burns effect
 
-**☐ `/images/office/industrial-consultancy-exterior.jpg` - Modern consultancy building exterior**
+**☑ `/images/office/industrial-consultancy-exterior.jpg` - Modern consultancy building exterior**
 > **AI Generation Prompt:** Create a professional architectural photograph of a modern commercial office building suitable for an industrial & business consultancy firm. Feature: Contemporary office building with clean lines, glass facades, professional landscaping, and subtle industrial design elements. Include: Subtle deep blue (#003366) architectural accents or building details, modern materials like glass and steel, and professional signage area suitable for consultancy services. Setting: Professional business district context. Style: High-end commercial architectural photography emphasizing business competence and industrial expertise.
 
-**☐ `/images/office/business-district-context.jpg` - Professional business district**
+**☑ `/images/office/business-district-context.jpg` - Professional business district**
 > **AI Generation Prompt:** Generate a professional cityscape image showing a modern business district where an industrial consultancy would be located. Feature: Contemporary commercial buildings, professional streetscape, quality urban infrastructure with modern business facilities. Include: Modern office towers, professional landscaping, clean urban design suitable for consulting services. Setting: Upscale business district conveying innovation, professional services, and industrial expertise. Style: Urban architectural photography emphasizing prestigious business location and professional consulting environment.
 
-**☐ `/images/office/consultancy-lobby.jpg` - Professional consultancy lobby interior**
+**☑ `/images/office/consultancy-lobby.jpg` - Professional consultancy lobby interior**
 > **AI Generation Prompt:** Create a professional office lobby interior showing a premium reception area for an industrial & business consultancy. Feature: Modern lobby with high-quality finishes, professional reception desk, contemporary seating areas, and subtle industrial consultancy branding elements. Include: Subtle integration of brand colors - deep blue (#003366) accent walls or furniture, teal (#00B4A6) decorative elements or lighting accents. Design elements: Clean lines, professional lighting, business consultancy context through displays or informational materials. Style: Professional interior photography emphasizing premium consulting services.
 
-**☐ `/images/office/meeting-facilities.jpg` - Professional meeting and consultation rooms**
+**☑ `/images/office/meeting-facilities.jpg` - Professional meeting and consultation rooms**
 > **AI Generation Prompt:** Generate a professional meeting facility interior showing premium consultation and collaboration spaces. Feature: Modern conference rooms with high-quality furnishings, advanced presentation technology, and professional consultation setup suitable for business meetings and strategic planning. Include: Modern meeting room furniture with brand color integration, professional lighting, advanced audio-visual equipment, and business consultancy ambiance. Style: Corporate interior photography emphasizing professional consultation environment and collaborative business spaces.
 
 **Specifications:**

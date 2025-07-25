@@ -192,19 +192,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         </div>
       )}
 
-      {/* Decorative Elements */}
-      <div className={`
-        absolute top-4 right-4 w-12 h-12 rounded-full border-2 border-current opacity-10
-        transition-all duration-500 transform
-        ${isHovered ? 'scale-150 rotate-180' : 'scale-100 rotate-0'}
-      `} />
-      
-      <div className={`
-        absolute bottom-4 left-4 w-8 h-8 rounded-full border border-current opacity-10
-        transition-all duration-700 transform
-        ${isHovered ? 'scale-125 rotate-90' : 'scale-100 rotate-0'}
-      `} />
-
       {/* Hover Glow Effect */}
       {variant !== 'minimal' && (
         <div className={`
