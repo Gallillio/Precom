@@ -167,15 +167,12 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         <div className="lg:col-span-2">
           <Card className="overflow-hidden">
             <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
+              <div className="mb-6">
                 <div className={`transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
                   <h3 className="heading-3 text-xl mb-2">{currentItem.title}</h3>
                   <p className="text-sm text-body-secondary">
                     Category: <span className="font-medium">{currentItem.category}</span>
                   </p>
-                </div>
-                <div className={`text-sm text-body-secondary transition-all duration-500 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
-                  {activeItem + 1} of {items.length}
                 </div>
               </div>
 

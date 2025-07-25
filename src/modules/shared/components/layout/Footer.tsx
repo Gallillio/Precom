@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 interface FooterProps {
@@ -7,6 +8,59 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
   const currentYear = new Date().getFullYear()
+  const [leftMargin, setLeftMargin] = useState(0)
+
+  useEffect(() => {
+    const calculateLeftMargin = () => {
+      if (typeof window === 'undefined') return
+
+      const windowWidth = window.innerWidth
+      const isServicesPage = window.location.pathname === '/services'
+      
+      if (!isServicesPage) {
+        setLeftMargin(0)
+        return
+      }
+
+      // Calculate dynamic margin based on screen width
+      let margin = 0
+      
+      if (windowWidth >= 1536) { // 2xl screens
+        margin = 280 // Extra wide sidebar clearance
+      } else if (windowWidth >= 1280) { // xl screens  
+        margin = 260 // Wide sidebar clearance
+      } else if (windowWidth >= 1024) { // lg screens
+        margin = 240 // Standard sidebar clearance
+      } else if (windowWidth >= 768) { // md screens
+        margin = 220 // Medium sidebar clearance
+      } else if (windowWidth >= 640) { // sm screens
+        margin = 200 // Small sidebar clearance
+      } else { // mobile screens
+        margin = 180 // Minimal clearance for very small screens
+      }
+      
+      setLeftMargin(margin)
+    }
+
+    // Calculate initial margin
+    calculateLeftMargin()
+    
+    // Recalculate on window resize
+    window.addEventListener('resize', calculateLeftMargin)
+    
+    // Recalculate on route change (if applicable)
+    const handleRouteChange = () => {
+      setTimeout(calculateLeftMargin, 100) // Small delay to ensure route has changed
+    }
+    
+    // Listen for navigation events
+    window.addEventListener('popstate', handleRouteChange)
+    
+    return () => {
+      window.removeEventListener('resize', calculateLeftMargin)
+      window.removeEventListener('popstate', handleRouteChange)
+    }
+  }, [])
 
   const footerSections = {
     company: {
@@ -39,7 +93,10 @@ export const Footer: React.FC<FooterProps> = ({ className = '' }) => {
 
   return (
     <footer className={`bg-gray-900 text-white ${className}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div 
+        className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 transition-all duration-300 ease-out"
+        style={{ marginLeft: `${leftMargin}px` }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
