@@ -220,17 +220,10 @@ const sampleProjects: Project[] = [
     tags: ['Market Entry', 'International Business', 'Regulatory Compliance', 'Strategic Partnerships'],
     images: [
       {
-        id: '7',
-        url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
-        alt: 'International business meeting',
-        isPrimary: true,
-        caption: 'International business representation and market entry consulting'
-      },
-      {
         id: '13',
         url: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop',
         alt: 'Global market analysis',
-        isPrimary: false,
+        isPrimary: true,
         caption: 'Market research and analysis for emerging markets'
       },
       {

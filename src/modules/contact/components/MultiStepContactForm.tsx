@@ -1,7 +1,9 @@
 'use client'
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useRef, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { ContactInfo } from '@/modules/shared/utils/types'
 import { Button, Input, Card } from '@/modules/shared/components/ui'
+import { SERVICES } from '@/modules/shared/utils/constants'
 
 interface MultiStepContactFormProps {
   className?: string
@@ -33,6 +35,7 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
   title = 'Start Your Engineering Project',
   description = 'Tell us about your project needs and we\'ll provide a comprehensive proposal.'
 }) => {
+  const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState(1)
   const [maxStepReached, setMaxStepReached] = useState(1)
   const [formData, setFormData] = useState<ExtendedContactInfo>({
@@ -49,6 +52,37 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
     urgency: 'medium',
     preferredContact: 'email',
   })
+
+  // Auto-populate form with URL parameters
+  useEffect(() => {
+    const service = searchParams?.get('service')
+    const project = searchParams?.get('project')
+    
+    if (service || project) {
+      // Map service category to form project type
+      const serviceMapping: { [key: string]: string } = {
+        'Technology Operations': 'Technology Operations',
+        'Supply Chain Management': 'Supply Chain Management', 
+        'Feasibility Studies': 'Feasibility Studies',
+        'Business Representation': 'Business Representation',
+        'Training & Development': 'Training & Development',
+        'Tender Services': 'Tender Services',
+        'Project Management': 'Project Management',
+        'Strategic Consulting': 'Strategic Consulting'
+      }
+      
+      const mappedProjectType = service ? serviceMapping[service] || service : ''
+      
+      setFormData(prev => ({
+        ...prev,
+        projectType: mappedProjectType || prev.projectType,
+        subject: project ? `Similar Project Request: ${project}` : prev.subject,
+        message: project 
+          ? `I'm interested in a project similar to "${project}". Please provide information about your ${service || 'consulting'} services and how we can work together on a similar initiative.\n\nProject Details:\n- Category: ${service || 'Not specified'}\n- Reference Project: ${project}\n\nI would like to discuss:\n- Project scope and requirements\n- Timeline and budget estimation\n- Your approach to similar projects\n- Next steps for collaboration`
+          : prev.message
+      }))
+    }
+  }, [searchParams])
   
   const [errors, setErrors] = useState<Partial<ExtendedContactInfo>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -577,27 +611,21 @@ export const MultiStepContactForm: React.FC<MultiStepContactFormProps> = ({
                   Project Type *
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {[
-                    'Structural Engineering',
-                    'Project Management',
-                    'Engineering Consulting',
-                    'Design Review & QA',
-                    'Infrastructure Development',
-                    'Renovation & Retrofitting'
-                  ].map((type) => (
+                  {Object.values(SERVICES).map((service) => (
                     <button
-                      key={type}
+                      key={service.title}
                       type="button"
-                      onClick={() => handleInputChange('projectType', type)}
+                      onClick={() => handleInputChange('projectType', service.title)}
                       className={`
                         p-3 rounded-xl border-2 transition-all text-sm font-medium text-left
-                        ${formData.projectType === type
-                          ? 'border-var(--color-primary) bg-blue-50 text-var(--color-primary)'
+                        ${formData.projectType === service.title
+                          ? 'border-[var(--primary-blue)] bg-blue-50 text-[var(--primary-blue)]'
                           : 'border-gray-200 hover:border-gray-300 text-gray-700'
                         }
                       `}
                     >
-                      {type}
+                      <div className="font-semibold">{service.title}</div>
+                      <div className="text-xs text-gray-600 mt-1">{service.description}</div>
                     </button>
                   ))}
                 </div>

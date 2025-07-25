@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/modules/shared/components/ui'
-import { CompactSearch } from '@/modules/shared/components/ui/SearchBar'
 import { COMPANY_INFO, ROUTES, SERVICES } from '@/modules/shared/utils/constants'
 
 interface HeaderProps {
@@ -15,7 +14,6 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
   const pathname = usePathname()
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -60,12 +58,6 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
     }, 150)
   }
 
-  // Handle search
-  const handleSearch = (query: string) => {
-    setSearchQuery(query)
-    // TODO: Implement search functionality
-    console.log('Searching for:', query)
-  }
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -281,12 +273,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '', isHomePage = fal
             </nav>
 
             {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <CompactSearch
-                onSearch={handleSearch}
-                placeholder="Search..."
-                className="transition-colors duration-300 text-[var(--text-secondary)]"
-              />
+            <div className="hidden lg:flex items-center">
               <Button
                 variant={isScrolled || !isHomePage ? 'primary' : 'outline'}
                 size="sm"

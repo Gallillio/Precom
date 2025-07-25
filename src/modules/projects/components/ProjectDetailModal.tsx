@@ -1,7 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Project } from '@/modules/shared/utils/types'
 import { Modal } from '@/modules/shared/components/ui'
+import { ROUTES } from '@/modules/shared/utils/constants'
 import Image from 'next/image'
 
 interface ProjectDetailModalProps {
@@ -15,6 +17,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   isOpen,
   onClose,
 }) => {
+  const router = useRouter()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isImageGalleryOpen, setIsImageGalleryOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'overview' | 'details' | 'gallery'>('overview')
@@ -102,6 +105,19 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     setCurrentImageIndex(index)
     setIsAutoPlaying(false) // Pause auto-play when user clicks dot
     setTimeout(() => setIsAutoPlaying(true), 8000) // Resume after 8 seconds
+  }
+
+  const handleGetSimilarQuote = () => {
+    // Navigate to contact page with project context and scroll parameter
+    const url = `${ROUTES.contact}?service=${encodeURIComponent(project?.category || '')}&project=${encodeURIComponent(project?.title || '')}&scroll=form`
+    router.push(url)
+    onClose()
+  }
+
+  const handleContactTeam = () => {
+    // Navigate to contact page
+    router.push(ROUTES.contact)
+    onClose()
   }
 
   return (
@@ -387,10 +403,16 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
                     {/* CTA */}
                     <div className="space-y-1.5">
-                      <button className="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] text-white py-2 px-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-xs">
+                      <button 
+                        onClick={handleGetSimilarQuote}
+                        className="w-full bg-gradient-to-r from-[var(--primary-blue)] to-[var(--accent-teal)] text-white py-2 px-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-xs"
+                      >
                         Get Similar Quote
                       </button>
-                      <button className="w-full border border-gray-300 text-gray-700 py-2 px-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-xs">
+                      <button 
+                        onClick={handleContactTeam}
+                        className="w-full border border-gray-300 text-gray-700 py-2 px-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-xs"
+                      >
                         Contact Team
                       </button>
                     </div>

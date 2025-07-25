@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect, Suspense, useRef, useCallback } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { ContactInfo as ContactInfoType } from '@/modules/shared/utils/types'
 import { ContactHero } from '../components/ContactHero'
 import { ContactForm } from '../components/ContactForm'
@@ -77,6 +78,7 @@ const AnimatedContactStat: React.FC<{
 }
 
 export const ContactScreen: React.FC = () => {
+  const searchParams = useSearchParams()
   const [loading, setLoading] = useState(true)
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
@@ -130,6 +132,20 @@ export const ContactScreen: React.FC = () => {
       observer.disconnect()
     }
   }, [observerCallback])
+
+  // Handle auto-scroll after page loads
+  useEffect(() => {
+    if (!loading && searchParams?.get('scroll') === 'form') {
+      const scrollTimer = setTimeout(() => {
+        const contactForm = document.getElementById('contact-form')
+        if (contactForm) {
+          contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 500) // Wait for page to fully render
+      
+      return () => clearTimeout(scrollTimer)
+    }
+  }, [loading, searchParams])
 
   const faqData = [
     {
