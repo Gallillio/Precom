@@ -248,7 +248,12 @@ export const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({
               </div>
 
               <div className="lg:text-center">
-                <div className="bg-white rounded-xl p-6 shadow-lg">
+                <div 
+                  ref={commitmentRef}
+                  className={`bg-white rounded-xl p-6 shadow-lg transition-all duration-1000 transform ${
+                    isCommitmentVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                  }`}
+                >
                   <h4 className="text-lg font-semibold text-gray-900 mb-4">
                     Our Commitment
                   </h4>
@@ -257,20 +262,24 @@ export const ServiceFeatures: React.FC<ServiceFeaturesProps> = ({
                       value={100} 
                       suffix="%" 
                       label="Client Satisfaction" 
+                      startAnimation={isCommitmentVisible}
                     />
                     <AnimatedCommitmentStat 
                       value={0} 
                       label="Safety Incidents" 
+                      startAnimation={isCommitmentVisible}
                     />
                     <AnimatedCommitmentStat 
                       value={98} 
                       suffix="%" 
                       label="On-Time Delivery" 
+                      startAnimation={isCommitmentVisible}
                     />
                     <AnimatedCommitmentStat 
                       value={15} 
                       suffix="+" 
                       label="Years Experience" 
+                      startAnimation={isCommitmentVisible}
                     />
                   </div>
                 </div>
